@@ -125,7 +125,6 @@
   <ItemGroup>
     <Content Include="app\app-bootstrap.js" />
     <Content Include="app\app.js" />
-    <Content Include="app\app2.js" />
     <Content Include="app\common\services\remoteResource.js" />
     <Content Include="app\common\services\utility.js" />
     <Content Include="app\common\shell.html" />
