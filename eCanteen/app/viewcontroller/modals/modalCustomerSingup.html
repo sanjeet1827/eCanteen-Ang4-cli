@@ -1,0 +1,153 @@
+﻿<div class="modal-content">
+    <button type="button" class="close" ng-click="close()">×</button>
+    <div class="modal-body signup-modal">
+        <div class="content-block auth register">
+
+            <div ng-if="!vModel.showLoginView" class="animate-if">
+                <h1 class="auth__title">Customer Registration</h1>
+
+                <form id="register-form" name="registerForm" novalidate="novalidate">
+
+                    <div class="form-group">
+
+                        <label class="control-label" for="firstName">
+                            Name
+                        </label>
+                        <textbox-general ng-id="name" ng-name="name" placeholder="enter name" maximum-lenght="250" ng-value="vModel.name" field-required="true"></textbox-general>
+                        <span ng-if="registerForm.name.$invalid">*</span>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="control-label" for="customer_registration_mobileNumber">
+                            Mobile
+                        </label>
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-3">
+                                <textbox-general ng-id="mobileCountryCode" placeholder="91" maximum-lenght="2"></textbox-general>
+                            </div>
+                            <div class="col-xs-8 col-sm-9">
+                                <textbox-general ng-id="mobile" ng-name="mobile" maximum-lenght="10" ng-value="vModel.mobile" field-required="true"></textbox-general>
+                            </div>
+                            <span ng-if="registerForm.mobile.$invalid">*</span>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="control-label" for="customer_registration_email">
+                            Email
+                        </label>
+                        <textbox-general ng-type="email" ng-id="email" ng-name="email" maximum-lenght="250" ng-value="vModel.email" field-required="true"></textbox-general>
+                        <span ng-if="registerForm.email.$invalid">*</span>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="control-label" for="customer_registration_password_first">
+                            Password
+                        </label>
+                        <textbox-general ng-type="password" ng-id="password" ng-name="password" minimum-lenght="4" maximum-lenght="5" ng-value="vModel.password" field-required="true"></textbox-general>
+                        <span ng-if="registerForm.password.$invalid">*</span>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="control-label" for="customer_registration_password_second">
+                            Repeat password
+                        </label>
+                        <textbox-general ng-type="password" ng-id="repeatPassword" ng-name="repeatPassword" minimum-lenght="4" maximum-lenght="5" ng-value="vModel.repeatPassword" field-required="true"></textbox-general>
+                        <span ng-if="vModel.password!==vModel.repeatPassword">*</span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="checkbox" id="customer_registration_termsAndConditionsAccepted" name="customer_registration[termsAndConditionsAccepted]" required="required" value="1">
+
+
+                        <label class="control-label" for="customer_registration_termsAndConditionsAccepted">
+                            I have read and accepted the <a target="_blank" href="/contents/terms-and-conditions.htm">Terms and conditions</a>
+                            and <a target="_blank" href="/contents/privacy.htm">Privacy policy</a>
+                        </label>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <!--<button-general type="submit" ng-show="!signUpmodal" value="Procceed to pay"></button-general>-->
+                        <!--<button-general type="submit" ng-show="signUpmodal" value="Sign Up"></button-general>-->
+                        <button-general type="submit" value="Sign Up" ng-click="signUp(registerForm.$invalid,vModel)"></button-general>
+                    </div>
+                </form>
+
+                <div class="row" ng-if="vModel.alreadyRegistered">
+                    <div class="col-sm-12">
+                        <p>
+                            Customer already registered with provided email id.
+                        </p>
+                    </div>
+
+                </div>
+
+                <p class="auth__footer">
+                    <span class="auth__footer__content">Already registered?</span>
+                    <a class="auth__footer__cta" ng-click="activeLoginView(true)">
+                        Log in
+                    </a>
+                </p>
+
+                
+
+            </div>
+
+            <div ng-if="vModel.showLoginView" class="animate-if">
+                
+
+                <form id="customerlogin-form" name="customerloginForm" novalidate="novalidate">
+
+                    <div class="form-group">
+
+                        <label class="control-label" for="customer_registration_email">
+                            Email
+                        </label>
+                        <textbox-general ng-type="email" ng-id="email" ng-name="email" maximum-lenght="250" ng-value="vLoginModel.email" field-required="true"></textbox-general>
+                        <span ng-if="registerForm.email.$invalid">*</span>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="control-label" for="customer_registration_password_first">
+                            Password
+                        </label>
+                        <textbox-general ng-type="password" ng-id="password" ng-name="password" minimum-lenght="4" maximum-lenght="5" ng-value="vLoginModel.password" field-required="true"></textbox-general>
+                        <span ng-if="registerForm.password.$invalid">*</span>
+                    </div>
+
+                    <div class="form-group">
+                        <!--<button-general type="submit" ng-show="!signUpmodal" value="Procceed to pay"></button-general>-->
+                        <!--<button-general type="submit" ng-show="signUpmodal" value="Sign Up"></button-general>-->
+                        <button-general type="submit" value="Sign In" ng-click="signIn(customerloginForm.$invalid,vLoginModel)"></button-general>
+                        <a ng-click="activeLoginView(false)">Sign Up </a>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+        <div ng-if="vModel.registerationPosted" class="animate-if">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>
+                        Thank you for registraion,please verify your email and confirm.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

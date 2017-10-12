@@ -1,0 +1,79 @@
+﻿<div id="page-wrapper" style="min-height: 311px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="admin-page-header">Today's Menu</h1>
+            <a style="font-weight: bold;font-size: large;cursor:pointer" ng-click="saveVendorCurrentMenu()">Save Menu</a>
+            <span style="color: blue;font-weight: bold;padding-left: 10px;" ng-if="showSuccessMessage">
+                Menu saved successfully !
+            </span>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="ecanteencontainer current-menu-container">
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12 current-menu-heading">
+                        <span style="font-size: x-large;">Breakfast</span>
+                    </div>
+                </div>
+                <div class="row" ng-repeat="item in currentBreakfastMenuItem">
+                    <div class="col-lg-12  current-menu-item-div" ng-class="{'fooditem-menu-selected':item.br.selected}" ng-click="setBreakfastMenuItems(item.Id,1)">
+                        <span>
+                            {{ item.Name }}
+                        </span>
+                        <p>{{ item.Description }}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12 current-menu-heading">
+                        <span style="font-size: x-large;">Lunch</span>
+                    </div>
+                </div>
+                <div class="row" ng-repeat="item in currentLunchMenuItem">
+                    <div class="col-lg-12  current-menu-item-div" ng-class="{'fooditem-menu-selected':item.lu.selected}" ng-click="setLunchMenuItems(item.Id,2)">
+                        <span>
+                            {{ item.Name }}
+                        </span>
+                        <p>{{ item.Description }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12 current-menu-heading">
+                        <span style="font-size: x-large;">Snacks</span>
+                    </div>
+                </div>
+                <div class="row" ng-repeat="item in currentSnacksMenuItem">
+                    <div class="col-lg-12  current-menu-item-div" ng-class="{'fooditem-menu-selected':item.sn.selected}" ng-click="setSnacksMenuItems(item.Id,3)">
+                        <span>
+                            {{ item.Name }}
+                        </span>
+                        <p>{{ item.Description }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12 current-menu-heading">
+                        <span style="font-size: x-large;">Dinner</span>
+                    </div>
+                </div>
+                <div class="row" ng-repeat="item in currentDinnerMenuItem">
+                    <div class="col-lg-12  current-menu-item-div" ng-class="{'fooditem-menu-selected':item.di.selected}" ng-click="setDinnerMenuItems(item.Id,4)">
+                        <span>
+                            {{ item.Name }}
+                        </span>
+                        <p>{{ item.Description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

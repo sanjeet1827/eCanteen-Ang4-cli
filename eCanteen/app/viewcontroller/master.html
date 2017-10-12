@@ -1,0 +1,121 @@
+﻿<div class="page-wrapper js-sticky-height-calculate-container">
+    <div class="content-wrapper">
+
+        <header class="">
+
+            <div class="container">
+                <a ui-sref="shell.init" class="header-logo ">
+                    <img alt="Logo" src="../../Content/Images/jainit-infosoft-logo.png">
+                </a>
+
+                <div class="header-links hidden-print">
+                    <ul class="header-links__list">
+
+                        <li class="header-links__contact-us">
+                            <a>
+                                <span class="label">Help</span>
+                            </a>
+                        </li>
+
+                        <li class="header-links__customer-account" ng-show="isCustomerRegistraionConfirmed===undefined">
+                            <div class="dropdown" ng-if="customerId!==undefined && customerId!==null">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    {{customerName}}
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a ui-sref="shell.customerOrderHistory">Order History</a></li>
+                                    <li><a href="javascript:void(0)" ng-click="signOut()">Sign Out</a></li>
+                                </ul>
+                            </div>
+                            <a href="javascript:void(0)" class="js-auth-login" ng-if="(customerId===undefined || customerId===null) && (vendorUId===undefined || vendorUId===null)" ng-click="openCustomerSignUpModal()">
+                                <span class="label">Log in or Sign up</span>
+
+                            </a>
+                        </li>
+                    </ul>
+
+
+
+                </div>
+            </div>
+            <div ng-show="$root.popUpNotificationForCustomer" class="hidden-print" style="width: 15%;background-color: lightblue;position: fixed;top: 0;right: 0;z-index: 5;">
+                <table>
+                    <tr>
+                        <td style="font-size: large;padding-left: 2px;">
+                            Your order got just ready
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top: 5px;padding-bottom: 5px;padding-top: 5px;padding-bottom: 5px;padding-left: 2px;">
+                            Order Id <a ng-click="closeCustomerNotificationPopUp()">{{$root.newCustomerOrderToken}}</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </header>
+    </div>
+</div>
+<div ng-show="displayVendorSlider" class="js-change-location-box-add-target">
+
+
+    <div class="location-search-ajax-container js-location-search-ajax-container has-complete-location  " data-sticky-top-margin="0">
+        <div class="container">
+
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+
+                    <div class="item" ng-class="{'active':($index==0)}" ng-repeat="item in vModel.vendors" ng-init="parentIndex = $index">
+
+                        <span ng-repeat="vendor in item" ng-click="setMenuItem(vendor.Id,1)">
+                            {{vendor.Name}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <a class="left carousel-control" style="background-image:url('../../Content/Images/prev.png');background-repeat: no-repeat;" href="#myCarousel" role="button" ng-non-bindable data-slide="prev">
+                    <!--<i class="fa fa-arrow-circle-left"></i>-->
+                </a>
+                <a class="right carousel-control" style="background-image:url('../../Content/Images/next.png');background-repeat: no-repeat;" href="#myCarousel" role="button" ng-non-bindable data-slide="next">
+                    <!--<i class="fa fa-arrow-circle-right"></i>-->
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<div ng-show="displayAdminMenu" class="hidden-print">
+    <div class="nav-wrap">
+        <ul class="group" id="mainmenu">
+            <li>
+                <a ui-sref="shell.manageMenu">Add Items</a>
+            </li>
+            <li class="current_page_item"><a ui-sref="shell.currentMenu">Current Menu</a></li>
+            <li class="current_page_item"><a ui-sref="shell.orderStatus">Order Status</a></li>
+        </ul>
+
+    </div>
+</div>
+<div ng-show="$root.popUpNotification" class="hidden-print" style="width: 15%;background-color: lightblue;position: fixed;bottom: 0;right: 0;z-index: 5;">
+    <table>
+        <tr>
+            <td style="font-size: large;padding-left: 2px;">
+                New orders just placed
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 5px;padding-bottom: 5px;padding-top: 5px;padding-bottom: 5px;padding-left: 2px;">
+                Order Token <a ng-click="closeNotificationPopUp()">{{$root.newOrderToken}}</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+

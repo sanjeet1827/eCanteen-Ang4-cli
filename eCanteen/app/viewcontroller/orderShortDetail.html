@@ -1,0 +1,113 @@
+﻿<div class="cart-container cart-container--vendor out" ng-controller="orderShortDetailCtrl">
+    <div id="sticky-wrapper" class="sticky-wrapper" style="height: 303px;">
+        <div class="js-sticky-element" style="">
+            <div class="cart cart--vendor">
+                <div class="cart__minimal">
+                    <div class="container">
+                        <span class="cart__minimal__amount">
+                            0
+                        </span>
+                        <span class="cart__minimal__price">
+                            Rs.0.00
+                        </span>
+                        <span class="cart__minimal__button">
+                            <a class="btn btn-default disabled btn-block btn-minimal-cart js-checkout-btn" href="https://www.foodpanda.in/restaurant/v5ce/dana-choga-s-kitchen-new-colony#" rel="nofollow">
+                                Checkout
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="cart__inner">
+                    <div class="cart__content">
+                        <div class="cart__header">
+                            <div class="cart__header__title">
+                                Your order
+                            </div>
+                        </div>
+
+                        <div class="cart__empty cart__empty--inside">
+                            <ul class="cart__empty__elements">
+                                <li class="cart__empty__element cart__empty__element--online-payment">
+                                    Online payment available
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="cart__products" ng-if="vModel.showOrderItem" style="max-height: none;">
+                            <table data-ng-repeat="item in vModel.orderItems">
+                                <tbody>
+                                    <tr class="product">
+                                        <td class="product__quantity">
+                                            <span class="product__quantity__wrapper">
+                                                <!--2-->
+                                                {{item.ItemQty}}
+                                            </span>
+
+                                        </td>
+                                        <td class="product__title">
+                                            <span class="product__title__name">
+                                                <!--Batasha Imli Aloo-->
+                                                {{item.ItemName}}
+                                            </span>
+
+
+                                            <a class="btn btn-xs btn-default" style="float:right;" ng-click="removeOrderItem($root.vendorId,item.ItemId)">X</a>
+
+                                        </td>
+                                    </tr>
+                                    <tr class="product__price">
+                                        <td colspan="2">
+                                            <div class="product__amount-controls">
+
+                                                <a class="btn btn-xs btn-default" ng-click="addOrderItem($root.vendorId,item.ItemId,item.ItemName,item.ItemPrice,false)">-</a>
+                                                <a class="btn btn-xs btn-default" ng-click="addOrderItem($root.vendorId,item.ItemId,item.ItemName,item.ItemPrice,true)">+</a>
+                                            </div>
+
+                                            <span class="product__price__element">
+                                                <!--Rs.178.00-->
+                                                Rs.{{item.ItemQtyPrice}}
+                                            </span>
+                                            <hr />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="cart__empty cart__empty--inside">
+                            <ul class="cart__empty__elements">
+                                <!--<li class="cart__empty__element cart__empty__element--minimum-delivery-time">
+                                    Prepare time:
+                                    1h
+                                </li>-->
+                                <!--<li class="cart__empty__element cart__empty__element--online-payment">
+                                    Online payment available
+                                </li>-->
+
+                                <li class="cart__empty__element cart__empty__element--minimum-order-amount">
+                                    Order Amount.:
+                                    <!--Rs.300.00-->
+                                    {{vModel.orderSubTotal}}
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="cart__checkout">
+                            <a ui-sref="shell.orderCheckout({orderData:vModel})" ng-if="$root.orderSubTotal!==null && $root.orderSubTotal!==0" class="btn btn-default btn-block btn-lg btn-arrow btn-arrow-lg js-checkout-btn">
+                                Proceed to checkout
+                            </a>
+                        </div>
+                        <div class="cart__checkout">
+                            <a ng-if="$root.orderSubTotal===null || $root.orderSubTotal===0" class="btn btn-default btn-block btn-lg btn-arrow btn-arrow-lg js-checkout-btn">
+                                Order amount is zero
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

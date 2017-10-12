@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eCanteenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="Employer" Type="nvarchar" MaxLength="256" />
+          <Property Name="Password" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VendorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="3000" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="VendorId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuFoodItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="FoodItemId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VendorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Availability" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TokenNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VenderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ServiceTax" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Vat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TimeSlot" Type="int" Nullable="false" />
+          <Property Name="Accepted" Type="bit" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="PaymentStatus" Type="int" Nullable="false" />
+          <Property Name="OrderDateTime" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="FoodItemId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TransactionId" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PaymentVia" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PaymentStatus" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="11" />
+          <Property Name="Owner" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="SiteId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ShopNo" Type="nvarchar" MaxLength="8" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Customer_Order">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodItem_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+          <End Role="FoodItem" Type="Self.FoodItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FoodItem">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuFoodItem_FoodItem">
+          <End Role="FoodItem" Type="Self.FoodItem" Multiplicity="1" />
+          <End Role="MenuFoodItem" Type="Self.MenuFoodItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuFoodItem">
+              <PropertyRef Name="FoodItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_Site">
+          <End Role="Site" Type="Self.Site" Multiplicity="1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eCanteenModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodItem" EntityType="Self.FoodItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuFoodItem" EntityType="Self.MenuFoodItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Site" EntityType="Self.Site" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Customer_Order" Association="Self.FK_Customer_Order">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodItem_Vendor" Association="Self.FK_FoodItem_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="FoodItem" EntitySet="FoodItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Vendor" Association="Self.FK_Menu_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuFoodItem_FoodItem" Association="Self.FK_MenuFoodItem_FoodItem">
+            <End Role="FoodItem" EntitySet="FoodItem" />
+            <End Role="MenuFoodItem" EntitySet="MenuFoodItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Order" Association="Self.FK_OrderItem_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Order" Association="Self.FK_Payment_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_Site" Association="Self.FK_Vendor_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eCanteenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="eCanteenEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer" EntityType="eCanteenModel.Customer" />
+          <EntitySet Name="FoodItem" EntityType="eCanteenModel.FoodItem" />
+          <EntitySet Name="Menu" EntityType="eCanteenModel.Menu" />
+          <EntitySet Name="MenuFoodItem" EntityType="eCanteenModel.MenuFoodItem" />
+          <EntitySet Name="Order" EntityType="eCanteenModel.Order" />
+          <EntitySet Name="OrderItem" EntityType="eCanteenModel.OrderItem" />
+          <EntitySet Name="Payment" EntityType="eCanteenModel.Payment" />
+          <EntitySet Name="Site" EntityType="eCanteenModel.Site" />
+          <EntitySet Name="Vendor" EntityType="eCanteenModel.Vendor" />
+          <AssociationSet Name="FK_Customer_Order" Association="eCanteenModel.FK_Customer_Order">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FoodItem_Vendor" Association="eCanteenModel.FK_FoodItem_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="FoodItem" EntitySet="FoodItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuFoodItem_FoodItem" Association="eCanteenModel.FK_MenuFoodItem_FoodItem">
+            <End Role="FoodItem" EntitySet="FoodItem" />
+            <End Role="MenuFoodItem" EntitySet="MenuFoodItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Vendor" Association="eCanteenModel.FK_Menu_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Order" Association="eCanteenModel.FK_OrderItem_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Order" Association="eCanteenModel.FK_Payment_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_Site" Association="eCanteenModel.FK_Vendor_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Employer" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="eCanteenModel.FK_Customer_Order" FromRole="Customer" ToRole="Order" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="VendorId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Vendor" Relationship="eCanteenModel.FK_FoodItem_Vendor" FromRole="FoodItem" ToRole="Vendor" />
+          <NavigationProperty Name="MenuFoodItem" Relationship="eCanteenModel.FK_MenuFoodItem_FoodItem" FromRole="FoodItem" ToRole="MenuFoodItem" />
+          <Property Name="Description" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="VendorId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Vendor" Relationship="eCanteenModel.FK_Menu_Vendor" FromRole="Menu" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="MenuFoodItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FoodItemId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="FoodItem" Relationship="eCanteenModel.FK_MenuFoodItem_FoodItem" FromRole="MenuFoodItem" ToRole="FoodItem" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Availability" Type="Boolean" Nullable="false" />
+          <Property Name="VendorId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CustomerId" Type="Guid" Nullable="false" />
+          <Property Name="VenderId" Type="Guid" Nullable="false" />
+          <Property Name="SubTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ServiceTax" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Vat" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TimeSlot" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="PaymentStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="eCanteenModel.FK_Customer_Order" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderItem" Relationship="eCanteenModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
+          <NavigationProperty Name="Payment" Relationship="eCanteenModel.FK_Payment_Order" FromRole="Order" ToRole="Payment" />
+          <Property Name="OrderDateTime" Type="DateTime" Precision="7" />
+          <Property Name="TokenNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Accepted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="OrderId" Type="Guid" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="FoodItemId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="eCanteenModel.FK_OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="OrderId" Type="Guid" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PaymentStatus" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="eCanteenModel.FK_Payment_Order" FromRole="Payment" ToRole="Order" />
+          <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentVia" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Owner" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vendor" Relationship="eCanteenModel.FK_Vendor_Site" FromRole="Site" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="SiteId" Type="Guid" Nullable="false" />
+          <Property Name="ShopNo" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FoodItem" Relationship="eCanteenModel.FK_FoodItem_Vendor" FromRole="Vendor" ToRole="FoodItem" />
+          <NavigationProperty Name="Menu" Relationship="eCanteenModel.FK_Menu_Vendor" FromRole="Vendor" ToRole="Menu" />
+          <NavigationProperty Name="Site" Relationship="eCanteenModel.FK_Vendor_Site" FromRole="Vendor" ToRole="Site" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Logo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Customer_Order">
+          <End Type="eCanteenModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="eCanteenModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FoodItem_Vendor">
+          <End Type="eCanteenModel.Vendor" Role="Vendor" Multiplicity="1" />
+          <End Type="eCanteenModel.FoodItem" Role="FoodItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FoodItem">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuFoodItem_FoodItem">
+          <End Type="eCanteenModel.FoodItem" Role="FoodItem" Multiplicity="1" />
+          <End Type="eCanteenModel.MenuFoodItem" Role="MenuFoodItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuFoodItem">
+              <PropertyRef Name="FoodItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Vendor">
+          <End Type="eCanteenModel.Vendor" Role="Vendor" Multiplicity="1" />
+          <End Type="eCanteenModel.Menu" Role="Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Order">
+          <End Type="eCanteenModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="eCanteenModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Order">
+          <End Type="eCanteenModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="eCanteenModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_Site">
+          <End Type="eCanteenModel.Site" Role="Site" Multiplicity="1" />
+          <End Type="eCanteenModel.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eCanteenModelStoreContainer" CdmEntityContainer="eCanteenEntities">
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="eCanteenModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Employer" ColumnName="Employer" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodItem">
+            <EntityTypeMapping TypeName="eCanteenModel.FoodItem">
+              <MappingFragment StoreEntitySet="FoodItem">
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="eCanteenModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuFoodItem">
+            <EntityTypeMapping TypeName="eCanteenModel.MenuFoodItem">
+              <MappingFragment StoreEntitySet="MenuFoodItem">
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="FoodItemId" ColumnName="FoodItemId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="eCanteenModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+                <ScalarProperty Name="TokenNo" ColumnName="TokenNo" />
+                <ScalarProperty Name="OrderDateTime" ColumnName="OrderDateTime" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TimeSlot" ColumnName="TimeSlot" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="ServiceTax" ColumnName="ServiceTax" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="VenderId" ColumnName="VenderId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItem">
+            <EntityTypeMapping TypeName="eCanteenModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="FoodItemId" ColumnName="FoodItemId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment">
+            <EntityTypeMapping TypeName="eCanteenModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentVia" ColumnName="PaymentVia" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Site">
+            <EntityTypeMapping TypeName="eCanteenModel.Site">
+              <MappingFragment StoreEntitySet="Site">
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendor">
+            <EntityTypeMapping TypeName="eCanteenModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ShopNo" ColumnName="ShopNo" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

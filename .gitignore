@@ -40,3 +40,15 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Assemblies
+.dll
+.pdb
+
+# Folders
+BuildProcessTemplates
+bin
+obj
+.vs
+packages
+node_modules

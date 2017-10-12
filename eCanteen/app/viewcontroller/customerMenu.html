@@ -1,0 +1,43 @@
+﻿<div ng-controller="customerMenuCtrl">
+    <article class="menu__category">
+        <div class="menu__category__header">
+            <div id="menu_delivery-menu_category_popular-dishes" class="menu__category__title">
+                Popular Dishes
+            </div>
+        </div>
+
+
+        <article class="menu-item" data-ng-repeat="item in vModel.menuItems">
+
+            <div class="menu-item__content-wrapper">
+                <div class="menu-item__content-container">
+                    <div class="menu-item__content ">
+
+                        <div class="menu-item__title" title="Veg. Thali">
+                            <!--Veg. Thali-->
+                            {{item.Name}}
+                        </div>
+
+                        <!--<p class="menu-item__description">(Dal makhani, shahi paneer, mix vegetable, raita, 2 lachha paratha, steam rice &amp; gulab jamun)</p>-->
+                    </div>
+                </div>
+                <div class="menu-item__variations-container">
+                    <ul class="menu-item__variations">
+                        <article class="menu-item__variation">
+                            <div class="menu-item__variation__title">&nbsp;</div>
+                            <div class="menu-item__variation__price ">
+                                <!--Rs.179.00-->
+                                Rs.{{item.Price}}
+                            </div>
+
+                            <button class="btn btn-primary customer-menu-item-add" ng-click="addFoodItemtoOrder($root.vendorId,item.Id,item.Name,item.Price,true)">
+                                +
+                            </button>
+
+                        </article>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </article>
+</div>

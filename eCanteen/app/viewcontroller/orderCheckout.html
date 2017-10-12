@@ -1,0 +1,80 @@
+﻿<div id="page-wrapper">
+    <div class="order-main-dv">
+        <div class="ecanteencontainer">
+
+            <div ng-include src="'app/viewcontroller/orderDetail.html'"></div>
+
+            <div class="col-lg-3 order-payment-option-dv">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading bgblue">
+                                Payment Option
+                            </div>
+                            <!-- .panel-heading -->
+                            <div class="panel-body menu-item">
+                                <ul class="order-confirm-pay">
+                                    <!--<li> <input type="radio" name="order-confirm" value="1" ng-model="vModel.menuFor" /> <span>PayTM Wallet </span> <div class="payTM-confirm"></div></li>-->
+                                    <!--<li><input type="radio" name="order-confirm" value="2" ng-model="vModel.menuFor" /><span>MobikWik Wallet </span> <div class="mobikwik-confirm"></div> </li>-->
+                                    <li><input type="radio" name="order-confirm" value="3" ng-model="vModel.menuFor" /> <span>PayU Money </span><div class="payUmoney-confirm"></div></li>
+                                </ul>
+
+                                <div class="subtotal">
+                                    <label>Total:<span>Rs. {{$root.orderTotalAmount}}</span></label>
+                                    <br />
+                                </div>
+
+                                <br />
+
+                                <div>
+                                    <button-general type="button" value="Confirm" ng-if="$root.orderSubTotal!==null && $root.orderSubTotal!==0" ng-click="openCustomerSignUpModal()"></button-general>
+                                    <button-general type="button" value="Order amount is zero" ng-if="$root.orderSubTotal===null || $root.orderSubTotal===0"></button-general>
+                                </div>
+
+                            </div>
+                            <!-- .panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div ng-bind-html="pModel.form">
+
+</div>
+
+<form>
+    <input type="hidden" name="lastname" value="{{pModel.lastname}}">
+    <input type="hidden" name="address2" value="{{pModel.address2}}">
+    <input type="hidden" name="udf5" value="{{pModel.udf5}}">
+    <input type="hidden" name="service_provider" value="{{pModel.service_provider}}">
+    <input type="hidden" name="curl" value="{{pModel.curl}}">
+    <input type="hidden" name="udf4" value="{{pModel.udf4}}">
+    <input type="hidden" name="txnid" value="{{pModel.txnid}}">
+    <input type="hidden" name="furl" value="{{pModel.furl}}">
+    <input type="hidden" name="state" value="{{pModel.state}}">
+    <input type="hidden" name="udf2" value="{{pModel.udf2}}">
+    <input type="hidden" name="udf1" value="{{pModel.udf1}}">
+    <input type="hidden" name="zipcode" value="{{pModel.zipcode}}">
+    <input type="hidden" name="amount" value={{pModel.amount}}>
+    <input type="hidden" name="email" value="{{pModel.email}}">
+    <input type="hidden" name="city" value="{{pModel.city}}">
+    <input type="hidden" name="country" value="{{pModel.country}}">
+    <input type="hidden" name="udf3" value="{{pModel.udf3}}">
+    <input type="hidden" name="address1" value="{{pModel.address1}}">
+    <input type="hidden" name="hash" value="{{pModel.hash}}">
+    <input type="hidden" name="key" value="{{pModel.key}}">
+    <input type="hidden" name="pg" value="{{pModel.pg}}">
+    <input type="hidden" name="surl" value="{{pModel.surl}}">
+    <input type="hidden" name="firstname" value="{{pModel.firstname}}">
+    <input type="hidden" name="productinfo" value="{{pModel.productinfo}}">
+    <input type="hidden" name="phone" value="{{pModel.phone}}">
+
+
+</form>
+

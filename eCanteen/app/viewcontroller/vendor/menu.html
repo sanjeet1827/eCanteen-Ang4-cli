@@ -1,0 +1,83 @@
+﻿<style>
+    .grid {
+        width: 100%;
+        height: 250px;
+    }
+</style>
+<div id="page-wrapper" style="min-height: 311px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="admin-page-header">Manage Menu</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="ecanteencontainer">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading bgblue">
+                        <div class="row">
+                            <form class="form-horizontal" id="form-menu" name="menuForm" novalidate>
+                                <div class="col-sm-4">
+
+                                    <div class="btn-group navbar-form navbar-left">
+
+                                        <label class="btn btn-default" data-ng-repeat="item in vModel.menuForList" ng-class="{'active':$index == selectedRow}" ng-click="setClickedRow($index)">
+                                            <input class="" type="radio" name="food" ng-model="vModel.menuFor" ng-value="{{item.value}}"
+                                                   ng-change="loadFoodItems($root.vendorUId,vModel.menuFor)">{{item.text}}
+
+                                        </label>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="col-sm-3">
+                                        <div>
+                                            <textbox-general ng-id="item-name" ng-name="itemName" placeholder="enter item name" maximum-lenght="250" ng-value="vModel.Name" field-required="true"></textbox-general>
+                                        </div>
+                                        <span ng-if="menuForm.itemName.$invalid">Enter item name</span>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <div>
+                                            <textbox-decimal ng-id="item-price" ng-name="itemPrice" placeholder="enter item price"
+                                                             maximum-lenght="10" ng-value="vModel.Price" field-required="true" keyup="validatePriceOnKeyPress(event)"></textbox-decimal>
+                                        </div>
+                                        <span ng-if="menuForm.itemPrice.$invalid">Enter item price</span>
+                                        <span class="span-error" ng-if="vModel.PriceError">Value is not valid !</span>
+                                        
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div>
+                                            <textarea id="item-desc" name="itemDesc" class="textarea-general" placeholder="enter item description" maximum-lenght="1000" ng-model="vModel.Description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div>
+                                            <button-general type="submit" value="Save" ng-click="save(menuForm.$invalid,menuForm.$error,menuForm,vModel)"></button-general>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- .panel-heading -->
+                    <div class="panel-body">
+                        <div class="div-text-align-center" ng-if="vModel.gridPriceError">
+                            <span class="span-error">Value is not valid !</span>
+                        </div>
+                        <div class="div-text-align-center">
+                            <span class="span-success" ng-if="vModel.isPriceChanged">Item price saved successfully !</span>
+                        </div>
+
+                        <div ui-grid="gridOptions" ui-grid-edit class="grid"></div>
+                    </div>
+                    <!-- .panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        </div>
+    </div>
+</div>
