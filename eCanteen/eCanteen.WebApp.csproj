@@ -125,6 +125,8 @@
   <ItemGroup>
     <Content Include="app\app-bootstrap.js" />
     <Content Include="app\app.js" />
+    <Content Include="app\common\footer.component.html" />
+    <Content Include="app\common\header.component.html" />
     <Content Include="app\common\services\remoteResource.js" />
     <Content Include="app\common\services\utility.js" />
     <Content Include="app\common\shell.html" />
@@ -153,6 +155,7 @@
     <Content Include="app\viewcontroller\confirmRegistrationCtrl.js" />
     <Content Include="app\viewcontroller\footer.html" />
     <Content Include="app\viewcontroller\footerCtrl.js" />
+    <Content Include="app\viewcontroller\main.component.html" />
     <Content Include="app\viewcontroller\main.html" />
     <Content Include="app\viewcontroller\mainCtrl.js" />
     <Content Include="app\viewcontroller\master.html" />
@@ -1009,6 +1012,7 @@
     <Content Include="fonts\ui-grid.eot" />
     <Content Include="e2e\tsconfig.e2e.json" />
     <Content Include="package.json" />
+    <Content Include="app\app.component.html" />
     <None Include="Properties\PublishProfiles\eCanteen_Publish.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -1108,6 +1112,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\common\footer.component.ts" />
+    <TypeScriptCompile Include="app\common\header.component.ts" />
+    <TypeScriptCompile Include="app\datacontext\customer.service.ts" />
+    <TypeScriptCompile Include="app\datacontext\site.service.ts" />
+    <TypeScriptCompile Include="app\Types\ICustomer.ts" />
+    <TypeScriptCompile Include="app\Types\ISite.ts" />
+    <TypeScriptCompile Include="app\viewcontroller\main.component.ts" />
     <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
     <TypeScriptCompile Include="e2e\app.po.ts" />
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />

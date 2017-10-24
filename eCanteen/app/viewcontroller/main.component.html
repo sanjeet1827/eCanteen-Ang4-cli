@@ -1,0 +1,132 @@
+﻿<div>
+
+
+
+    <div class="flash-messages">
+        <div class="container">
+
+
+        </div>
+    </div>
+
+    <main class="js-sticky-height-calculate-container">
+        <div class="container">
+
+            <div class="vendor-view-container js-sticky-height-calculate-container" itemtype="http://schema.org/Restaurant" itemscope="">
+                <!--Vendor header-->
+                <section class="vendor-header-container">
+                    <article class="vendor view">
+                        <div class="vendor__inner">
+                            <div class="vendor__image">
+                                <img width="80" height="80" ng-src="{{vendorLogo}}">
+                            </div>
+                            <div class="vendor__details">
+                                <div class="vendor__title">
+                                    <h1 itemprop="name">
+                                        <a>
+                                            <!--Dominos-->
+                                            {{vendorName}}
+                                        </a>
+                                    </h1>
+                                </div>
+                                <ul class="vendor__cuisines">
+                                    <!--<li>Pizza</li>
+                                    <li>Breads</li>
+                                    <li>taco</li>-->
+                                </ul>
+
+                            </div>
+                        </div>
+                    </article>
+                </section>
+                <!--Vendor header end-->
+
+
+
+
+                <section class="row">
+
+                    <div class="vendor-body-container">
+                        <ul class="nav nav-tabs nav-justified vendor-tabs">
+                            <li class="vendor-tabs__menu active">
+                                <a class="js-tab" style="background-color: lightgray;">Carte</a>
+                            </li>
+                        </ul>
+
+                        <section class="tab-content">
+
+                            <!--Main container-->
+                            <div class="tab-pane active" id="menu">
+                                <div class="vendor-menu">
+                                    <aside class="vendor-menu__categories desktop-display">
+                                        <div id="sticky-wrapper" class="sticky-wrapper" style="height: 331px;">
+                                            <div class="js-sticky-element js-vendor-detail-menu-categories" data-sticky-bottom-margin="40" style="">
+                                                <h2 class="vendor-menu__categories__title">
+                                                    {{vendorName}}'s Menu
+                                                </h2>
+                                                <ul class="categories__list">
+                                                    <li class="categories__list__item" data-ng-repeat="item in vMainModel.menuForList">
+                                                        <table style="width:100%">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td ng-class="{'main-page-menu-td':$index == selectedRow}">
+                                                                        <label class="btn " ng-click="setClickedRow($index)">
+                                                                            <input class="" type="radio" name="food" ng-model="vMainModel.menuType" ng-value="{{item.value}}"
+                                                                                   ng-change="loadMenuItems(vMainModel.menuType)">{{item.text}}
+
+                                                                        </label>
+                                                                    </td>
+                                                                    <td ng-class="{'main-page-menu-arrow-td':$index == selectedRow}"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+                                        </div>
+
+                                    </aside>
+
+
+                                    <select class="menu__category-dropdown form-control input-lg mobile-display" ng-model="vMainModel.menuTypeMobile"
+                                            ng-options="item.text for item in vMainModel.menuForList track by item.value"
+                                            ng-change="loadMenuItems(vMainModel.menuTypeMobile.value)"></select>
+                                    <div class="mobile-display">
+                                        <br />
+                                    </div>
+
+                                    <!--content main-->
+                                    <div class="vendor-menu__menus ">
+
+                                        <section class="menu">
+
+                                            <div ng-include src="'app/viewcontroller/customerMenu.html'"></div>
+
+                                        </section>
+                                    </div>
+                                    <!--content main end-->
+
+                                </div>
+
+
+                            </div>
+                            <!--Main container end-->
+
+                        </section>
+
+                    </div>
+                    <div ng-include src="'app/viewcontroller/orderShortDetail.html'"></div>
+                </section>
+
+
+
+            </div>
+
+
+        </div>
+    </main>
+
+    <div class="footer-links footer-block--no-mobile-separator footer-legal stick-footer-mobile-display" data-ui-view="footer"></div>
+</div>
