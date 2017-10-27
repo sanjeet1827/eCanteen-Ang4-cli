@@ -1119,9 +1119,13 @@
     <TypeScriptCompile Include="app\datacontext\customer.service.ts" />
     <TypeScriptCompile Include="app\datacontext\food.service.ts" />
     <TypeScriptCompile Include="app\datacontext\notification.service.ts" />
+    <TypeScriptCompile Include="app\datacontext\order.service.ts" />
     <TypeScriptCompile Include="app\datacontext\site.service.ts" />
+    <TypeScriptCompile Include="app\Types\IVendor.ts" />
     <TypeScriptCompile Include="app\Types\ICustomer.ts" />
     <TypeScriptCompile Include="app\Types\IFood.ts" />
+    <TypeScriptCompile Include="app\Types\IOrder.ts" />
+    <TypeScriptCompile Include="app\Types\IOrderDetail.ts" />
     <TypeScriptCompile Include="app\Types\ISite.ts" />
     <TypeScriptCompile Include="app\Types\IVendorMenu.ts" />
     <TypeScriptCompile Include="app\viewcontroller\main.component.ts" />
