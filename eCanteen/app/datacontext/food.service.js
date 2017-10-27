@@ -14,31 +14,31 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
-let CustomerService = class CustomerService {
+let FoodService = class FoodService {
     constructor(_http) {
         this._http = _http;
-        this._customerServiceUrl = 'api/products/products.json';
+        this._foodServiceUrl = 'api/products/products.json';
     }
-    getCustomer(id) {
-        return this._http.get(this._customerServiceUrl)
+    getFoodItems(vendorId, menuType) {
+        return this._http.get(this._foodServiceUrl)
             .map((response) => response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
-    loginCustomer(email, password) {
-        return this._http.get(this._customerServiceUrl)
+    getMenuFoodItems(vendorId, menuType, customer) {
+        return this._http.get(this._foodServiceUrl)
             .map((response) => response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
-    registerCustomer(customer) {
-        return this._http.post(this._customerServiceUrl, customer)
+    getAllFoodItem(vendorId) {
+        return this._http.get(this._foodServiceUrl)
             .map((response) => response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
-    confirmRegistration(customerId, customerDetail) {
-        return this._http.get(this._customerServiceUrl)
+    saveVendorCurrentMenu(vendorMenu, vendorId) {
+        return this._http.post(this._foodServiceUrl, vendorMenu, vendorId)
             .map((response) => response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
@@ -50,9 +50,9 @@ let CustomerService = class CustomerService {
         return Observable.throw(error.json().error || 'Server error');
     }
 };
-CustomerService = __decorate([
+FoodService = __decorate([
     Injectable(),
     __metadata("design:paramtypes", [Http])
-], CustomerService);
-export { CustomerService };
-//# sourceMappingURL=customer.service.js.map
+], FoodService);
+export { FoodService };
+//# sourceMappingURL=food.service.js.map

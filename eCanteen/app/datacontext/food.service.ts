@@ -7,44 +7,46 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
-import { ICustomer } from '../Types/ICustomer'
+import { IFood } from '../Types/IFood';
+import { IVendorMenu } from '../Types/IVendorMenu';
 
 @Injectable()
-export class CustomerService {
+export class FoodService {
 
-    private _customerServiceUrl = 'api/products/products.json';
+    private _foodServiceUrl = 'api/products/products.json';
 
     constructor(private _http: Http) { }
 
-    getCustomer(id: string): Observable<ICustomer> {
+    getFoodItems(vendorId: string, menuType: number): Observable<IFood[]>{
 
-        return this._http.get(this._customerServiceUrl)
-            .map((response: Response) => <ICustomer>response.json())
+        return this._http.get(this._foodServiceUrl)
+            .map((response: Response) => <IFood[]>response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    loginCustomer(email: string, password: string): Observable<ICustomer> {
-
-        return this._http.get(this._customerServiceUrl)
-            .map((response: Response) => <ICustomer>response.json())
+    getMenuFoodItems(vendorId: string, menuType: number, customer: boolean): Observable<IFood[]> {
+        return this._http.get(this._foodServiceUrl)
+            .map((response: Response) => <IFood[]>response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    registerCustomer(customer: ICustomer): Observable<boolean> {
-        return this._http.post(this._customerServiceUrl, customer)
-            .map((response: Response) => <boolean>response.json())
+    getAllFoodItem(vendorId: string): Observable<IFood[]> {
+        return this._http.get(this._foodServiceUrl)
+            .map((response: Response) => <IFood[]>response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    confirmRegistration(customerId: string, customerDetail: boolean): Observable<ICustomer> {
-        return this._http.get(this._customerServiceUrl)
-            .map((response: Response) => <ICustomer>response.json())
+    saveVendorCurrentMenu(vendorMenu: IVendorMenu[], vendorId: string): Observable<void> {
+
+        return this._http.post(this._foodServiceUrl, vendorMenu, vendorId)
+            .map((response: Response) => <void>response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
+
 
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
