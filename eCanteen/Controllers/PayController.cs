@@ -1,5 +1,4 @@
-﻿
-using eCanteen.BussinessLogic;
+﻿using eCanteen.BussinessLogic;
 using eCanteen.BussinessLogic.Interfaces;
 using eCanteen.ModelEntities;
 using eCanteenBussinessLogic;

@@ -11,7 +11,7 @@ import { IOrder } from '../Types/IOrder';
 import { IOrderDetail } from '../Types/IOrderDetail';
 
 @Injectable()
-export class CustomerService {
+export class OrderService {
 
     private _orderServiceUrl = 'api/products/products.json';
 

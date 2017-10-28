@@ -1,0 +1,1 @@
+{"version":3,"file":"textboxgeneral.component.js","sourceRoot":"","sources":["textboxgeneral.component.ts"],"names":[],"mappings":";;;;;;;;;AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,eAAe,CAAC;AAK1C,IAAa,uBAAuB,GAApC;IAWI;QACI,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;IACzB,CAAC;CACJ,CAAA;AAdY,uBAAuB;IAHnC,SAAS,CAAC;QACP,QAAQ,EAAE,sBAAsB;KACnC,CAAC;;GACW,uBAAuB,CAcnC;SAdY,uBAAuB"}

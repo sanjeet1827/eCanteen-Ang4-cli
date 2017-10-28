@@ -12,6 +12,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header.component';
 import { FooterComponent } from './common/footer.component';
+// directives
+import { ButtonComponent } from './directives/button.component';
+import { TextboxDecimalComponent } from './directives/textboxdecimal.component';
+import { CustomerService } from './datacontext/customer.service';
+import { FoodService } from './datacontext/food.service';
+import { NotificationService } from './datacontext/notification.service';
+import { OrderService } from './datacontext/order.service';
+import { PayService } from './datacontext/pay.service';
+import { SiteService } from './datacontext/site.service';
+import { VendorService } from './datacontext/vendor.service';
 /* Feature Modules */
 //import { ProductModule } from './products/product.module';
 let AppModule = class AppModule {
@@ -31,7 +41,18 @@ AppModule = __decorate([
         declarations: [
             AppComponent,
             HeaderComponent,
-            FooterComponent
+            FooterComponent,
+            ButtonComponent,
+            TextboxDecimalComponent
+        ],
+        providers: [
+            CustomerService,
+            FoodService,
+            NotificationService,
+            OrderService,
+            PayService,
+            SiteService,
+            VendorService
         ],
         bootstrap: [AppComponent, HeaderComponent, FooterComponent]
     })

@@ -1116,11 +1116,17 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\common\footer.component.ts" />
     <TypeScriptCompile Include="app\common\header.component.ts" />
+    <TypeScriptCompile Include="app\datacontext\vendor.service.ts" />
     <TypeScriptCompile Include="app\datacontext\customer.service.ts" />
     <TypeScriptCompile Include="app\datacontext\food.service.ts" />
     <TypeScriptCompile Include="app\datacontext\notification.service.ts" />
     <TypeScriptCompile Include="app\datacontext\order.service.ts" />
     <TypeScriptCompile Include="app\datacontext\site.service.ts" />
+    <TypeScriptCompile Include="app\directives\button.component.ts" />
+    <TypeScriptCompile Include="app\directives\textboxdecimal.component.ts" />
+    <TypeScriptCompile Include="app\directives\textboxgeneral.component.ts" />
+    <TypeScriptCompile Include="app\Types\IPayment.ts" />
+    <TypeScriptCompile Include="app\Types\IPayOrder.ts" />
     <TypeScriptCompile Include="app\Types\IVendor.ts" />
     <TypeScriptCompile Include="app\Types\ICustomer.ts" />
     <TypeScriptCompile Include="app\Types\IFood.ts" />
@@ -1128,6 +1134,7 @@
     <TypeScriptCompile Include="app\Types\IOrderDetail.ts" />
     <TypeScriptCompile Include="app\Types\ISite.ts" />
     <TypeScriptCompile Include="app\Types\IVendorMenu.ts" />
+    <TypeScriptCompile Include="app\datacontext\pay.service.ts" />
     <TypeScriptCompile Include="app\viewcontroller\main.component.ts" />
     <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
     <TypeScriptCompile Include="e2e\app.po.ts" />

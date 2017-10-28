@@ -14,49 +14,25 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
-let OrderService = class OrderService {
+let VendorService = class VendorService {
     constructor(_http) {
         this._http = _http;
-        this._orderServiceUrl = 'api/products/products.json';
+        this._vendorServiceUrl = 'api/products/products.json';
     }
-    placeOrder(order) {
-        return this._http.post(this._orderServiceUrl, order)
+    loginVendor(email, password) {
+        return this._http.get(this._vendorServiceUrl)
             .map((response) => response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
-    getConfirmedOrderDetail(orderId) {
-        return this._http.get(this._orderServiceUrl)
+    registerVendor(vendor) {
+        return this._http.post(this._vendorServiceUrl, vendor)
             .map((response) => response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
-    getVendorOrders(vendorId, menuType) {
-        return this._http.get(this._orderServiceUrl)
-            .map((response) => response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-    }
-    getMenuWiseStatusCount(vendorId, menuType, tp) {
-        return this._http.get(this._orderServiceUrl)
-            .map((response) => response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-    }
-    updateOrderStatus(orderId, vendorId, menuType) {
-        return this._http.get(this._orderServiceUrl)
-            .map((response) => response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-    }
-    acceptOrder(orderId, vendorId) {
-        return this._http.get(this._orderServiceUrl)
-            .map((response) => response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
-    }
-    getCustomerOrderHistory(customerId, customerDetail) {
-        return this._http.get(this._orderServiceUrl)
+    getAllVendors() {
+        return this._http.get(this._vendorServiceUrl)
             .map((response) => response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
@@ -68,9 +44,9 @@ let OrderService = class OrderService {
         return Observable.throw(error.json().error || 'Server error');
     }
 };
-OrderService = __decorate([
+VendorService = __decorate([
     Injectable(),
     __metadata("design:paramtypes", [Http])
-], OrderService);
-export { OrderService };
-//# sourceMappingURL=order.service.js.map
+], VendorService);
+export { VendorService };
+//# sourceMappingURL=vendor.service.js.map
