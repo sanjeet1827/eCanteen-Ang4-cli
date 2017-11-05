@@ -8,32 +8,30 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 import { IVendor } from '../Types/IVendor';
+import { IVendorService } from '../Types/IVendorService';
 
 @Injectable()
-export class VendorService {
+export class VendorService implements IVendorService {
 
     private _vendorServiceUrl = 'api/products/products.json';
 
     constructor(private _http: Http) { }
 
-    loginVendor(email: string, password: string): Observable<boolean>
-    {
+    loginVendor(email: string, password: string): Observable<boolean> {
         return this._http.get(this._vendorServiceUrl)
             .map((response: Response) => <boolean>response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    registerVendor(vendor: IVendor): Observable<IVendor>
-    {
+    registerVendor(vendor: IVendor): Observable<IVendor> {
         return this._http.post(this._vendorServiceUrl, vendor)
             .map((response: Response) => <IVendor>response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    getAllVendors(): Observable<IVendor[]>
-    {
+    getAllVendors(): Observable<IVendor[]> {
         return this._http.get(this._vendorServiceUrl)
             .map((response: Response) => <IVendor[]>response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))

@@ -2,15 +2,17 @@
 import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
+
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 import { ISite } from '../Types/ISite'
+import { ISiteService } from '../Types/ISiteService'
 
 @Injectable()
-export class SiteService {
+export class SiteService implements ISiteService {
 
     private _siteUrl = 'api/products/products.json';
 
