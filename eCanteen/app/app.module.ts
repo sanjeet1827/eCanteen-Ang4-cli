@@ -22,6 +22,8 @@ import { PayService } from './datacontext/pay.service';
 import { SiteService } from './datacontext/site.service';
 import { VendorService } from './datacontext/vendor.service';
 
+import { DecimalInputDirective } from './directives/decimal-input.directive';
+
 /* Feature Modules */
 //import { ProductModule } from './products/product.module';
 
@@ -42,7 +44,8 @@ import { VendorService } from './datacontext/vendor.service';
         FooterComponent,
         ButtonComponent,
         TextboxDecimalComponent,
-        TextboxGeneralComponent
+        TextboxGeneralComponent,
+        DecimalInputDirective
     ],
     providers: [
         CustomerService,

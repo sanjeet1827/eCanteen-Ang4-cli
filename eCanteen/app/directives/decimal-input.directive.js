@@ -1,0 +1,49 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+import { Directive, ElementRef, HostListener } from '@angular/core';
+let DecimalInputDirective = class DecimalInputDirective {
+    constructor(el) {
+        this.el = el;
+    }
+    onInput() {
+        this.transformToDecimal(this.el.nativeElement.target.value);
+    }
+    transformToDecimal(value) {
+        var rawValue = value !== undefined && value !== null && value !== '' ? value : '';
+        if (/[^0-9.]/g.test(rawValue)) {
+            this.el.nativeElement;
+            if (this.el.nativeElement.target.getAttribute('oldValue') !== undefined &&
+                this.el.nativeElement.target.getAttribute('oldValue') !== null) {
+                var oldValue = this.el.nativeElement.target.getAttribute('oldValue');
+                this.el.nativeElement.target.value = oldValue;
+            }
+            else {
+                this.el.nativeElement.target.value = rawValue.replace(rawValue, "");
+            }
+        }
+        else {
+            this.el.nativeElement.target.setAttribute('oldValue', rawValue);
+        }
+    }
+};
+__decorate([
+    HostListener('input'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], DecimalInputDirective.prototype, "onInput", null);
+DecimalInputDirective = __decorate([
+    Directive({
+        selector: '[decimal-input]'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], DecimalInputDirective);
+export { DecimalInputDirective };
+//# sourceMappingURL=decimal-input.directive.js.map

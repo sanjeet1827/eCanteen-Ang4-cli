@@ -1123,6 +1123,7 @@
     <TypeScriptCompile Include="app\datacontext\order.service.ts" />
     <TypeScriptCompile Include="app\datacontext\site.service.ts" />
     <TypeScriptCompile Include="app\directives\button.component.ts" />
+    <TypeScriptCompile Include="app\directives\decimal-input.directive.ts" />
     <TypeScriptCompile Include="app\directives\textboxdecimal.component.ts" />
     <TypeScriptCompile Include="app\directives\textboxgeneral.component.ts" />
     <TypeScriptCompile Include="app\Types\IPayment.ts" />
