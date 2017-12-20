@@ -7,4 +7,5 @@
     shopNo: string;
     active: boolean;
     logo: string;
+    siteId: string;
 }

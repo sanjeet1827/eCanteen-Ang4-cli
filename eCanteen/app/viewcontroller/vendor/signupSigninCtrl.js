@@ -7,7 +7,7 @@
     app_cached_providers
       .$controllerProvider
       .register('signupSigninCtrl', function ($rootScope, $scope, $document, sitedatacontext, signupSignindatacontext, $state,$http) {
-          $scope.message = "signupSigninCtrl";
+          $scope.message = "    ";
 
           $rootScope.popUpNotification = false;
 

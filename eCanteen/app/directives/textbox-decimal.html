@@ -1,2 +1,2 @@
-﻿<input type="text" class="textbox-general textbox-price-general" id="{{ngId}}" name="{{ngName}}" placeholder="{{placeholder}}" maxlength="{{maximumLenght}}" decimal-input ng-keyup="keyup({event: $event})"
-       ng-model="ngValue" ng-required="{{fieldRequired}}" />
+﻿<input type="text" class="textbox-general textbox-price-general" id="{{ngId}}" name="{{ngName}}" placeholder="{{placeholder}}" maxlength="{{maximumLenght}}" decimal-input keyup="keyup({event: $event})"
+       [(ngModel)]="ngValue" required="{{fieldRequired}}" />

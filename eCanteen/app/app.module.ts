@@ -3,6 +3,7 @@ import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { DecimalInputDirective } from './directives/decimal-input.directive';
         BrowserModule,
         HttpModule,
         BrowserAnimationsModule,
+        FormsModule,
         RouterModule.forRoot([
             { path: 'home', /*component: HomeComponent*/ },
             { path: '', redirectTo: 'welcome', pathMatch: 'full' },

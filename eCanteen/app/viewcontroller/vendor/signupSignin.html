@@ -1,6 +1,6 @@
 ﻿
-<div ng-if="!vModel.showLoginView" class="animate-if vendor-gate">
-    <form class="form-horizontal" id="form-site" name="siteForm" novalidate>
+<div ngIf="!vModel.showLoginView" class="animate-if vendor-gate">
+    <form class="form-horizontal" id="form-site" #siteForm="ngForm" novalidate>
         <div class="row">
             <div class="col-sm-4">
                 <div class="dv-label-gate">
@@ -10,10 +10,11 @@
             <div class="col-sm-8">
                 <div class="dv-input-gate">
                     <select name="site" id="site" class="form-control"
-                            ng-options="item.Id as item.Name for item in vModel.sites"
-                            ng-model="vModel.selectedSite"></select>
+                            ngModel="vModel.selectedSite">
+                        <option *ngFor="#item of sites" [value]="item.Id">{{item.name}}</option>
+                    </select>
                 </div>
-                <span ng-if="siteForm.selectedSite.$invalid">*</span>
+                <span ngIf="site.invalid">*</span>
             </div>
         </div>
         <div class="row">
@@ -24,9 +25,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ng-id="name" ng-name="name" maximum-lenght="250" ng-value="vModel.name" field-required="true"></textbox-general>
+                    <textbox-general [ngId]="name" [ngName]="name" [maximumLenght]="250" [(ngValue)]="vModel.name" [fieldRequired]="true"></textbox-general>
                 </div>
-                <span ng-if="siteForm.name.$invalid">*</span>
+                <span ngIf="name.invalid">*</span>
             </div>
         </div>
         <div class="row">
@@ -37,9 +38,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ng-id="contactNo" ng-name="contactNo" maximum-lenght="250" ng-value="vModel.contactNo" field-required="true"></textbox-general>
+                    <textbox-general [ngId]="contactNo" [ngName]="contactNo" [maximumLenght]="250" [(ngValue)]="vModel.contactNo" [fieldRequired]="true"></textbox-general>
                 </div>
-                <span ng-if="siteForm.contactNo.$invalid">*</span>
+                <span ngIf="contactNo.invalid">*</span>
             </div>
         </div>
         <div class="row">
@@ -50,9 +51,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ng-type="email" ng-id="email" ng-name="email" maximum-lenght="250" ng-value="vModel.email" field-required="true"></textbox-general>
+                    <textbox-general ng-type="email" [ngId]="email" [ngName]="email" [maximumLenght]="250" [(ngValue)]="vModel.email" [fieldRequired]="true"></textbox-general>
                 </div>
-                <span ng-if="siteForm.email.$invalid">*</span>
+                <span ngIf="email.invalid">*</span>
             </div>
         </div>
         <div class="row">
@@ -63,9 +64,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ng-id="shopNo" ng-name="shopNo" maximum-lenght="250" ng-value="vModel.shopNo" field-required="true"></textbox-general>
+                    <textbox-general [ngId]="shopNo" [ngName]="shopNo" [maximumLenght]="250" [(ngValue)]="vModel.shopNo" [fieldRequired]="true"></textbox-general>
                 </div>
-                <span ng-if="siteForm.shopNo.$invalid">*</span>
+                <span ngIf="shopNo.invalid">*</span>
             </div>
         </div>
         <div class="row">
@@ -76,9 +77,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ng-type="password" ng-id="password" ng-name="password" minimum-lenght="4" maximum-lenght="5" ng-value="vModel.password" field-required="true"></textbox-general>
+                    <textbox-general ng-type="password" [ngId]="password" [ngName]="password" minimum-lenght="4" [maximumLenght]="5" [(ngValue)]="vModel.password" [fieldRequired]="true"></textbox-general>
                 </div>
-                <span ng-if="siteForm.password.$invalid">*</span>
+                <span ngIf="password.invalid">*</span>
             </div>
         </div>
         <div class="row">
@@ -99,13 +100,13 @@
             </div>
             <div class="col-sm-8">
                 <div class="vendor-gate-button">
-                    <button-general type="submit" value="Sign Up" ng-click="signUp(siteForm.$invalid,vModel)"></button-general>
-                    <a ng-click="activeLoginView(true)">Already registered </a>
+                    <button-general type="submit" value="Sign Up" (click)="signUp(siteForm.invalid,vModel)"></button-general>
+                    <a (click)="activeLoginView(true)">Already registered </a>
                 </div>
 
             </div>
         </div>
-        <div class="row" ng-if="vModel.alreadyRegistered">
+        <div class="row" ngIf="vModel.alreadyRegistered">
             <div class="col-sm-12">
                 <p>
                     Vendor already registered with provided email id.
@@ -115,7 +116,7 @@
         </div>
     </form>
 </div>
-<div ng-if="vModel.showLoginView" class="animate-if vendor-gate">
+<div ngIf="vModel.showLoginView" class="animate-if vendor-gate">
     <form class="form-horizontal" id="form-vendor-login" name="vendorLoginForm" novalidate>
         <div class="row">
             <div class="col-sm-4">
@@ -125,9 +126,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ng-type="email" ng-id="email" ng-name="email" maximum-lenght="250" ng-value="vLoginModel.email" field-required="true"></textbox-general>
+                    <textbox-general ng-type="email" [ngId]="email" [ngName]="email" [maximumLenght]="250" [(ngValue)]="vLoginModel.email" [fieldRequired]="true"></textbox-general>
                 </div>
-                <span ng-if="vendorLoginForm.email.$invalid">*</span>
+                <span ngIf="email.invalid">*</span>
             </div>
         </div>
 
@@ -139,9 +140,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ng-type="password" ng-id="password" ng-name="password" maximum-lenght="250" ng-value="vLoginModel.password" field-required="true"></textbox-general>
+                    <textbox-general ng-type="password" [ngId]="password" [ngName]="password" [maximumLenght]="250" [(ngValue)]="vLoginModel.password" [fieldRequired]="true"></textbox-general>
                 </div>
-                <span ng-if="vendorLoginForm.password.$invalid">*</span>
+                <span ngIf="password.invalid">*</span>
             </div>
         </div>
         <div class="row">
@@ -150,13 +151,13 @@
             </div>
             <div class="col-sm-8">
                 <div class="vendor-gate-button">
-                    <button-general type="submit" value="Sign In" ng-click="signIn(vendorLoginForm.$invalid,vLoginModel)"></button-general>
+                    <button-general type="submit" value="Sign In" (click)="signIn(vendorLoginForm.$invalid,vLoginModel)"></button-general>
                     <a style="cursor:pointer" ng-click="activeLoginView(false)">Sign Up </a>
                 </div>
 
             </div>
         </div>
-        <div class="row" ng-if="!vLoginModel.autheticated">
+        <div class="row" ngIf="!vLoginModel.autheticated">
             <div class="col-sm-12">
                 <p>
                     Login failed! Please check if you already confirmed your email after restistration or enter valid email/password
@@ -166,7 +167,7 @@
         </div>
     </form>
 </div>
-<div ng-if="vModel.registerationPosted" class="animate-if vendor-gate">
+<div ngIf="vModel.registerationPosted" class="animate-if vendor-gate">
     <div class="row">
         <div class="col-sm-12">
             <p>

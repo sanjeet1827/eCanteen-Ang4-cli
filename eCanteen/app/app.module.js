@@ -9,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header.component';
 import { FooterComponent } from './common/footer.component';
@@ -34,6 +35,7 @@ AppModule = __decorate([
             BrowserModule,
             HttpModule,
             BrowserAnimationsModule,
+            FormsModule,
             RouterModule.forRoot([
                 { path: 'home', },
                 { path: '', redirectTo: 'welcome', pathMatch: 'full' },

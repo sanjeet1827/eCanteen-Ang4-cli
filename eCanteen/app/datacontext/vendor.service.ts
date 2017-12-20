@@ -17,9 +17,9 @@ export class VendorService implements IVendorService {
 
     constructor(private _http: Http) { }
 
-    loginVendor(email: string, password: string): Observable<boolean> {
+    loginVendor(email: string, password: string): Observable<IVendor> {
         return this._http.get(this._vendorServiceUrl)
-            .map((response: Response) => <boolean>response.json())
+            .map((response: Response) => <IVendor>response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
