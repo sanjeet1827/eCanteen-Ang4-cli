@@ -1017,6 +1017,7 @@
     <Content Include="e2e\app.e2e-spec.js.map" />
     <Content Include="e2e\app.po.js.map" />
     <Content Include="e2e\tsconfig.e2e.json" />
+    <Content Include="webpack.common.js" />
     <None Include="Properties\PublishProfiles\eCanteen_Publish.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
