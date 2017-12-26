@@ -25,6 +25,8 @@ import { VendorService } from './datacontext/vendor.service';
 
 import { DecimalInputDirective } from './directives/decimal-input.directive';
 
+import { SignupSinginComponent } from './viewcontroller/vendor/signupSignin.component';
+
 /* Feature Modules */
 //import { ProductModule } from './products/product.module';
 
@@ -35,9 +37,9 @@ import { DecimalInputDirective } from './directives/decimal-input.directive';
         BrowserAnimationsModule,
         FormsModule,
         RouterModule.forRoot([
-            { path: 'home', /*component: HomeComponent*/ },
-            { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-            { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+            //{ path: 'home', /*component: HomeComponent*/ },
+            { path: '', component: SignupSinginComponent },
+            //{ path: '**', redirectTo: 'welcome', pathMatch: 'full' }
         ])
     ],
     declarations: [
@@ -47,7 +49,8 @@ import { DecimalInputDirective } from './directives/decimal-input.directive';
         ButtonComponent,
         TextboxDecimalComponent,
         TextboxGeneralComponent,
-        DecimalInputDirective
+        DecimalInputDirective,
+        SignupSinginComponent
     ],
     providers: [
         CustomerService,

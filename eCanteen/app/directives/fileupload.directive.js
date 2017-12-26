@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,30 +8,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Directive, ElementRef, HostListener } from '@angular/core';
-let FileuploadDirective = class FileuploadDirective {
-    constructor(el) {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var FileuploadDirective = (function () {
+    function FileuploadDirective(el) {
         this.el = el;
     }
-    onChange() {
+    FileuploadDirective.prototype.onChange = function () {
         this.readFile();
-    }
-    readFile() {
+    };
+    FileuploadDirective.prototype.readFile = function () {
         //var model = $parse(attrs.fileuploadGeneral);
         //var modelSetter = model.assign;
-    }
-};
+    };
+    return FileuploadDirective;
+}());
 __decorate([
-    HostListener('change'),
+    core_1.HostListener('change'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], FileuploadDirective.prototype, "onChange", null);
 FileuploadDirective = __decorate([
-    Directive({
+    core_1.Directive({
         selector: '[fileupload-general]'
     }),
-    __metadata("design:paramtypes", [ElementRef])
+    __metadata("design:paramtypes", [core_1.ElementRef])
 ], FileuploadDirective);
-export { FileuploadDirective };
+exports.FileuploadDirective = FileuploadDirective;
 //# sourceMappingURL=fileupload.directive.js.map

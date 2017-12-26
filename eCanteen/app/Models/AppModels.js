@@ -1,7 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /* Defines the SignUp entity */
-/* Defines the SignUp entity */ export class SignUp {
-}
+var SignUp = (function () {
+    function SignUp() {
+    }
+    return SignUp;
+}());
+exports.SignUp = SignUp;
 /* Defines the SignUp entity */
-export class SignIn {
-}
+var SignIn = (function () {
+    function SignIn() {
+    }
+    return SignIn;
+}());
+exports.SignIn = SignIn;
 //# sourceMappingURL=AppModels.js.map

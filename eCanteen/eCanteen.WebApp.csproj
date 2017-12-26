@@ -187,6 +187,12 @@
     <Content Include="app\viewcontroller\vendor\signupSigninCtrl.js" />
     <Content Include="app\viewcontroller\vendor\vendorMain.html" />
     <Content Include="app\viewcontroller\vendor\vendorMainCtrl.js" />
+    <Content Include="config\helpers.js" />
+    <Content Include="config\karma-test-shim.js" />
+    <Content Include="config\karma.conf.js" />
+    <Content Include="config\webpack.common.js" />
+    <Content Include="config\webpack.dev.js" />
+    <Content Include="config\webpack.test.js" />
     <Content Include="Content\bootstrap-client.css" />
     <Content Include="Content\bootstrap-theme-client.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -216,15 +222,16 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Content\ui-grid.css" />
     <Content Include="Content\ui-grid.min.css" />
-    <Content Include="e2e\app.e2e-spec.js" />
-    <Content Include="e2e\app.po.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ui-grid.svg" />
     <Content Include="Global.asax" />
+    <Content Include="helpers.js" />
+    <Content Include="index - Copy.html" />
     <Content Include="index.html" />
     <Content Include="karma.conf.js" />
     <Content Include="main.js" />
+   
     <Content Include="PaymentResponse.aspx" />
     <Content Include="protractor.conf.js" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1014,10 +1021,10 @@
     <Content Include="fonts\ui-grid.eot" />
     <Content Include="package.json" />
     <Content Include="app\app.component.html" />
-    <Content Include="e2e\app.e2e-spec.js.map" />
-    <Content Include="e2e\app.po.js.map" />
-    <Content Include="e2e\tsconfig.e2e.json" />
     <Content Include="webpack.common.js" />
+    <Content Include="webpack.config.js" />
+    <Content Include="webpack.dev.js" />
+    
     <None Include="Properties\PublishProfiles\eCanteen_Publish.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -1133,6 +1140,7 @@
     <TypeScriptCompile Include="app\directives\textboxdecimal.component.ts" />
     <TypeScriptCompile Include="app\directives\textboxgeneral.component.ts" />
     <TypeScriptCompile Include="app\Helpers\httpHelper.ts" />
+    <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Models\AppModels.ts" />
     <TypeScriptCompile Include="app\Types\IPayment.ts" />
     <TypeScriptCompile Include="app\Types\IPayOrder.ts" />
@@ -1148,8 +1156,8 @@
     <TypeScriptCompile Include="app\datacontext\pay.service.ts" />
     <TypeScriptCompile Include="app\viewcontroller\main.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.ts" />
-    <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
-    <TypeScriptCompile Include="e2e\app.po.ts" />
+    
+    <TypeScriptCompile Include="polyfills.ts" />
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />

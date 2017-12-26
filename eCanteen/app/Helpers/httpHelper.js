@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,19 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-let httpHelper = class httpHelper {
-    constructor(_router) {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var httpHelper = (function () {
+    function httpHelper(_router) {
         this._router = _router;
     }
-    redirectTo(url, params) {
+    httpHelper.prototype.redirectTo = function (url, params) {
         return params ? this._router.navigateByUrl(url, params) : this._router.navigateByUrl(url);
-    }
-};
+    };
+    return httpHelper;
+}());
 httpHelper = __decorate([
-    Injectable(),
-    __metadata("design:paramtypes", [Router])
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [router_1.Router])
 ], httpHelper);
-export { httpHelper };
+exports.httpHelper = httpHelper;
 //# sourceMappingURL=httpHelper.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,17 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from '@angular/core';
-let TextboxGeneralComponent = class TextboxGeneralComponent {
-    constructor() {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var TextboxGeneralComponent = (function () {
+    function TextboxGeneralComponent() {
         this.ngType = "text";
     }
-};
+    return TextboxGeneralComponent;
+}());
 TextboxGeneralComponent = __decorate([
-    Component({
+    core_1.Component({
         selector: "textbox-general.html"
     }),
     __metadata("design:paramtypes", [])
 ], TextboxGeneralComponent);
-export { TextboxGeneralComponent };
+exports.TextboxGeneralComponent = TextboxGeneralComponent;
 //# sourceMappingURL=textboxgeneral.component.js.map

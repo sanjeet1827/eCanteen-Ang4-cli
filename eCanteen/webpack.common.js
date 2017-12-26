@@ -3,15 +3,17 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const helpers = require('./helpers');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const OptimizeCssAssestPlugin = require('optimize-css-assest-webpack-plugin');
+const OptimizeCssAssestPlugin = require('optimize-css-assets-webpack-plugin');
+const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 
-module.export = function (options) {
+module.exports = function (options) {
     isProd = options.env === "production";
-    isDev = options.env === "development";
+    isDev = options.env === "developement";
 
     const config = {
         resolve: {
-            extenssions: ['.ts', '.js', '.jpg', '.jpeg', '.png', '.gif', '.css'],
+            extensions: ['.ts', '.js', '.jpg', '.jpeg', '.png', '.gif', '.css'],
             alias: {
                 "app":helpers.root("app")
             }
@@ -26,13 +28,14 @@ module.export = function (options) {
                     test: /\.css$/,
                     use: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
-                        loader: [{
-                            loader: 'css-loader',
-                            options:{sourceMap:true,importLoaders:1}
-                        },
-                        {
-                            loader:'postcss-loader?sourceMap'
-                        }]
+                        use:['css-loader']
+                        //loader: [{
+                        //    loader: 'css-loader',
+                        //    options:{sourceMap:true,importLoaders:1}
+                        //},
+                        //{
+                        //    loader:'postcss-loader?sourceMap'
+                        //}]
                     })
                 },
                 {
@@ -54,7 +57,7 @@ module.export = function (options) {
         },
         devtool: '#source-map',
         plugins: [
-            new CleanWebpackPlugin(['dist', 'distProd'], {
+            new CleanWebpackPlugin(['distLocal', 'distProd'], {
                 root: helpers.root(),
                 verbose: true,
                 dry: false,
@@ -66,11 +69,12 @@ module.export = function (options) {
                 'window.JQuery': 'jquery',
                 'require':'require'
             }),
-            new ExtractTextPlugin('[name].bindle.[chunkhash].css'),
+            new ExtractTextPlugin('[name].bundle.[chunkhash].css'),
             new OptimizeCssAssestPlugin({
                 assetNameRegExp: /^.*.css$/g,
                 cssProcessor: require('cssnano'),
-                cssProcessorOptions:{discardComments:{removeAll:true}}
+                cssProcessorOptions: { discardComments: { removeAll: true } },
+                canPrint:true
             })
         ]
 

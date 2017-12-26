@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,40 +8,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw';
-let PayService = class PayService {
-    constructor(_http) {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var Observable_1 = require("rxjs/Observable");
+require("rxjs/add/operator/do");
+require("rxjs/add/operator/catch");
+require("rxjs/add/operator/map");
+require("rxjs/add/observable/throw");
+var PayService = (function () {
+    function PayService(_http) {
         this._http = _http;
         this._paymentServiceUrl = 'api/products/products.json';
     }
-    payOrder(payOrder, orderId) {
+    PayService.prototype.payOrder = function (payOrder, orderId) {
         return this._http.post(this._paymentServiceUrl, payOrder)
-            .map((response) => response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
-    }
-    updateOrder(payment) {
+    };
+    PayService.prototype.updateOrder = function (payment) {
         return this._http.post(this._paymentServiceUrl, payment)
-            .map((response) => response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
-    }
-    handleError(error) {
+    };
+    PayService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
-    }
-};
+        return Observable_1.Observable.throw(error.json().error || 'Server error');
+    };
+    return PayService;
+}());
 PayService = __decorate([
-    Injectable(),
-    __metadata("design:paramtypes", [Http])
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
 ], PayService);
-export { PayService };
+exports.PayService = PayService;
 //# sourceMappingURL=pay.service.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,32 +8,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from '@angular/core';
-import { httpHelper } from '../../Helpers/httpHelper';
-import { SignIn, SignUp } from '../../Models/AppModels';
-let SignupSinginComponent = class SignupSinginComponent {
-    constructor(_siteService, _vendorService, _httpHelper) {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var httpHelper_1 = require("../../Helpers/httpHelper");
+var AppModels_1 = require("../../Models/AppModels");
+var SignupSinginComponent = (function () {
+    function SignupSinginComponent(_siteService, _vendorService, _httpHelper) {
         this._siteService = _siteService;
         this._vendorService = _vendorService;
         this._httpHelper = _httpHelper;
         this.showLoginView = true;
-        this.vModel = new SignUp();
-        this.vLoginModel = new SignIn();
+        this.vModel = new AppModels_1.SignUp();
+        this.vLoginModel = new AppModels_1.SignIn();
     }
-    activeLoginView(active) {
+    SignupSinginComponent.prototype.activeLoginView = function (active) {
         return this.vModel.showLoginView = active;
-    }
-    signIn(vendorLoginForm, signIn) {
+    };
+    SignupSinginComponent.prototype.signIn = function (vendorLoginForm, signIn) {
+        var _this = this;
         if (!vendorLoginForm) {
-            this._vendorService.loginVendor(signIn.email, signIn.password).subscribe((authenticatedVendor) => {
+            this._vendorService.loginVendor(signIn.email, signIn.password).subscribe(function (authenticatedVendor) {
                 if (authenticatedVendor) {
                     //$rootScope.vendorUId = authenticatedVendor.id;
                     //$rootScope.vendorName = authenticatedVendor.name;
                     //$document[0].body.className = '';
-                    this._httpHelper.redirectTo("/orderStatus", { vendorId: authenticatedVendor.id });
+                    _this._httpHelper.redirectTo("/orderStatus", { vendorId: authenticatedVendor.id });
                 }
                 else {
-                    this.vLoginModel.authenticated = false;
+                    _this.vLoginModel.authenticated = false;
                 }
             });
             //    .then(function (data) {
@@ -47,8 +50,9 @@ let SignupSinginComponent = class SignupSinginComponent {
             //    }
             //});
         }
-    }
-    signUp(siteFormInvalid, vModel) {
+    };
+    SignupSinginComponent.prototype.signUp = function (siteFormInvalid, vModel) {
+        var _this = this;
         if (!siteFormInvalid) {
             /*
             let remoteData: IVendor;
@@ -63,28 +67,30 @@ let SignupSinginComponent = class SignupSinginComponent {
             remoteData.logo = vModel.logo;
             */
             if (!siteFormInvalid) {
-                this._vendorService.registerVendor(vModel).subscribe((registeredVendor) => {
+                this._vendorService.registerVendor(vModel).subscribe(function (registeredVendor) {
                     if (registeredVendor !== undefined) {
-                        this.vModel.alreadyRegistered = false;
-                        this.vModel.registerationPosted = true;
+                        _this.vModel.alreadyRegistered = false;
+                        _this.vModel.registerationPosted = true;
                     }
                     else {
-                        this.vModel.alreadyRegistered = true;
+                        _this.vModel.alreadyRegistered = true;
                     }
                 });
             }
         }
-    }
-    ngOnInit() {
+    };
+    SignupSinginComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this._siteService.getSites()
-            .subscribe(sites => this.sites = sites, error => this.errorMessage = error);
-    }
-};
+            .subscribe(function (sites) { return _this.sites = sites; }, function (error) { return _this.errorMessage = error; });
+    };
+    return SignupSinginComponent;
+}());
 SignupSinginComponent = __decorate([
-    Component({
-        templateUrl: 'signupSignin.tpl.html'
+    core_1.Component({
+        templateUrl: 'signupSignin.html'
     }),
-    __metadata("design:paramtypes", [Object, Object, httpHelper])
+    __metadata("design:paramtypes", [Object, Object, httpHelper_1.httpHelper])
 ], SignupSinginComponent);
-export { SignupSinginComponent };
+exports.SignupSinginComponent = SignupSinginComponent;
 //# sourceMappingURL=signupSignin.component.js.map

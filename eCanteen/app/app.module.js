@@ -1,67 +1,73 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './common/header.component';
-import { FooterComponent } from './common/footer.component';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
+var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
+var animations_1 = require("@angular/platform-browser/animations");
+var forms_1 = require("@angular/forms");
+var app_component_1 = require("./app.component");
+var header_component_1 = require("./common/header.component");
+var footer_component_1 = require("./common/footer.component");
 // directives
-import { ButtonComponent } from './directives/button.component';
-import { TextboxDecimalComponent } from './directives/textboxdecimal.component';
-import { TextboxGeneralComponent } from './directives/textboxgeneral.component';
-import { CustomerService } from './datacontext/customer.service';
-import { FoodService } from './datacontext/food.service';
-import { NotificationService } from './datacontext/notification.service';
-import { OrderService } from './datacontext/order.service';
-import { PayService } from './datacontext/pay.service';
-import { SiteService } from './datacontext/site.service';
-import { VendorService } from './datacontext/vendor.service';
-import { DecimalInputDirective } from './directives/decimal-input.directive';
+var button_component_1 = require("./directives/button.component");
+var textboxdecimal_component_1 = require("./directives/textboxdecimal.component");
+var textboxgeneral_component_1 = require("./directives/textboxgeneral.component");
+var customer_service_1 = require("./datacontext/customer.service");
+var food_service_1 = require("./datacontext/food.service");
+var notification_service_1 = require("./datacontext/notification.service");
+var order_service_1 = require("./datacontext/order.service");
+var pay_service_1 = require("./datacontext/pay.service");
+var site_service_1 = require("./datacontext/site.service");
+var vendor_service_1 = require("./datacontext/vendor.service");
+var decimal_input_directive_1 = require("./directives/decimal-input.directive");
+var signupSignin_component_1 = require("./viewcontroller/vendor/signupSignin.component");
 /* Feature Modules */
 //import { ProductModule } from './products/product.module';
-let AppModule = class AppModule {
-};
+var AppModule = (function () {
+    function AppModule() {
+    }
+    return AppModule;
+}());
 AppModule = __decorate([
-    NgModule({
+    core_1.NgModule({
         imports: [
-            BrowserModule,
-            HttpModule,
-            BrowserAnimationsModule,
-            FormsModule,
-            RouterModule.forRoot([
-                { path: 'home', },
-                { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-                { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+            platform_browser_1.BrowserModule,
+            http_1.HttpModule,
+            animations_1.BrowserAnimationsModule,
+            forms_1.FormsModule,
+            router_1.RouterModule.forRoot([
+                //{ path: 'home', /*component: HomeComponent*/ },
+                { path: '', component: signupSignin_component_1.SignupSinginComponent },
             ])
         ],
         declarations: [
-            AppComponent,
-            HeaderComponent,
-            FooterComponent,
-            ButtonComponent,
-            TextboxDecimalComponent,
-            TextboxGeneralComponent,
-            DecimalInputDirective
+            app_component_1.AppComponent,
+            header_component_1.HeaderComponent,
+            footer_component_1.FooterComponent,
+            button_component_1.ButtonComponent,
+            textboxdecimal_component_1.TextboxDecimalComponent,
+            textboxgeneral_component_1.TextboxGeneralComponent,
+            decimal_input_directive_1.DecimalInputDirective,
+            signupSignin_component_1.SignupSinginComponent
         ],
         providers: [
-            CustomerService,
-            FoodService,
-            NotificationService,
-            OrderService,
-            PayService,
-            SiteService,
-            VendorService
+            customer_service_1.CustomerService,
+            food_service_1.FoodService,
+            notification_service_1.NotificationService,
+            order_service_1.OrderService,
+            pay_service_1.PayService,
+            site_service_1.SiteService,
+            vendor_service_1.VendorService
         ],
-        bootstrap: [AppComponent, HeaderComponent, FooterComponent]
+        bootstrap: [app_component_1.AppComponent, header_component_1.HeaderComponent, footer_component_1.FooterComponent]
     })
 ], AppModule);
-export { AppModule };
+exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

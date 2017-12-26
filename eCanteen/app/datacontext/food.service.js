@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,52 +8,54 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw';
-let FoodService = class FoodService {
-    constructor(_http) {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var Observable_1 = require("rxjs/Observable");
+require("rxjs/add/operator/do");
+require("rxjs/add/operator/catch");
+require("rxjs/add/operator/map");
+require("rxjs/add/observable/throw");
+var FoodService = (function () {
+    function FoodService(_http) {
         this._http = _http;
         this._foodServiceUrl = 'api/products/products.json';
     }
-    getFoodItems(vendorId, menuType) {
+    FoodService.prototype.getFoodItems = function (vendorId, menuType) {
         return this._http.get(this._foodServiceUrl)
-            .map((response) => response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
-    }
-    getMenuFoodItems(vendorId, menuType, customer) {
+    };
+    FoodService.prototype.getMenuFoodItems = function (vendorId, menuType, customer) {
         return this._http.get(this._foodServiceUrl)
-            .map((response) => response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
-    }
-    getAllFoodItem(vendorId) {
+    };
+    FoodService.prototype.getAllFoodItem = function (vendorId) {
         return this._http.get(this._foodServiceUrl)
-            .map((response) => response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
-    }
-    saveVendorCurrentMenu(vendorMenu, vendorId) {
+    };
+    FoodService.prototype.saveVendorCurrentMenu = function (vendorMenu, vendorId) {
         return this._http.post(this._foodServiceUrl, vendorMenu, vendorId)
-            .map((response) => response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
-    }
-    handleError(error) {
+    };
+    FoodService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
-    }
-};
+        return Observable_1.Observable.throw(error.json().error || 'Server error');
+    };
+    return FoodService;
+}());
 FoodService = __decorate([
-    Injectable(),
-    __metadata("design:paramtypes", [Http])
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
 ], FoodService);
-export { FoodService };
+exports.FoodService = FoodService;
 //# sourceMappingURL=food.service.js.map
