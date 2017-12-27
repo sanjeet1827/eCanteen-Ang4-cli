@@ -1,7 +1,8 @@
 ﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: "textbox-general.html"
+    selector: "textbox-general.html",
+    templateUrl: "textbox-general.html",
 })
 export class TextboxGeneralComponent {
     ngType: string;

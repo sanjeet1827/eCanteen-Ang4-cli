@@ -1,7 +1,8 @@
 ﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: "textbox-decimal.html"
+    selector: "textbox-decimal.html",
+    templateUrl: "textbox-decimal.html",
 })
 export class TextboxDecimalComponent {
     ngValue: string;

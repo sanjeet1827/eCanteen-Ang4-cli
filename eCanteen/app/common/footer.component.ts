@@ -2,7 +2,6 @@
 import { Title } from '@angular/platform-browser';
 
 @Component({
-    moduleId: module.id,
     selector: 'app-footer',
     templateUrl: "footer.component.html",
 })

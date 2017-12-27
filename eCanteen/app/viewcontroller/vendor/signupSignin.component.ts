@@ -23,8 +23,8 @@ export class SignupSinginComponent implements OnInit {
     sites: ISite[];
     errorMessage: any;
 
-    constructor(private _siteService: ISiteService,
-        private _vendorService: IVendorService, private _httpHelper: httpHelper) {
+    constructor(private _siteService: SiteService,
+        private _vendorService: VendorService, private _httpHelper: httpHelper) {
         this.vModel = new SignUp();
         this.vLoginModel = new SignIn();
     }
