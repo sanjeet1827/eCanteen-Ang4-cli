@@ -231,7 +231,6 @@
     <Content Include="index.html" />
     <Content Include="karma.conf.js" />
     <Content Include="main.js" />
-   
     <Content Include="PaymentResponse.aspx" />
     <Content Include="protractor.conf.js" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1024,7 +1023,6 @@
     <Content Include="webpack.common.js" />
     <Content Include="webpack.config.js" />
     <Content Include="webpack.dev.js" />
-    
     <None Include="Properties\PublishProfiles\eCanteen_Publish.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -1140,6 +1138,7 @@
     <TypeScriptCompile Include="app\directives\textboxdecimal.component.ts" />
     <TypeScriptCompile Include="app\directives\textboxgeneral.component.ts" />
     <TypeScriptCompile Include="app\Helpers\httpHelper.ts" />
+    <TypeScriptCompile Include="app\vendor.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Models\AppModels.ts" />
     <TypeScriptCompile Include="app\Types\IPayment.ts" />
@@ -1156,7 +1155,6 @@
     <TypeScriptCompile Include="app\datacontext\pay.service.ts" />
     <TypeScriptCompile Include="app\viewcontroller\main.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.ts" />
-    
     <TypeScriptCompile Include="polyfills.ts" />
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
