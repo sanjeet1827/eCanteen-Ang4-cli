@@ -12,7 +12,7 @@ import { IVendor } from '../../Types/IVendor'
 import { SignIn, SignUp } from '../../Models/AppModels'
 
 @Component({
-    templateUrl: 'signupSignin.html'
+    templateUrl: 'SignupSinginComponent.html'
 
 })
 export class SignupSinginComponent implements OnInit {

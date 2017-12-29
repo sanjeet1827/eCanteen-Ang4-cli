@@ -9,9 +9,8 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <select name="site" id="site" class="form-control"
-                            ngModel="vModel.selectedSite">
-                        <option *ngFor="#item of sites" [value]="item.Id">{{item.name}}</option>
+                    <select name="site" id="site" class="form-control" ngModel="vModel.selectedSite">
+                        <option *ngFor="let item of sites" [value]="item.Id">{{item.name}}</option>
                     </select>
                 </div>
                 <span ngIf="site.invalid">*</span>

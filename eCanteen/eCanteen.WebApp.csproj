@@ -183,7 +183,7 @@
     <Content Include="app\viewcontroller\vendor\currentOrdersCtrl.js" />
     <Content Include="app\viewcontroller\vendor\menu.html" />
     <Content Include="app\viewcontroller\vendor\menuCtrl.js" />
-    <Content Include="app\viewcontroller\vendor\signupSignin.html" />
+    <Content Include="app\viewcontroller\vendor\SignupSinginComponent.html" />
     <Content Include="app\viewcontroller\vendor\signupSigninCtrl.js" />
     <Content Include="app\viewcontroller\vendor\vendorMain.html" />
     <Content Include="app\viewcontroller\vendor\vendorMainCtrl.js" />
