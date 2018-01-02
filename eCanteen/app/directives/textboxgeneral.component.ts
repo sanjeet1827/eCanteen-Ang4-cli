@@ -1,4 +1,7 @@
-﻿import { Component } from '@angular/core';
+﻿import {
+    Component, Input,
+    Output, EventEmitter
+} from '@angular/core';
 
 @Component({
     selector: "textbox-general",
@@ -6,7 +9,7 @@
 })
 export class TextboxGeneralComponent {
     ngType: string;
-    ngValue: string;
+    @Input() ngValue: string;
     placeholder: string;
     maximumLenght: number;
     minimumLenght: number;

@@ -24,7 +24,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general [ngId]="name" [ngName]="name" [maximumLenght]="250" [(ngValue)]="vModel.name" [fieldRequired]="true"></textbox-general>
+                    <textbox-general ngId="name" ngName="name" maximumLenght="250" [(ngValue)]="vModel.name" fieldRequired="true"></textbox-general>
                 </div>
                 <span ngIf="name.invalid">*</span>
             </div>
