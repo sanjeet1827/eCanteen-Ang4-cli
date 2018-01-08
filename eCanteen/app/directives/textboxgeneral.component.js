@@ -16,9 +16,14 @@ var TextboxGeneralComponent = (function () {
     }
     return TextboxGeneralComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], TextboxGeneralComponent.prototype, "ngValue", void 0);
 TextboxGeneralComponent = __decorate([
     core_1.Component({
-        selector: "textbox-general.html"
+        selector: "textbox-general",
+        templateUrl: "textbox-general.html",
     }),
     __metadata("design:paramtypes", [])
 ], TextboxGeneralComponent);

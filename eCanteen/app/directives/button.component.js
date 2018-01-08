@@ -14,7 +14,8 @@ var ButtonComponent = (function () {
 }());
 ButtonComponent = __decorate([
     core_1.Component({
-        selector: "button-general.html"
+        selector: "button-general",
+        templateUrl: "button-general.html",
     })
 ], ButtonComponent);
 exports.ButtonComponent = ButtonComponent;

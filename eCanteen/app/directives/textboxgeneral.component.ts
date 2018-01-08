@@ -8,14 +8,14 @@
     templateUrl: "textbox-general.html",
 })
 export class TextboxGeneralComponent {
-    ngType: string;
+    @Input() ngType: string;
     @Input() ngValue: string;
-    placeholder: string;
-    maximumLenght: number;
-    minimumLenght: number;
-    ngId: string;
-    ngName: string;
-    fieldRequired: boolean;
+    @Input() placeholder: string;
+    @Input() maximumLenght: number;
+    @Input() minimumLenght: number;
+    @Input() ngId: string;
+    @Input() ngName: string;
+    @Input() fieldRequired: boolean;
     keyup: Function;
 
     constructor() {

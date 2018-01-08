@@ -14,8 +14,9 @@ import { ISiteService } from '../Types/ISiteService'
 @Injectable()
 export class SiteService implements ISiteService {
 
-    private _siteUrl = 'api/products/products.json';
-
+    //private _siteUrl = 'api/products/products.json';
+    private _siteUrl = 'http://localhost:2434/api/Site';
+    
     constructor(private _http: Http) { }
 
     getSites(): Observable<ISite[]> {

@@ -19,7 +19,8 @@ require("rxjs/add/observable/throw");
 var SiteService = (function () {
     function SiteService(_http) {
         this._http = _http;
-        this._siteUrl = 'api/products/products.json';
+        //private _siteUrl = 'api/products/products.json';
+        this._siteUrl = 'http://localhost:2434/api/Site';
     }
     SiteService.prototype.getSites = function () {
         return this._http.get(this._siteUrl)

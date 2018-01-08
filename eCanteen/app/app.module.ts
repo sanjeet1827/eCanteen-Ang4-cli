@@ -22,6 +22,7 @@ import { OrderService } from './datacontext/order.service';
 import { PayService } from './datacontext/pay.service';
 import { SiteService } from './datacontext/site.service';
 import { VendorService } from './datacontext/vendor.service';
+import { httpHelper } from './Helpers/httpHelper';
 
 import { DecimalInputDirective } from './directives/decimal-input.directive';
 
@@ -38,7 +39,7 @@ import { SignupSinginComponent } from './viewcontroller/vendor/signupSignin.comp
         FormsModule,
         RouterModule.forRoot([
             //{ path: 'home', /*component: HomeComponent*/ },
-            { path: '', component: SignupSinginComponent },
+            { path: '', component: SignupSinginComponent, pathMatch: 'full' },
             //{ path: '**', redirectTo: 'welcome', pathMatch: 'full' }
         ])
     ],
@@ -59,7 +60,8 @@ import { SignupSinginComponent } from './viewcontroller/vendor/signupSignin.comp
         OrderService,
         PayService,
         SiteService,
-        VendorService
+        VendorService,
+        httpHelper
     ],
     bootstrap: [AppComponent, HeaderComponent, FooterComponent]
 })

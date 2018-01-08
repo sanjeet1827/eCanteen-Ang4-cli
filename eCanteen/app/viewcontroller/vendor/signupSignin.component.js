@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var site_service_1 = require("../../datacontext/site.service");
+var vendor_service_1 = require("../../datacontext/vendor.service");
 var httpHelper_1 = require("../../Helpers/httpHelper");
 var AppModels_1 = require("../../Models/AppModels");
 var SignupSinginComponent = (function () {
@@ -88,9 +90,10 @@ var SignupSinginComponent = (function () {
 }());
 SignupSinginComponent = __decorate([
     core_1.Component({
-        templateUrl: 'signupSignin.html'
+        templateUrl: 'SignupSinginComponent.html'
     }),
-    __metadata("design:paramtypes", [Object, Object, httpHelper_1.httpHelper])
+    __metadata("design:paramtypes", [site_service_1.SiteService,
+        vendor_service_1.VendorService, httpHelper_1.httpHelper])
 ], SignupSinginComponent);
 exports.SignupSinginComponent = SignupSinginComponent;
 //# sourceMappingURL=signupSignin.component.js.map

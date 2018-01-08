@@ -14,7 +14,8 @@ var TextboxDecimalComponent = (function () {
 }());
 TextboxDecimalComponent = __decorate([
     core_1.Component({
-        selector: "textbox-decimal.html"
+        selector: "textbox-decimal.html",
+        templateUrl: "textbox-decimal.html",
     })
 ], TextboxDecimalComponent);
 exports.TextboxDecimalComponent = TextboxDecimalComponent;

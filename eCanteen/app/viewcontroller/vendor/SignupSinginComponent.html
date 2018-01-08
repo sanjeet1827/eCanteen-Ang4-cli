@@ -1,5 +1,5 @@
 ﻿
-<div ngIf="!vModel.showLoginView" class="animate-if vendor-gate">
+<div *ngIf="!vModel.showLoginView" class="animate-if vendor-gate">
     <form class="form-horizontal" id="form-site" #siteForm="ngForm" novalidate>
         <div class="row">
             <div class="col-sm-4">
@@ -9,11 +9,11 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <select name="site" id="site" class="form-control" ngModel="vModel.selectedSite">
-                        <option *ngFor="let item of sites" [value]="item.Id">{{item.name}}</option>
+                    <select name="site" id="site" class="form-control" [(ngModel)]="vModel.selectedSite">
+                        <option *ngFor="let item of sites" [value]="item.Id">{{item.Name}}</option>
                     </select>
                 </div>
-                <span ngIf="site.invalid">*</span>
+                <!--<span *ngIf="site.invalid">*</span>-->
             </div>
         </div>
         <div class="row">
@@ -26,10 +26,10 @@
                 <div class="dv-input-gate">
                     <textbox-general ngId="name" ngName="name" maximumLenght="250" [(ngValue)]="vModel.name" fieldRequired="true"></textbox-general>
                 </div>
-                <span ngIf="name.invalid">*</span>
+                <!--<span *ngIf="name.invalid">*</span>-->
             </div>
         </div>
-        <div class="row">
+        <!--<div class="row">
             <div class="col-sm-4">
                 <div class="dv-label-gate">
                     <label>Contact No</label>
@@ -112,10 +112,10 @@
                 </p>
             </div>
 
-        </div>
+        </div>-->
     </form>
 </div>
-<div ngIf="vModel.showLoginView" class="animate-if vendor-gate">
+<!--<div ngIf="vModel.showLoginView" class="animate-if vendor-gate">
     <form class="form-horizontal" id="form-vendor-login" name="vendorLoginForm" novalidate>
         <div class="row">
             <div class="col-sm-4">
@@ -176,4 +176,4 @@
 
     </div>
 
-</div>
+</div>-->

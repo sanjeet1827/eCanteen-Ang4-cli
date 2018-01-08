@@ -26,6 +26,7 @@ var order_service_1 = require("./datacontext/order.service");
 var pay_service_1 = require("./datacontext/pay.service");
 var site_service_1 = require("./datacontext/site.service");
 var vendor_service_1 = require("./datacontext/vendor.service");
+var httpHelper_1 = require("./Helpers/httpHelper");
 var decimal_input_directive_1 = require("./directives/decimal-input.directive");
 var signupSignin_component_1 = require("./viewcontroller/vendor/signupSignin.component");
 /* Feature Modules */
@@ -44,7 +45,7 @@ AppModule = __decorate([
             forms_1.FormsModule,
             router_1.RouterModule.forRoot([
                 //{ path: 'home', /*component: HomeComponent*/ },
-                { path: '', component: signupSignin_component_1.SignupSinginComponent },
+                { path: '', component: signupSignin_component_1.SignupSinginComponent, pathMatch: 'full' },
             ])
         ],
         declarations: [
@@ -64,7 +65,8 @@ AppModule = __decorate([
             order_service_1.OrderService,
             pay_service_1.PayService,
             site_service_1.SiteService,
-            vendor_service_1.VendorService
+            vendor_service_1.VendorService,
+            httpHelper_1.httpHelper
         ],
         bootstrap: [app_component_1.AppComponent, header_component_1.HeaderComponent, footer_component_1.FooterComponent]
     })
