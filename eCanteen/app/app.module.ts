@@ -63,6 +63,6 @@ import { SignupSinginComponent } from './viewcontroller/vendor/signupSignin.comp
         VendorService,
         httpHelper
     ],
-    bootstrap: [AppComponent, HeaderComponent, FooterComponent]
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

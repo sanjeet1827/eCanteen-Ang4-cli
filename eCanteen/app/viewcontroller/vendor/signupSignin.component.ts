@@ -13,7 +13,6 @@ import { SignIn, SignUp } from '../../Models/AppModels'
 
 @Component({
     templateUrl: 'SignupSinginComponent.html'
-
 })
 export class SignupSinginComponent implements OnInit {
 
@@ -67,6 +66,7 @@ export class SignupSinginComponent implements OnInit {
     }
 
     signUp(siteFormInvalid: boolean, vModel: IVendor): void {
+        console.log("signUp ethod invoked");
         if (!siteFormInvalid) {
 
             /*
