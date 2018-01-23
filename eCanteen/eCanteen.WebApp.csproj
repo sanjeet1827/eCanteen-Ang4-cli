@@ -292,6 +292,7 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\common\footer.component.ts" />
     <TypeScriptCompile Include="app\common\header.component.ts" />
+    <TypeScriptCompile Include="app\datacontext\RequestOptionsService.ts" />
     <TypeScriptCompile Include="app\datacontext\vendor.service.ts" />
     <TypeScriptCompile Include="app\datacontext\customer.service.ts" />
     <TypeScriptCompile Include="app\datacontext\food.service.ts" />

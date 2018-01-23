@@ -12,14 +12,51 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var TextboxGeneralComponent = (function () {
     function TextboxGeneralComponent() {
+        this.ngValueChange = new core_1.EventEmitter();
         this.ngType = "text";
     }
+    TextboxGeneralComponent.prototype.change = function (newValue) {
+        this.ngValue = newValue;
+        this.ngValueChange.emit(newValue);
+    };
     return TextboxGeneralComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)
+], TextboxGeneralComponent.prototype, "ngType", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
 ], TextboxGeneralComponent.prototype, "ngValue", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], TextboxGeneralComponent.prototype, "placeholder", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], TextboxGeneralComponent.prototype, "maximumLenght", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], TextboxGeneralComponent.prototype, "minimumLenght", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], TextboxGeneralComponent.prototype, "ngId", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], TextboxGeneralComponent.prototype, "ngName", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], TextboxGeneralComponent.prototype, "fieldRequired", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], TextboxGeneralComponent.prototype, "ngValueChange", void 0);
 TextboxGeneralComponent = __decorate([
     core_1.Component({
         selector: "textbox-general",

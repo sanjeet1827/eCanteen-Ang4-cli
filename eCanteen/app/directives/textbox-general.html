@@ -1,2 +1,2 @@
 ﻿<input type="{{ngType}}" class="form-control textbox-general" id="{{ngId}}" name="{{ngName}}" placeholder="{{placeholder}}" minlength="{{minimumLenght}}" maxlength="{{maximumLenght}}"
-       [(ngModel)]="ngValue" required="{{fieldRequired}}" />
+       [(ngModel)]="ngValue" (ngModelChange)="change($event)" required="{{fieldRequired}}" />

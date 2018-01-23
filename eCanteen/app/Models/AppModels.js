@@ -7,6 +7,13 @@ var SignUp = (function () {
     return SignUp;
 }());
 exports.SignUp = SignUp;
+/* Defines the Vendor entity */
+var Vendor = (function () {
+    function Vendor() {
+    }
+    return Vendor;
+}());
+exports.Vendor = Vendor;
 /* Defines the SignUp entity */
 var SignIn = (function () {
     function SignIn() {

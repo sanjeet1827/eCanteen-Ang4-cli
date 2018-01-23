@@ -53,8 +53,9 @@ var SignupSinginComponent = (function () {
             //});
         }
     };
-    SignupSinginComponent.prototype.signUp = function (siteFormInvalid, vModel) {
+    SignupSinginComponent.prototype.signUp = function (siteFormInvalid) {
         var _this = this;
+        console.log("signUp ethod invoked");
         if (!siteFormInvalid) {
             /*
             let remoteData: IVendor;
@@ -69,6 +70,14 @@ var SignupSinginComponent = (function () {
             remoteData.logo = vModel.logo;
             */
             if (!siteFormInvalid) {
+                var vModel = new AppModels_1.Vendor();
+                vModel.name = this.vModel.name;
+                vModel.active = true;
+                vModel.email = this.vModel.email;
+                vModel.logo = this.vModel.logo;
+                vModel.password = this.vModel.password;
+                vModel.shopNo = this.vModel.shopNo;
+                vModel.siteId = this.vModel.selectedSite;
                 this._vendorService.registerVendor(vModel).subscribe(function (registeredVendor) {
                     if (registeredVendor !== undefined) {
                         _this.vModel.alreadyRegistered = false;

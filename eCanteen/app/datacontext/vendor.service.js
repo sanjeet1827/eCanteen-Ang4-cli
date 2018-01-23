@@ -19,7 +19,7 @@ require("rxjs/add/observable/throw");
 var VendorService = (function () {
     function VendorService(_http) {
         this._http = _http;
-        this._vendorServiceUrl = 'api/products/products.json';
+        this._vendorServiceUrl = 'http://localhost:2434/api/Vendor';
     }
     VendorService.prototype.loginVendor = function (email, password) {
         return this._http.get(this._vendorServiceUrl)
@@ -28,7 +28,9 @@ var VendorService = (function () {
             .catch(this.handleError);
     };
     VendorService.prototype.registerVendor = function (vendor) {
-        return this._http.post(this._vendorServiceUrl, vendor)
+        //let headers = new Headers({ 'Content-Type': 'application/json' });
+        //let options = new RequestOptions({ headers: headers });
+        return this._http.post(this._vendorServiceUrl, JSON.stringify(vendor))
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);

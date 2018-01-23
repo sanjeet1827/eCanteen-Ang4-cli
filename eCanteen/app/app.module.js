@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
+var http_2 = require("@angular/common/http");
 var router_1 = require("@angular/router");
 var animations_1 = require("@angular/platform-browser/animations");
 var forms_1 = require("@angular/forms");
@@ -26,6 +27,7 @@ var order_service_1 = require("./datacontext/order.service");
 var pay_service_1 = require("./datacontext/pay.service");
 var site_service_1 = require("./datacontext/site.service");
 var vendor_service_1 = require("./datacontext/vendor.service");
+var RequestOptionsService_1 = require("./datacontext/RequestOptionsService");
 var httpHelper_1 = require("./Helpers/httpHelper");
 var decimal_input_directive_1 = require("./directives/decimal-input.directive");
 var signupSignin_component_1 = require("./viewcontroller/vendor/signupSignin.component");
@@ -41,6 +43,7 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
+            http_2.HttpClientModule,
             animations_1.BrowserAnimationsModule,
             forms_1.FormsModule,
             router_1.RouterModule.forRoot([
@@ -66,9 +69,10 @@ AppModule = __decorate([
             pay_service_1.PayService,
             site_service_1.SiteService,
             vendor_service_1.VendorService,
-            httpHelper_1.httpHelper
+            httpHelper_1.httpHelper,
+            { provide: http_1.RequestOptions, useClass: RequestOptionsService_1.RequestOptionsService }
         ],
-        bootstrap: [app_component_1.AppComponent, header_component_1.HeaderComponent, footer_component_1.FooterComponent]
+        bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
 exports.AppModule = AppModule;

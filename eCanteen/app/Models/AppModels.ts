@@ -9,7 +9,20 @@ export class SignUp {
     registerationPosted: boolean;
     alreadyRegistered: boolean;
     showLoginView: boolean;
-    selectedSite: number;
+    selectedSite: string;
+}
+
+/* Defines the Vendor entity */
+export class Vendor {
+    id: string;
+    name: string;
+    email: string;
+    contact: string;
+    password: string;
+    shopNo: string;
+    active: boolean;
+    logo: string;
+    siteId: string;
 }
 
 /* Defines the SignUp entity */

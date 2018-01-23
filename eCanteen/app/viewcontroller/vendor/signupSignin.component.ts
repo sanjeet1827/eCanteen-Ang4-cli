@@ -9,7 +9,7 @@ import { ISiteService } from '../../Types/ISiteService'
 import { IVendorService } from '../../Types/IVendorService'
 import { IVendor } from '../../Types/IVendor'
 
-import { SignIn, SignUp } from '../../Models/AppModels'
+import { SignIn, SignUp, Vendor } from '../../Models/AppModels'
 
 @Component({
     templateUrl: 'SignupSinginComponent.html'
@@ -21,6 +21,7 @@ export class SignupSinginComponent implements OnInit {
     showLoginView: boolean = true;
     sites: ISite[];
     errorMessage: any;
+    test: string ;
 
     constructor(private _siteService: SiteService,
         private _vendorService: VendorService, private _httpHelper: httpHelper) {
@@ -65,7 +66,7 @@ export class SignupSinginComponent implements OnInit {
         }
     }
 
-    signUp(siteFormInvalid: boolean, vModel: IVendor): void {
+    signUp(siteFormInvalid: boolean): void {
         console.log("signUp ethod invoked");
         if (!siteFormInvalid) {
 
@@ -83,6 +84,15 @@ export class SignupSinginComponent implements OnInit {
             */
 
             if (!siteFormInvalid) {
+                let vModel: IVendor = new Vendor();
+                vModel.name = this.vModel.name;
+                vModel.active = true;
+                vModel.email = this.vModel.email;
+                vModel.logo = this.vModel.logo;
+                vModel.password = this.vModel.password;
+                vModel.shopNo = this.vModel.shopNo;
+                vModel.siteId = this.vModel.selectedSite;
+
                 this._vendorService.registerVendor(vModel).subscribe((registeredVendor: IVendor) => {
                     if (registeredVendor !== undefined)
                     {
