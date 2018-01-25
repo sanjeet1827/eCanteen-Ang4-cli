@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
+var http_1 = require("@angular/common/http");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/do");
 require("rxjs/add/operator/catch");
@@ -23,43 +23,43 @@ var OrderService = (function () {
     }
     OrderService.prototype.placeOrder = function (order) {
         return this._http.post(this._orderServiceUrl, order)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     OrderService.prototype.getConfirmedOrderDetail = function (orderId) {
         return this._http.get(this._orderServiceUrl)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     OrderService.prototype.getVendorOrders = function (vendorId, menuType) {
         return this._http.get(this._orderServiceUrl)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     OrderService.prototype.getMenuWiseStatusCount = function (vendorId, menuType, tp) {
         return this._http.get(this._orderServiceUrl)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     OrderService.prototype.updateOrderStatus = function (orderId, vendorId, menuType) {
         return this._http.get(this._orderServiceUrl)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     OrderService.prototype.acceptOrder = function (orderId, vendorId) {
         return this._http.get(this._orderServiceUrl)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     OrderService.prototype.getCustomerOrderHistory = function (customerId, customerDetail) {
         return this._http.get(this._orderServiceUrl)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
@@ -67,13 +67,13 @@ var OrderService = (function () {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         console.error(error);
-        return Observable_1.Observable.throw(error.json().error || 'Server error');
+        return Observable_1.Observable.throw(error.message || 'Server error');
     };
     return OrderService;
 }());
 OrderService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.HttpClient])
 ], OrderService);
 exports.OrderService = OrderService;
 //# sourceMappingURL=order.service.js.map

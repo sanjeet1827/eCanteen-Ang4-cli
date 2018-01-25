@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
+var http_1 = require("@angular/common/http");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/do");
 require("rxjs/add/operator/catch");
@@ -23,13 +23,13 @@ var PayService = (function () {
     }
     PayService.prototype.payOrder = function (payOrder, orderId) {
         return this._http.post(this._paymentServiceUrl, payOrder)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     PayService.prototype.updateOrder = function (payment) {
         return this._http.post(this._paymentServiceUrl, payment)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
@@ -37,13 +37,13 @@ var PayService = (function () {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         console.error(error);
-        return Observable_1.Observable.throw(error.json().error || 'Server error');
+        return Observable_1.Observable.throw(error.message || 'Server error');
     };
     return PayService;
 }());
 PayService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.HttpClient])
 ], PayService);
 exports.PayService = PayService;
 //# sourceMappingURL=pay.service.js.map

@@ -39,16 +39,6 @@ namespace eCanteen.Controllers
         [HttpPost]
         public bool Post(Vendor vendor)
         {
-            //byte[] imageBytes = Convert.FromBase64String(vendor.Logo.Replace("data:image/png;base64,",""));
-            //MemoryStream ms = new MemoryStream(imageBytes, 0,
-            //  imageBytes.Length);
-
-            //// Convert byte[] to Image
-            //ms.Write(imageBytes, 0, imageBytes.Length);
-            //Image image = Image.FromStream(ms, true);
-            
-            //image.Save("~/Content/vendorlogo.png", System.Drawing.Imaging.ImageFormat.Png);
-            //return false;
             return VendorProvider.Register(vendor);
         }
     }

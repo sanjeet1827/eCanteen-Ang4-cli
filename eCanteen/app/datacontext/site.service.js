@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
+var http_1 = require("@angular/common/http");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/do");
 require("rxjs/add/operator/catch");
@@ -24,7 +24,7 @@ var SiteService = (function () {
     }
     SiteService.prototype.getSites = function () {
         return this._http.get(this._siteUrl)
-            .map(function (response) { return response.json(); })
+            .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
@@ -32,13 +32,13 @@ var SiteService = (function () {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         console.error(error);
-        return Observable_1.Observable.throw(error.json().error || 'Server error');
+        return Observable_1.Observable.throw(error.message || 'Server error');
     };
     return SiteService;
 }());
 SiteService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.HttpClient])
 ], SiteService);
 exports.SiteService = SiteService;
 //# sourceMappingURL=site.service.js.map

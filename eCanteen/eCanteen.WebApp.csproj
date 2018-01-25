@@ -69,6 +69,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -79,6 +83,10 @@
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -127,66 +135,32 @@
     <Content Include="app\app.js" />
     <Content Include="app\common\footer.component.html" />
     <Content Include="app\common\header.component.html" />
-    <Content Include="app\common\services\remoteResource.js" />
-    <Content Include="app\common\services\utility.js" />
     <Content Include="app\common\shell.html" />
-    <Content Include="app\common\shellCtrl.js" />
-    <Content Include="app\datacontext\notificationdatacontext.js" />
-    <Content Include="app\datacontext\orderCheckoutdatacontext.js" />
-    <Content Include="app\datacontext\customerSingupdatacontext.js" />
-    <Content Include="app\datacontext\signupSignindatacontext.js" />
-    <Content Include="app\datacontext\sitedatacontext.js" />
-    <Content Include="app\datacontext\foodItemdatacontext.js" />
     <Content Include="app\directives\button-general.html" />
-    <Content Include="app\directives\button-general.js" />
-    <Content Include="app\directives\decimal-input.js" />
     <Content Include="app\directives\textbox-decimal.html" />
-    <Content Include="app\directives\textbox-decimal.js" />
-    <Content Include="app\directives\test.js" />
-    <Content Include="app\directives\fileupload-general.js" />
     <Content Include="app\directives\textbox-general.html" />
-    <Content Include="app\directives\textbox-general.js" />
     <Content Include="app\partialUI\orderToKitchen.html" />
     <Content Include="app\route-resolver.js" />
-    <Content Include="app\datacontext\maindatacontext.js" />
     <Content Include="app\viewcontroller\customerOrderHistory.html" />
-    <Content Include="app\viewcontroller\customerOrderHistoryCtrl.js" />
     <Content Include="app\viewcontroller\confirmRegistration.html" />
-    <Content Include="app\viewcontroller\confirmRegistrationCtrl.js" />
     <Content Include="app\viewcontroller\footer.html" />
-    <Content Include="app\viewcontroller\footerCtrl.js" />
     <Content Include="app\viewcontroller\main.component.html" />
     <Content Include="app\viewcontroller\main.html" />
-    <Content Include="app\viewcontroller\mainCtrl.js" />
     <Content Include="app\viewcontroller\master.html" />
     <Content Include="app\viewcontroller\customerMenu.html" />
-    <Content Include="app\viewcontroller\customerMenuCtrl.js" />
     <Content Include="app\viewcontroller\modals\modalBusinessError.html" />
     <Content Include="app\viewcontroller\modals\modalCustomerSingup.html" />
-    <Content Include="app\viewcontroller\modals\modalBusinessErrorCtrl.js" />
-    <Content Include="app\viewcontroller\modals\modalCustomerSingupCtrl.js" />
     <Content Include="app\viewcontroller\confirmOrder.html" />
     <Content Include="app\viewcontroller\orderCheckout.html" />
-    <Content Include="app\viewcontroller\orderCheckoutCtrl.js" />
     <Content Include="app\viewcontroller\orderDetail.html" />
-    <Content Include="app\viewcontroller\orderDetailCtrl.js" />
     <Content Include="app\viewcontroller\orderShortDetail.html" />
-    <Content Include="app\viewcontroller\confirmOrderCtrl.js" />
-    <Content Include="app\viewcontroller\orderShortDetailCtrl.js" />
     <Content Include="app\viewcontroller\vendor\allOrderStatus.html" />
-    <Content Include="app\viewcontroller\vendor\allOrderStatusCtrl.js" />
-    <Content Include="app\viewcontroller\vendor\currentMenuCtrl.js" />
     <Content Include="app\viewcontroller\vendor\currentMenu.html" />
     <Content Include="app\viewcontroller\vendor\orderStatus.html" />
-    <Content Include="app\viewcontroller\vendor\orderStatusCtrl.js" />
     <Content Include="app\viewcontroller\vendor\currentOrders.html" />
-    <Content Include="app\viewcontroller\vendor\currentOrdersCtrl.js" />
     <Content Include="app\viewcontroller\vendor\menu.html" />
-    <Content Include="app\viewcontroller\vendor\menuCtrl.js" />
     <Content Include="app\viewcontroller\vendor\SignupSinginComponent.html" />
-    <Content Include="app\viewcontroller\vendor\signupSigninCtrl.js" />
     <Content Include="app\viewcontroller\vendor\vendorMain.html" />
-    <Content Include="app\viewcontroller\vendor\vendorMainCtrl.js" />
     <Content Include="config\helpers.js" />
     <Content Include="config\karma-test-shim.js" />
     <Content Include="config\karma.conf.js" />
@@ -275,9 +249,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\viewcontroller\masterCtrl.js" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\eCanteenBussinessLogic\eCanteen.BussinessLogic.csproj">
       <Project>{ee521cf9-df46-4dc5-8d20-272ef3da49f2}</Project>
       <Name>eCanteen.BussinessLogic</Name>
@@ -292,7 +263,7 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\common\footer.component.ts" />
     <TypeScriptCompile Include="app\common\header.component.ts" />
-    <TypeScriptCompile Include="app\datacontext\RequestOptionsService.ts" />
+    <TypeScriptCompile Include="app\common\services\HttpInterceptor.ts" />
     <TypeScriptCompile Include="app\datacontext\vendor.service.ts" />
     <TypeScriptCompile Include="app\datacontext\customer.service.ts" />
     <TypeScriptCompile Include="app\datacontext\food.service.ts" />

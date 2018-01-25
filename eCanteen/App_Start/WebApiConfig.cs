@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace eCanteen
 {
@@ -15,6 +16,11 @@ namespace eCanteen
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var enableCorsAttribute = new EnableCorsAttribute("*",
+                                               "Origin, Content-Type, Accept",
+                                               "GET, PUT, POST, DELETE, OPTIONS");
+            config.EnableCors(enableCorsAttribute);
 
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;

@@ -1,10 +1,11 @@
 ﻿import { NgModule } from '@angular/core';
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
-import { HttpModule, RequestOptions } from '@angular/http';
+//import { HttpModule, RequestOptions } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -25,8 +26,8 @@ import { OrderService } from './datacontext/order.service';
 import { PayService } from './datacontext/pay.service';
 import { SiteService } from './datacontext/site.service';
 import { VendorService } from './datacontext/vendor.service';
-import { RequestOptionsService } from './datacontext/RequestOptionsService';
 import { httpHelper } from './Helpers/httpHelper';
+import { AddHttpHeaderInterceptor } from './common/services/HttpInterceptor';
 
 /* Feature Modules */
 
@@ -34,7 +35,7 @@ import { httpHelper } from './Helpers/httpHelper';
 @NgModule({
     imports: [
         BrowserModule,
-        HttpModule,
+       // HttpModule,
         HttpClientModule,
         BrowserAnimationsModule,
         FormsModule,
@@ -64,7 +65,11 @@ import { httpHelper } from './Helpers/httpHelper';
         SiteService,
         VendorService,
         httpHelper,
-        { provide: RequestOptions, useClass: RequestOptionsService }
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AddHttpHeaderInterceptor,
+            multi: true,
+        }
     ],
     bootstrap: [AppComponent]
 })
