@@ -1,6 +1,6 @@
 ﻿export interface ISite {
-    id: string;
-    name: string;
+    Id: string;
+    Name: string;
     address: string;
     contact: string;
     owner: number;

@@ -1,2 +1,3 @@
 ﻿<input type="{{ngType}}" class="form-control textbox-general" id="{{ngId}}" name="{{ngName}}" placeholder="{{placeholder}}" minlength="{{minimumLenght}}" maxlength="{{maximumLenght}}"
-       [(ngModel)]="ngValue" (ngModelChange)="change($event)" required="{{fieldRequired}}" />
+       [(ngModel)]="ngValue" (ngModelChange)="change($event)" required="{{fieldRequired}}" #name="ngModel" />
+<span style="float:right;color:red" *ngIf="name.invalid && name.errors.required">*</span>

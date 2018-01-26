@@ -25,7 +25,7 @@ export class VendorService implements IVendorService {
             .catch(this.handleError);
     }
 
-    registerVendor(vendor: IVendor): Observable<IVendor> {
+    registerVendor(vendor: IVendor): Observable<boolean> {
         return this._http.post(this._vendorServiceUrl, JSON.stringify(vendor))
             .map((response: HttpResponse<IVendor>) => response)
             .do(data => console.log('All: ' + JSON.stringify(data)))

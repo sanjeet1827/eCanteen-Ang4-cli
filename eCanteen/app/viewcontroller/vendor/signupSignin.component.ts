@@ -66,7 +66,7 @@ export class SignupSinginComponent implements OnInit {
         }
     }
 
-    signUp(siteFormInvalid: boolean): void {
+    signUp(siteFormInvalid: any): void {
         console.log("signUp ethod invoked");
         if (!siteFormInvalid) {
 
@@ -92,9 +92,10 @@ export class SignupSinginComponent implements OnInit {
                 vModel.password = this.vModel.password;
                 vModel.shopNo = this.vModel.shopNo;
                 vModel.siteId = this.vModel.selectedSite;
+                vModel.contact = this.vModel.contactNo;
 
-                this._vendorService.registerVendor(vModel).subscribe((registeredVendor: IVendor) => {
-                    if (registeredVendor !== undefined)
+                this._vendorService.registerVendor(vModel).subscribe((registeredVendor: boolean) => {
+                    if (registeredVendor !== undefined && registeredVendor)
                     {
                         this.vModel.alreadyRegistered = false;
                         this.vModel.registerationPosted = true;
@@ -110,7 +111,13 @@ export class SignupSinginComponent implements OnInit {
 
     ngOnInit(): void {
         this._siteService.getSites()
-            .subscribe(sites => this.sites = sites,
+            .subscribe((sites) => {
+                this.sites = sites;
+                this.vModel.selectedSite  = sites.filter((st) => {
+                    return st.Name === "Ansal Tower";
+                })[0].Id.toString();
+            },
             error => this.errorMessage = <any>error);
+        //this.vModel.selectedSite = this.sites.filter((site) => { return site.name === "Ansal Tower" })[0].id.toString();
     }
 }
