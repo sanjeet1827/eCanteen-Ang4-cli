@@ -13,7 +13,12 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var TextboxGeneralComponent = TextboxGeneralComponent_1 = (function () {
     function TextboxGeneralComponent() {
-        this.ngValueChange = new core_1.EventEmitter();
+        this.parseError = true;
+        //@Output() ngValueChange = new EventEmitter();
+        //change(newValue) {
+        //    this.ngValue = newValue;
+        //    this.ngValueChange.emit(newValue);
+        //}
         // the method set in registerOnChange to emit changes back to the form
         this.propagateChange = function (_) { };
         this.ngType = "text";
@@ -60,10 +65,6 @@ var TextboxGeneralComponent = TextboxGeneralComponent_1 = (function () {
         // update the form
         this.propagateChange(this.ngValue);
     };
-    TextboxGeneralComponent.prototype.change = function (newValue) {
-        this.ngValue = newValue;
-        this.ngValueChange.emit(newValue);
-    };
     return TextboxGeneralComponent;
 }());
 __decorate([
@@ -98,10 +99,6 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", Boolean)
 ], TextboxGeneralComponent.prototype, "fieldRequired", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], TextboxGeneralComponent.prototype, "ngValueChange", void 0);
 TextboxGeneralComponent = TextboxGeneralComponent_1 = __decorate([
     core_1.Component({
         selector: "textbox-general",

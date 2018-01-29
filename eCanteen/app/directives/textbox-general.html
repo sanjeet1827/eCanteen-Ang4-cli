@@ -2,4 +2,4 @@
         [(ngModel)]="ngValue" required="{{fieldRequired}}" 
        (change)="onChange($event)"
        (keyup)="onChange($event)" />
-<span style="float:right;color:red" *ngIf="parseError===true">*</span>
+<span style="float:right;color:red" *ngIf="IsRequiredFieldEmpty===true">*</span>

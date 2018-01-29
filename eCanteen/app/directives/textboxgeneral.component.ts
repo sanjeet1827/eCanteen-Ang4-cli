@@ -21,7 +21,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
 })
 export class TextboxGeneralComponent implements ControlValueAccessor, Validator {
     @Input() ngType: string;
-    @Input() ngValue: string;
     @Input() placeholder: string;
     @Input() maximumLenght: number;
     @Input() minimumLenght: number;
@@ -30,9 +29,9 @@ export class TextboxGeneralComponent implements ControlValueAccessor, Validator 
     @Input() fieldRequired: boolean;
     keyup: Function;
 
-    private jsonString: string;
-    private parseError: boolean=true;
+    private IsRequiredFieldEmpty: boolean=true;
     private data: any;
+    private ngValue: string;
 
     constructor() {
         this.ngType = "text";
@@ -56,7 +55,7 @@ export class TextboxGeneralComponent implements ControlValueAccessor, Validator 
     // validates the form, returns null when valid else the validation object
     // in this case we're checking if the json parsing has passed or failed from the onChange method
     public validate(c: FormControl) {
-        return (!this.parseError) ? null : {
+        return (!this.IsRequiredFieldEmpty) ? null : {
             jsonParseError: {
                 valid: false,
             },
@@ -77,10 +76,10 @@ export class TextboxGeneralComponent implements ControlValueAccessor, Validator 
             //this.data = JSON.parse(newValue);
             this.ngValue = newValue;
             let checkValue = this.ngValue.toString().trim();
-            this.parseError = checkValue === undefined || checkValue === null || checkValue === "" ? true : false;
+            this.IsRequiredFieldEmpty = checkValue === undefined || checkValue === null || checkValue === "" ? true : false;
         } catch (ex) {
             // set parse error if it fails
-            this.parseError = true;
+            this.IsRequiredFieldEmpty = true;
         }
 
         // update the form
@@ -88,11 +87,11 @@ export class TextboxGeneralComponent implements ControlValueAccessor, Validator 
     }
 
 
-    @Output() ngValueChange = new EventEmitter();
-    change(newValue) {
-        this.ngValue = newValue;
-        this.ngValueChange.emit(newValue);
-    }
+    //@Output() ngValueChange = new EventEmitter();
+    //change(newValue) {
+    //    this.ngValue = newValue;
+    //    this.ngValueChange.emit(newValue);
+    //}
 
     // the method set in registerOnChange to emit changes back to the form
     private propagateChange = (_: any) => { };

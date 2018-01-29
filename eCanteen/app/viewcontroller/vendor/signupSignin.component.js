@@ -53,10 +53,10 @@ var SignupSinginComponent = (function () {
             //});
         }
     };
-    SignupSinginComponent.prototype.signUp = function (siteFormInvalid) {
+    SignupSinginComponent.prototype.signUp = function (IsSiteFormVvalid) {
         var _this = this;
         console.log("signUp ethod invoked");
-        if (!siteFormInvalid) {
+        if (IsSiteFormVvalid) {
             /*
             let remoteData: IVendor;
 
@@ -69,26 +69,24 @@ var SignupSinginComponent = (function () {
             remoteData.siteId = vModel.siteId;
             remoteData.logo = vModel.logo;
             */
-            if (!siteFormInvalid) {
-                var vModel = new AppModels_1.Vendor();
-                vModel.name = this.vModel.name;
-                vModel.active = true;
-                vModel.email = this.vModel.email;
-                vModel.logo = this.vModel.logo;
-                vModel.password = this.vModel.password;
-                vModel.shopNo = this.vModel.shopNo;
-                vModel.siteId = this.vModel.selectedSite;
-                vModel.contact = this.vModel.contactNo;
-                this._vendorService.registerVendor(vModel).subscribe(function (registeredVendor) {
-                    if (registeredVendor !== undefined && registeredVendor) {
-                        _this.vModel.alreadyRegistered = false;
-                        _this.vModel.registerationPosted = true;
-                    }
-                    else {
-                        _this.vModel.alreadyRegistered = true;
-                    }
-                });
-            }
+            var vModel = new AppModels_1.Vendor();
+            vModel.name = this.vModel.name;
+            vModel.active = true;
+            vModel.email = this.vModel.email;
+            vModel.logo = this.vModel.logo;
+            vModel.password = this.vModel.password;
+            vModel.shopNo = this.vModel.shopNo;
+            vModel.siteId = this.vModel.selectedSite;
+            vModel.contact = this.vModel.contactNo;
+            this._vendorService.registerVendor(vModel).subscribe(function (registeredVendor) {
+                if (registeredVendor !== undefined && registeredVendor) {
+                    _this.vModel.alreadyRegistered = false;
+                    _this.vModel.registerationPosted = true;
+                }
+                else {
+                    _this.vModel.alreadyRegistered = true;
+                }
+            });
         }
     };
     SignupSinginComponent.prototype.ngOnInit = function () {
