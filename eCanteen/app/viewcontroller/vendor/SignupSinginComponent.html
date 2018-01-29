@@ -1,6 +1,7 @@
 ﻿
 <div *ngIf="!vModel.showLoginView" class="animate-if vendor-gate">
-    <form class="form-horizontal" id="form-site" #siteForm="ngForm" novalidate>
+    <form class="form-horizontal" id="form-site" #siteForm="ngForm">
+        valid={{siteForm.valid}}
         <div class="row">
             <div class="col-sm-4">
                 <div class="dv-label-gate">
@@ -13,7 +14,6 @@
                         <option *ngFor="let item of sites" [value]="item.Id">{{item.Name}}</option>
                     </select>
                 </div>
-                <!--<span *ngIf="site.invalid">*</span>-->
             </div>
         </div>
         <div class="row">
@@ -24,10 +24,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ngId="name" ngName="name" maximumLenght="250" [(ngValue)]="vModel.name" fieldRequired="true"></textbox-general>
-                    <!--<input name="name" [(ngModel)]="vModel.name">-->
+                    <textbox-general ngId="name" ngName="name" maximumLenght="250" 
+                                     [(ngModel)]="vModel.name" name="name" fieldRequired="true"></textbox-general>
                 </div>
-                <!--<span *ngIf="name.invalid">*</span>-->
             </div>
         </div>
         <div class="row">
@@ -38,9 +37,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ngId="contactNo" ngName="contactNo" maximumLenght="250" [(ngValue)]="vModel.contactNo" fieldRequired="true"></textbox-general>
+                    <textbox-general ngId="contactNo" ngName="contactNo" maximumLenght="250" 
+                                     [(ngModel)]="vModel.contactNo" name="contactNo" fieldRequired="true"></textbox-general>
                 </div>
-                <!--<span ngIf="contactNo.invalid">*</span>-->
             </div>
         </div>
         <div class="row">
@@ -51,9 +50,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ngType="email" ngId="email" ngName="email" maximumLenght="250" [(ngValue)]="vModel.email" fieldRequired="true"></textbox-general>
+                    <textbox-general ngType="email" ngId="email" ngName="email" maximumLenght="250" 
+                                     [(ngModel)]="vModel.email" name="email" fieldRequired="true"></textbox-general>
                 </div>
-                <!--<span ngIf="email.invalid">*</span>-->
             </div>
         </div>
         <div class="row">
@@ -64,9 +63,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ngId="shopNo" ngName="shopNo" maximumLenght="250" [(ngValue)]="vModel.shopNo" fieldRequired="true"></textbox-general>
+                    <textbox-general ngId="shopNo" ngName="shopNo" maximumLenght="250" 
+                                     [(ngModel)]="vModel.shopNo" name="shopNo" fieldRequired="true"></textbox-general>
                 </div>
-                <!--<span ngIf="shopNo.invalid">*</span>-->
             </div>
         </div>
         <div class="row">
@@ -77,9 +76,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ngType="password" ngId="password" ngName="password" minimum-lenght="4" maximumLenght="5" [(ngValue)]="vModel.password" fieldRequired="true"></textbox-general>
+                    <textbox-general ngType="password" ngId="password" ngName="password" minimum-lenght="4" maximumLenght="5" 
+                                     [(ngModel)]="vModel.password" name="password" fieldRequired="true"></textbox-general>
                 </div>
-                <!--<span ngIf="password.invalid">*</span>-->
             </div>
         </div>
         <div class="row">
@@ -90,7 +89,7 @@
             </div>
             <div class="col-sm-8">
                 <div>
-                    <input fileupload-general="vModel.logo" type="file" style="margin-top:15px" /><span>Only png logo allowed</span>
+                    <input fileupload-general="vModel.logo" type="file" style="margin-top:15px" /><span style="font-size:smaller">Only png logo allowed</span>
                 </div>
             </div>
         </div>
@@ -100,7 +99,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="vendor-gate-button">
-                    <button-general buttonType="submit" value="Sign Up" (Submit)="signUp(siteForm.invalid,vModel)"></button-general>
+                    <button-general buttonType="submit" value="Sign Up" (Submit)="signUp(siteForm.valid)"></button-general>
                     <!--<a (click)="activeLoginView(true)">Already registered </a>-->
                 </div>
 

@@ -78,8 +78,9 @@ var SignupSinginComponent = (function () {
                 vModel.password = this.vModel.password;
                 vModel.shopNo = this.vModel.shopNo;
                 vModel.siteId = this.vModel.selectedSite;
+                vModel.contact = this.vModel.contactNo;
                 this._vendorService.registerVendor(vModel).subscribe(function (registeredVendor) {
-                    if (registeredVendor !== undefined) {
+                    if (registeredVendor !== undefined && registeredVendor) {
                         _this.vModel.alreadyRegistered = false;
                         _this.vModel.registerationPosted = true;
                     }
@@ -93,7 +94,13 @@ var SignupSinginComponent = (function () {
     SignupSinginComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._siteService.getSites()
-            .subscribe(function (sites) { return _this.sites = sites; }, function (error) { return _this.errorMessage = error; });
+            .subscribe(function (sites) {
+            _this.sites = sites;
+            _this.vModel.selectedSite = sites.filter(function (st) {
+                return st.Name === "Ansal Tower";
+            })[0].Id.toString();
+        }, function (error) { return _this.errorMessage = error; });
+        //this.vModel.selectedSite = this.sites.filter((site) => { return site.name === "Ansal Tower" })[0].id.toString();
     };
     return SignupSinginComponent;
 }());

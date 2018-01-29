@@ -62,6 +62,9 @@ AppModule = __decorate([
             decimal_input_directive_1.DecimalInputDirective,
             signupSignin_component_1.SignupSinginComponent
         ],
+        exports: [
+            textboxgeneral_component_1.TextboxGeneralComponent,
+        ],
         providers: [
             customer_service_1.CustomerService,
             food_service_1.FoodService,

@@ -66,9 +66,9 @@ export class SignupSinginComponent implements OnInit {
         }
     }
 
-    signUp(siteFormInvalid: any): void {
+    signUp(IsSiteFormVvalid: boolean): void {
         console.log("signUp ethod invoked");
-        if (!siteFormInvalid) {
+        if (IsSiteFormVvalid) {
 
             /*
             let remoteData: IVendor;
@@ -83,7 +83,7 @@ export class SignupSinginComponent implements OnInit {
             remoteData.logo = vModel.logo;
             */
 
-            if (!siteFormInvalid) {
+          
                 let vModel: IVendor = new Vendor();
                 vModel.name = this.vModel.name;
                 vModel.active = true;
@@ -105,7 +105,7 @@ export class SignupSinginComponent implements OnInit {
                         this.vModel.alreadyRegistered = true;
                     }
                 })
-            }
+            
         }
     }
 

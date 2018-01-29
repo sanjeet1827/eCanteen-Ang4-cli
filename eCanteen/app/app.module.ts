@@ -56,6 +56,9 @@ import { AddHttpHeaderInterceptor } from './common/services/HttpInterceptor';
         DecimalInputDirective,
         SignupSinginComponent
     ],
+    exports: [
+        TextboxGeneralComponent,
+    ],
     providers: [
         CustomerService,
         FoodService,
