@@ -4,12 +4,12 @@ import { SiteService } from '../../datacontext/site.service';
 import { VendorService } from '../../datacontext/vendor.service';
 import { httpHelper } from '../../Helpers/httpHelper';
 
-import { ISite } from '../../Types/ISite'
-import { ISiteService } from '../../Types/ISiteService'
-import { IVendorService } from '../../Types/IVendorService'
-import { IVendor } from '../../Types/IVendor'
+import { ISite } from '../../Types/ISite';
+import { ISiteService } from '../../Types/ISiteService';
+import { IVendorService } from '../../Types/IVendorService';
+import { IVendor } from '../../Types/IVendor';
 
-import { SignIn, SignUp, Vendor } from '../../Models/AppModels'
+import { SignIn, SignUp, Vendor } from '../../Models/AppModels';
 
 @Component({
     templateUrl: 'SignupSinginComponent.html'

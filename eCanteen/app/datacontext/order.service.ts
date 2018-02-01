@@ -8,6 +8,7 @@ import 'rxjs/add/observable/throw';
 
 import { IOrder } from '../Types/IOrder';
 import { IOrderDetail } from '../Types/IOrderDetail';
+import { IOrderStatus } from '../Types/IOrderStatus';
 
 @Injectable()
 export class OrderService {
@@ -32,7 +33,7 @@ export class OrderService {
             .catch(this.handleError);
     }
 
-    getVendorOrders(vendorId: string, menuType: number): Observable<string> {
+    getVendorOrders(vendorId: string, menuType: number): Observable<Array<IOrderStatus>> {
 
         return this._http.get(this._orderServiceUrl)
             .map((response: HttpResponse<string>) => response)

@@ -33,12 +33,6 @@ var SignupSinginComponent = (function () {
             var vModel = new AppModels_1.Vendor();
             vModel.email = this.vLoginModel.email;
             vModel.password = this.vLoginModel.password;
-            //vModel.name = "";
-            //vModel.active = true;
-            //vModel.logo = "";
-            //vModel.shopNo = "";
-            //vModel.siteId = "";
-            //vModel.contact = "";
             this._vendorService.loginVendor(vModel).subscribe(function (authenticatedVendor) {
                 if (authenticatedVendor) {
                     //$rootScope.vendorUId = authenticatedVendor.id;

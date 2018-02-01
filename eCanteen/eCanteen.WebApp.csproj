@@ -137,6 +137,7 @@
     <Content Include="app\common\footer.component.html" />
     <Content Include="app\common\header.component.html" />
     <Content Include="app\common\shell.html" />
+    <Content Include="app\datacontext\orderCheckoutdatacontext.js" />
     <Content Include="app\directives\button-general.html" />
     <Content Include="app\directives\textbox-decimal.html" />
     <Content Include="app\directives\textbox-general.html" />
@@ -160,6 +161,7 @@
     <Content Include="app\viewcontroller\vendor\orderStatus.html" />
     <Content Include="app\viewcontroller\vendor\currentOrders.html" />
     <Content Include="app\viewcontroller\vendor\menu.html" />
+    <Content Include="app\viewcontroller\vendor\orderStatusCtrl.js" />
     <Content Include="app\viewcontroller\vendor\SignupSinginComponent.html" />
     <Content Include="app\viewcontroller\vendor\vendorMain.html" />
     <Content Include="config\helpers.js" />
@@ -277,6 +279,7 @@
     <TypeScriptCompile Include="app\directives\textboxdecimal.component.ts" />
     <TypeScriptCompile Include="app\directives\textboxgeneral.component.ts" />
     <TypeScriptCompile Include="app\Helpers\httpHelper.ts" />
+    <TypeScriptCompile Include="app\Types\IOrderStatus.ts" />
     <TypeScriptCompile Include="app\vendor.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Models\AppModels.ts" />
@@ -293,6 +296,7 @@
     <TypeScriptCompile Include="app\Types\IVendorMenu.ts" />
     <TypeScriptCompile Include="app\datacontext\pay.service.ts" />
     <TypeScriptCompile Include="app\viewcontroller\main.component.ts" />
+    <TypeScriptCompile Include="app\viewcontroller\vendor\orderStatus.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.ts" />
     <TypeScriptCompile Include="polyfills.ts" />
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
