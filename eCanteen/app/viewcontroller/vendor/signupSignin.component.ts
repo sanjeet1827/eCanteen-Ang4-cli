@@ -21,31 +21,34 @@ export class SignupSinginComponent implements OnInit {
     showLoginView: boolean = true;
     sites: ISite[];
     errorMessage: any;
-    test: string ;
 
     constructor(private _siteService: SiteService,
         private _vendorService: VendorService, private _httpHelper: httpHelper) {
         this.vModel = new SignUp();
         this.vLoginModel = new SignIn();
+        this.vLoginModel.authenticated = true;
     }
 
     activeLoginView(active: boolean): boolean {
         return this.vModel.showLoginView = active;
     }
 
-    signIn(vendorLoginForm: boolean, signIn: SignIn): void {
-        if (!vendorLoginForm) {
-            this._vendorService.loginVendor(signIn.email, signIn.password).subscribe(
+    signIn(isVendorLoginFormValid: boolean): void {
+        if (isVendorLoginFormValid) {
+            let vModel: IVendor = new Vendor();
+            vModel.email = this.vLoginModel.email;
+            vModel.password = this.vLoginModel.password;
+
+            this._vendorService.loginVendor(vModel).subscribe(
                 (authenticatedVendor: IVendor) => {
                     if (authenticatedVendor) {
                         //$rootScope.vendorUId = authenticatedVendor.id;
                         //$rootScope.vendorName = authenticatedVendor.name;
                         //$document[0].body.className = '';
 
-                        this._httpHelper.redirectTo("/orderStatus", { vendorId: authenticatedVendor.id});
+                        this._httpHelper.redirectTo("/orderStatus", { vendorId: authenticatedVendor.id });
                     }
-                    else
-                    {
+                    else {
                         this.vLoginModel.authenticated = false;
                     }
                 }
@@ -70,42 +73,26 @@ export class SignupSinginComponent implements OnInit {
         console.log("signUp ethod invoked");
         if (IsSiteFormVvalid) {
 
-            /*
-            let remoteData: IVendor;
+            let vModel: IVendor = new Vendor();
+            vModel.name = this.vModel.name;
+            vModel.active = true;
+            vModel.email = this.vModel.email;
+            vModel.logo = this.vModel.logo;
+            vModel.password = this.vModel.password;
+            vModel.shopNo = this.vModel.shopNo;
+            vModel.siteId = this.vModel.selectedSite;
+            vModel.contact = this.vModel.contactNo;
 
-            remoteData.id = vModel.id;
-            remoteData.name = vModel.name;
-            remoteData.email = vModel.email;
-            remoteData.contact = vModel.contact;
-            remoteData.password = vModel.password;
-            remoteData.shopNo = vModel.shopNo;
-            remoteData.siteId = vModel.siteId;
-            remoteData.logo = vModel.logo;
-            */
+            this._vendorService.registerVendor(vModel).subscribe((registeredVendor: boolean) => {
+                if (registeredVendor !== undefined && registeredVendor) {
+                    this.vModel.alreadyRegistered = false;
+                    this.vModel.registerationPosted = true;
+                }
+                else {
+                    this.vModel.alreadyRegistered = true;
+                }
+            })
 
-          
-                let vModel: IVendor = new Vendor();
-                vModel.name = this.vModel.name;
-                vModel.active = true;
-                vModel.email = this.vModel.email;
-                vModel.logo = this.vModel.logo;
-                vModel.password = this.vModel.password;
-                vModel.shopNo = this.vModel.shopNo;
-                vModel.siteId = this.vModel.selectedSite;
-                vModel.contact = this.vModel.contactNo;
-
-                this._vendorService.registerVendor(vModel).subscribe((registeredVendor: boolean) => {
-                    if (registeredVendor !== undefined && registeredVendor)
-                    {
-                        this.vModel.alreadyRegistered = false;
-                        this.vModel.registerationPosted = true;
-                    }
-                    else
-                    {
-                        this.vModel.alreadyRegistered = true;
-                    }
-                })
-            
         }
     }
 
@@ -113,11 +100,10 @@ export class SignupSinginComponent implements OnInit {
         this._siteService.getSites()
             .subscribe((sites) => {
                 this.sites = sites;
-                this.vModel.selectedSite  = sites.filter((st) => {
+                this.vModel.selectedSite = sites.filter((st) => {
                     return st.Name === "Ansal Tower";
                 })[0].Id.toString();
             },
             error => this.errorMessage = <any>error);
-        //this.vModel.selectedSite = this.sites.filter((site) => { return site.name === "Ansal Tower" })[0].id.toString();
     }
 }

@@ -20,10 +20,10 @@ var SiteService = (function () {
     function SiteService(_http) {
         this._http = _http;
         //private _siteUrl = 'api/products/products.json';
-        this._siteUrl = 'http://localhost:2434/api/Site';
+        this._siteUrl = 'http://localhost:2434/api/v2/Sites/';
     }
     SiteService.prototype.getSites = function () {
-        return this._http.get(this._siteUrl)
+        return this._http.get(this._siteUrl + "site")
             .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);

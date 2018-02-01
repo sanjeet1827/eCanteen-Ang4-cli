@@ -12,21 +12,21 @@ import { IVendorService } from '../Types/IVendorService';
 @Injectable()
 export class VendorService implements IVendorService {
 
-    private _vendorServiceUrl = 'http://localhost:2434/api/Vendor';
+    private _vendorServiceUrl = 'http://localhost:2434/api/v2/Vendors/';
 
     constructor(private _http: HttpClient) {
 
     }
 
-    loginVendor(email: string, password: string): Observable<IVendor> {
-        return this._http.get(this._vendorServiceUrl)
+    loginVendor(vendor: IVendor): Observable<IVendor> {
+        return this._http.post(this._vendorServiceUrl+"login", JSON.stringify(vendor))
             .map((response: HttpResponse<IVendor>) => response)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
     registerVendor(vendor: IVendor): Observable<boolean> {
-        return this._http.post(this._vendorServiceUrl, JSON.stringify(vendor))
+        return this._http.post(this._vendorServiceUrl +"register", JSON.stringify(vendor))
             .map((response: HttpResponse<IVendor>) => response)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);

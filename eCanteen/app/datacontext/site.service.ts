@@ -14,12 +14,12 @@ import { ISiteService } from '../Types/ISiteService'
 export class SiteService implements ISiteService {
 
     //private _siteUrl = 'api/products/products.json';
-    private _siteUrl = 'http://localhost:2434/api/Site';
+    private _siteUrl = 'http://localhost:2434/api/v2/Sites/';
     
     constructor(private _http: HttpClient) { }
 
     getSites(): Observable<ISite[]> {
-        return this._http.get(this._siteUrl)
+        return this._http.get(this._siteUrl+"site")
             .map((response: HttpResponse<ISite[]>) => response)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);

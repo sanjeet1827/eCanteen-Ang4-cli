@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var TextboxGeneralComponent = TextboxGeneralComponent_1 = (function () {
     function TextboxGeneralComponent() {
-        this.parseError = true;
+        this.IsRequiredFieldEmpty = true;
         //@Output() ngValueChange = new EventEmitter();
         //change(newValue) {
         //    this.ngValue = newValue;
@@ -39,7 +39,7 @@ var TextboxGeneralComponent = TextboxGeneralComponent_1 = (function () {
     // validates the form, returns null when valid else the validation object
     // in this case we're checking if the json parsing has passed or failed from the onChange method
     TextboxGeneralComponent.prototype.validate = function (c) {
-        return (!this.parseError) ? null : {
+        return (!this.IsRequiredFieldEmpty) ? null : {
             jsonParseError: {
                 valid: false,
             },
@@ -56,11 +56,11 @@ var TextboxGeneralComponent = TextboxGeneralComponent_1 = (function () {
             //this.data = JSON.parse(newValue);
             this.ngValue = newValue;
             var checkValue = this.ngValue.toString().trim();
-            this.parseError = checkValue === undefined || checkValue === null || checkValue === "" ? true : false;
+            this.IsRequiredFieldEmpty = checkValue === undefined || checkValue === null || checkValue === "" ? true : false;
         }
         catch (ex) {
             // set parse error if it fails
-            this.parseError = true;
+            this.IsRequiredFieldEmpty = true;
         }
         // update the form
         this.propagateChange(this.ngValue);
@@ -71,10 +71,6 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", String)
 ], TextboxGeneralComponent.prototype, "ngType", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], TextboxGeneralComponent.prototype, "ngValue", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)

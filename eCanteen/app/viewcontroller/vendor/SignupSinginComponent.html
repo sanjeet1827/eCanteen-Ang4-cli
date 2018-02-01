@@ -1,7 +1,6 @@
 ﻿
 <div *ngIf="!vModel.showLoginView" class="animate-if vendor-gate">
     <form class="form-horizontal" id="form-site" #siteForm="ngForm">
-        valid={{siteForm.valid}}
         <div class="row">
             <div class="col-sm-4">
                 <div class="dv-label-gate">
@@ -24,7 +23,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ngId="name" ngName="name" maximumLenght="250" 
+                    <textbox-general ngId="name" ngName="name" maximumLenght="250"
                                      [(ngModel)]="vModel.name" name="name" fieldRequired="true"></textbox-general>
                 </div>
             </div>
@@ -37,7 +36,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ngId="contactNo" ngName="contactNo" maximumLenght="250" 
+                    <textbox-general ngId="contactNo" ngName="contactNo" maximumLenght="250"
                                      [(ngModel)]="vModel.contactNo" name="contactNo" fieldRequired="true"></textbox-general>
                 </div>
             </div>
@@ -50,7 +49,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ngType="email" ngId="email" ngName="email" maximumLenght="250" 
+                    <textbox-general ngType="email" ngId="email" ngName="email" maximumLenght="250"
                                      [(ngModel)]="vModel.email" name="email" fieldRequired="true"></textbox-general>
                 </div>
             </div>
@@ -63,7 +62,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ngId="shopNo" ngName="shopNo" maximumLenght="250" 
+                    <textbox-general ngId="shopNo" ngName="shopNo" maximumLenght="250"
                                      [(ngModel)]="vModel.shopNo" name="shopNo" fieldRequired="true"></textbox-general>
                 </div>
             </div>
@@ -76,7 +75,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ngType="password" ngId="password" ngName="password" minimum-lenght="4" maximumLenght="5" 
+                    <textbox-general ngType="password" ngId="password" ngName="password" minimum-lenght="4" maximumLenght="5"
                                      [(ngModel)]="vModel.password" name="password" fieldRequired="true"></textbox-general>
                 </div>
             </div>
@@ -100,7 +99,7 @@
             <div class="col-sm-8">
                 <div class="vendor-gate-button">
                     <button-general buttonType="submit" value="Sign Up" (Submit)="signUp(siteForm.valid)"></button-general>
-                    <!--<a (click)="activeLoginView(true)">Already registered </a>-->
+                    <a (click)="activeLoginView(true)">Already registered </a>
                 </div>
 
             </div>
@@ -115,8 +114,8 @@
         </div>
     </form>
 </div>
-<!--<div ngIf="vModel.showLoginView" class="animate-if vendor-gate">
-    <form class="form-horizontal" id="form-vendor-login" name="vendorLoginForm" novalidate>
+<div *ngIf="vModel.showLoginView" class="animate-if vendor-gate">
+    <form class="form-horizontal" id="form-vendor-login" name="vendorLoginForm" #vendorLoginFormForm="ngForm">
         <div class="row">
             <div class="col-sm-4">
                 <div class="dv-label-gate">
@@ -125,12 +124,11 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ng-type="email" ngId="email" ngName="email" maximumLenght="250" [(ngValue)]="vLoginModel.email" fieldRequired="true"></textbox-general>
+                    <textbox-general ngType="email" ngId="email" ngName="email" maximumLenght="250"
+                                     [(ngModel)]="vLoginModel.email" name="email" fieldRequired="true"></textbox-general>
                 </div>
-                <span ngIf="email.invalid">*</span>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-4">
                 <div class="dv-label-gate">
@@ -139,9 +137,9 @@
             </div>
             <div class="col-sm-8">
                 <div class="dv-input-gate">
-                    <textbox-general ng-type="password" ngId="password" ngName="password" maximumLenght="250" [(ngValue)]="vLoginModel.password" fieldRequired="true"></textbox-general>
+                    <textbox-general ngType="password" ngId="password" ngName="password" minimum-lenght="4" maximumLenght="5"
+                                     [(ngModel)]="vLoginModel.password" name="password" fieldRequired="true"></textbox-general>
                 </div>
-                <span ngIf="password.invalid">*</span>
             </div>
         </div>
         <div class="row">
@@ -150,13 +148,13 @@
             </div>
             <div class="col-sm-8">
                 <div class="vendor-gate-button">
-                    <button-general type="submit" value="Sign In" (click)="signIn(vendorLoginForm.$invalid,vLoginModel)"></button-general>
-                    <a style="cursor:pointer" ng-click="activeLoginView(false)">Sign Up </a>
+                    <button-general buttonType="submit" value="Sign In" (Submit)="signIn(vendorLoginFormForm.valid)"></button-general>
+                    <a style="cursor:pointer" (click)="activeLoginView(false)">Sign Up </a>
                 </div>
 
             </div>
         </div>
-        <div class="row" ngIf="!vLoginModel.autheticated">
+        <div class="row" *ngIf="vLoginModel.authenticated!==undefined && !vLoginModel.authenticated">
             <div class="col-sm-12">
                 <p>
                     Login failed! Please check if you already confirmed your email after restistration or enter valid email/password
@@ -166,7 +164,7 @@
         </div>
     </form>
 </div>
-<div ngIf="vModel.registerationPosted" class="animate-if vendor-gate">
+<div *ngIf="vModel.registerationPosted" class="animate-if vendor-gate">
     <div class="row">
         <div class="col-sm-12">
             <p>
@@ -176,4 +174,4 @@
 
     </div>
 
-</div>-->
+</div>

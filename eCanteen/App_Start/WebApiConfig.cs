@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eCanteen.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -10,7 +11,8 @@ namespace eCanteen
     {
         public static void Register(HttpConfiguration config)
         {
-            
+            config.MapHttpAttributeRoutes(new PrefixProvider(String.Format("{0}/{1}", "api","v2")));
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

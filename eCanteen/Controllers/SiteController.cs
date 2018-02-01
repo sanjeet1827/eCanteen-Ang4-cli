@@ -10,6 +10,7 @@ using eCanteen.BussinessLogic;
 
 namespace eCanteen.Controllers
 {
+    [RoutePrefix("Sites")]
     public class SiteController : ApiController
     {
         private ISiteProvider SiteProvider
@@ -21,6 +22,7 @@ namespace eCanteen.Controllers
         }
 
         [HttpGet]
+        [Route("site")]
         public IList<Site> Get()
         {
             return SiteProvider.GetSites();

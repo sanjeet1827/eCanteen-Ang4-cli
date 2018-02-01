@@ -22,14 +22,24 @@ var SignupSinginComponent = (function () {
         this.showLoginView = true;
         this.vModel = new AppModels_1.SignUp();
         this.vLoginModel = new AppModels_1.SignIn();
+        this.vLoginModel.authenticated = true;
     }
     SignupSinginComponent.prototype.activeLoginView = function (active) {
         return this.vModel.showLoginView = active;
     };
-    SignupSinginComponent.prototype.signIn = function (vendorLoginForm, signIn) {
+    SignupSinginComponent.prototype.signIn = function (isVendorLoginFormValid) {
         var _this = this;
-        if (!vendorLoginForm) {
-            this._vendorService.loginVendor(signIn.email, signIn.password).subscribe(function (authenticatedVendor) {
+        if (isVendorLoginFormValid) {
+            var vModel = new AppModels_1.Vendor();
+            vModel.email = this.vLoginModel.email;
+            vModel.password = this.vLoginModel.password;
+            //vModel.name = "";
+            //vModel.active = true;
+            //vModel.logo = "";
+            //vModel.shopNo = "";
+            //vModel.siteId = "";
+            //vModel.contact = "";
+            this._vendorService.loginVendor(vModel).subscribe(function (authenticatedVendor) {
                 if (authenticatedVendor) {
                     //$rootScope.vendorUId = authenticatedVendor.id;
                     //$rootScope.vendorName = authenticatedVendor.name;
@@ -57,18 +67,6 @@ var SignupSinginComponent = (function () {
         var _this = this;
         console.log("signUp ethod invoked");
         if (IsSiteFormVvalid) {
-            /*
-            let remoteData: IVendor;
-
-            remoteData.id = vModel.id;
-            remoteData.name = vModel.name;
-            remoteData.email = vModel.email;
-            remoteData.contact = vModel.contact;
-            remoteData.password = vModel.password;
-            remoteData.shopNo = vModel.shopNo;
-            remoteData.siteId = vModel.siteId;
-            remoteData.logo = vModel.logo;
-            */
             var vModel = new AppModels_1.Vendor();
             vModel.name = this.vModel.name;
             vModel.active = true;
@@ -98,7 +96,6 @@ var SignupSinginComponent = (function () {
                 return st.Name === "Ansal Tower";
             })[0].Id.toString();
         }, function (error) { return _this.errorMessage = error; });
-        //this.vModel.selectedSite = this.sites.filter((site) => { return site.name === "Ansal Tower" })[0].id.toString();
     };
     return SignupSinginComponent;
 }());

@@ -14,6 +14,7 @@ using System.Web.Http;
 
 namespace eCanteen.Controllers
 {
+    [RoutePrefix("Vendors")]
     public class VendorController : ApiController
     {
         private IVendorProvider VendorProvider
@@ -30,13 +31,15 @@ namespace eCanteen.Controllers
             return VendorProvider.GetVendors();
         }
 
-        [HttpGet]
-        public Vendor Get(string email, string password)
+        [HttpPost]
+        [Route("login")]
+        public Vendor Login(Vendor vendor)
         {
-            return VendorProvider.Authenticated(email, password);
+            return VendorProvider.Authenticated(vendor.Email, vendor.Password);
         }
 
         [HttpPost]
+        [Route("register")]
         public bool Post(Vendor vendor)
         {
             return VendorProvider.Register(vendor);

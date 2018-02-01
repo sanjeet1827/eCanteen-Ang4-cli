@@ -2,7 +2,7 @@
 import { IVendor } from '../Types/IVendor';
 
 export interface IVendorService {
-    loginVendor(email: string, password: string): Observable<IVendor>;
+    loginVendor(vendor: IVendor): Observable<IVendor>;
     registerVendor(vendor: IVendor): Observable<boolean>;
     getAllVendors(): Observable<IVendor[]>;
 }
