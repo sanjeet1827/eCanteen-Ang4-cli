@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -41,25 +41,31 @@ export class OrderService {
             .catch(this.handleError);
     }
 
-    getMenuWiseStatusCount(vendorId: string, menuType: number, tp: boolean): Observable<string> {
-
-        return this._http.get(this._orderServiceUrl)
+    getMenuWiseStatusCount(vendorId: string, menuType: number): Observable<string> {
+        let httpParams = new HttpParams().set("vendorId", vendorId)
+            .set("menuType", menuType.toString())
+            .set("tp", "true");
+        return this._http.get(this._orderServiceUrl, { params: httpParams })
             .map((response: HttpResponse<string>) => response)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
     updateOrderStatus(orderId: string,vendorId: string, menuType: number): Observable<string> {
-
-        return this._http.get(this._orderServiceUrl)
+        let httpParams = new HttpParams().set("orderId", orderId)
+            .set("vendorId", vendorId)
+            .set("menuType", menuType.toString());
+        return this._http.get(this._orderServiceUrl, { params: httpParams })
             .map((response: HttpResponse<string>) => response)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
     acceptOrder(orderId: string, vendorId: string): Observable<boolean> {
+        let httpParams = new HttpParams().set("orderId", orderId)
+            .set("vendorId", vendorId);
 
-        return this._http.get(this._orderServiceUrl)
+        return this._http.get(this._orderServiceUrl, { params: httpParams})
             .map((response: HttpResponse<boolean>) => response)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);

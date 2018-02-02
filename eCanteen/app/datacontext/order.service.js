@@ -39,20 +39,28 @@ var OrderService = (function () {
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    OrderService.prototype.getMenuWiseStatusCount = function (vendorId, menuType, tp) {
-        return this._http.get(this._orderServiceUrl)
+    OrderService.prototype.getMenuWiseStatusCount = function (vendorId, menuType) {
+        var httpParams = new http_1.HttpParams().set("vendorId", vendorId)
+            .set("menuType", menuType.toString())
+            .set("tp", "true");
+        return this._http.get(this._orderServiceUrl, { params: httpParams })
             .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     OrderService.prototype.updateOrderStatus = function (orderId, vendorId, menuType) {
-        return this._http.get(this._orderServiceUrl)
+        var httpParams = new http_1.HttpParams().set("orderId", orderId)
+            .set("vendorId", vendorId)
+            .set("menuType", menuType.toString());
+        return this._http.get(this._orderServiceUrl, { params: httpParams })
             .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     OrderService.prototype.acceptOrder = function (orderId, vendorId) {
-        return this._http.get(this._orderServiceUrl)
+        var httpParams = new http_1.HttpParams().set("orderId", orderId)
+            .set("vendorId", vendorId);
+        return this._http.get(this._orderServiceUrl, { params: httpParams })
             .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);

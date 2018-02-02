@@ -96,6 +96,20 @@ export class OrderStatus {
 }
 
 /* Defines the Payment entity */
+export class OrderStatusData {
+    orderStatus: Array<OrderStatus>;
+    displayVendorSlider: boolean;
+    popUpNotification: boolean;
+    acceptedOrder: OrderStatus;
+    orderAccepetd: boolean;
+    orderDetail: OrderStatus;
+    breakfastOrderCount: string;
+    lunchOrderCount: string;
+    snacksOrderCount: string;
+    dinnerOrderCount: string;
+}
+
+/* Defines the Payment entity */
 export class Payment {
     id: string;
     orderId: string;

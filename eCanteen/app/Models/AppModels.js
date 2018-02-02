@@ -60,6 +60,13 @@ var OrderStatus = (function () {
 }());
 exports.OrderStatus = OrderStatus;
 /* Defines the Payment entity */
+var OrderStatusData = (function () {
+    function OrderStatusData() {
+    }
+    return OrderStatusData;
+}());
+exports.OrderStatusData = OrderStatusData;
+/* Defines the Payment entity */
 var Payment = (function () {
     function Payment() {
     }
