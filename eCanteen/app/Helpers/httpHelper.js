@@ -16,7 +16,7 @@ var httpHelper = (function () {
         this._router = _router;
     }
     httpHelper.prototype.redirectTo = function (url, params) {
-        return params ? this._router.navigateByUrl(url, params) : this._router.navigateByUrl(url);
+        return params ? this._router.navigate([url, params]) : this._router.navigateByUrl(url);
     };
     return httpHelper;
 }());

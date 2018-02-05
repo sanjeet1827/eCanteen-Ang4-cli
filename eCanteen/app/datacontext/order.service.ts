@@ -13,7 +13,7 @@ import { IOrderStatus } from '../Types/IOrderStatus';
 @Injectable()
 export class OrderService {
 
-    private _orderServiceUrl = 'api/products/products.json';
+    private _orderServiceUrl = "http://localhost:2434/api/v2/Orders/";
 
     constructor(private _http: HttpClient) { }
 
@@ -34,8 +34,10 @@ export class OrderService {
     }
 
     getVendorOrders(vendorId: string, menuType: number): Observable<Array<IOrderStatus>> {
+        let httpParams = new HttpParams().set("vendorId", vendorId)
+            .set("menuType", menuType.toString());
 
-        return this._http.get(this._orderServiceUrl)
+        return this._http.get(this._orderServiceUrl +"VendorOredrs", { params: httpParams })
             .map((response: HttpResponse<string>) => response)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
@@ -45,7 +47,7 @@ export class OrderService {
         let httpParams = new HttpParams().set("vendorId", vendorId)
             .set("menuType", menuType.toString())
             .set("tp", "true");
-        return this._http.get(this._orderServiceUrl, { params: httpParams })
+        return this._http.get(this._orderServiceUrl +"MenuWiseOredrs", { params: httpParams })
             .map((response: HttpResponse<string>) => response)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);

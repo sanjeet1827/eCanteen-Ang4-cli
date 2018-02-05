@@ -1,5 +1,5 @@
 ﻿export interface IVendor {
-    id: string;
+    Id: string;
     name: string;
     email: string;
     contact: string;

@@ -18,6 +18,7 @@ var app_component_1 = require("./app.component");
 var header_component_1 = require("./common/header.component");
 var footer_component_1 = require("./common/footer.component");
 var signupSignin_component_1 = require("./viewcontroller/vendor/signupSignin.component");
+var orderStatus_component_1 = require("./viewcontroller/vendor/orderStatus.component");
 // directives
 var button_component_1 = require("./directives/button.component");
 var textboxdecimal_component_1 = require("./directives/textboxdecimal.component");
@@ -50,6 +51,7 @@ AppModule = __decorate([
             router_1.RouterModule.forRoot([
                 //{ path: 'home', /*component: HomeComponent*/ },
                 { path: '', component: signupSignin_component_1.SignupSinginComponent, pathMatch: 'full' },
+                { path: 'orderStatus', component: orderStatus_component_1.OrderStatusComponent },
             ])
         ],
         declarations: [
@@ -60,7 +62,8 @@ AppModule = __decorate([
             textboxdecimal_component_1.TextboxDecimalComponent,
             textboxgeneral_component_1.TextboxGeneralComponent,
             decimal_input_directive_1.DecimalInputDirective,
-            signupSignin_component_1.SignupSinginComponent
+            signupSignin_component_1.SignupSinginComponent,
+            orderStatus_component_1.OrderStatusComponent
         ],
         exports: [
             textboxgeneral_component_1.TextboxGeneralComponent,

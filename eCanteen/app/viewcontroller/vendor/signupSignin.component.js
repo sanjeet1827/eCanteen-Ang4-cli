@@ -38,7 +38,7 @@ var SignupSinginComponent = (function () {
                     //$rootScope.vendorUId = authenticatedVendor.id;
                     //$rootScope.vendorName = authenticatedVendor.name;
                     //$document[0].body.className = '';
-                    _this._httpHelper.redirectTo("/orderStatus", { vendorId: authenticatedVendor.id });
+                    _this._httpHelper.redirectTo("/orderStatus", { vendorId: authenticatedVendor.Id });
                 }
                 else {
                     _this.vLoginModel.authenticated = false;

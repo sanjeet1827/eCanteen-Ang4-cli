@@ -10,7 +10,7 @@ export class httpHelper {
     }
 
     redirectTo(url: string, params?: any): Promise<boolean> {
-        return params ? this._router.navigateByUrl(url, params) : this._router.navigateByUrl(url);
+        return params ? this._router.navigate([url, params]) : this._router.navigateByUrl(url);
     }
 }
 

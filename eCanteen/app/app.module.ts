@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header.component';
 import { FooterComponent } from './common/footer.component';
 import { SignupSinginComponent } from './viewcontroller/vendor/signupSignin.component';
+import { OrderStatusComponent } from './viewcontroller/vendor/orderStatus.component';
 
 // directives
 import { ButtonComponent } from './directives/button.component';
@@ -43,6 +44,7 @@ import { AddHttpHeaderInterceptor } from './common/services/HttpInterceptor';
         RouterModule.forRoot([
             //{ path: 'home', /*component: HomeComponent*/ },
             { path: '', component: SignupSinginComponent, pathMatch: 'full' },
+            { path: 'orderStatus', component: OrderStatusComponent },
             //{ path: '**', redirectTo: 'welcome', pathMatch: 'full' }
         ])
     ],
@@ -54,7 +56,8 @@ import { AddHttpHeaderInterceptor } from './common/services/HttpInterceptor';
         TextboxDecimalComponent,
         TextboxGeneralComponent,
         DecimalInputDirective,
-        SignupSinginComponent
+        SignupSinginComponent,
+        OrderStatusComponent
     ],
     exports: [
         TextboxGeneralComponent,

@@ -19,7 +19,7 @@ require("rxjs/add/observable/throw");
 var OrderService = (function () {
     function OrderService(_http) {
         this._http = _http;
-        this._orderServiceUrl = 'api/products/products.json';
+        this._orderServiceUrl = "http://localhost:2434/api/v2/Orders/";
     }
     OrderService.prototype.placeOrder = function (order) {
         return this._http.post(this._orderServiceUrl, order)
@@ -34,7 +34,9 @@ var OrderService = (function () {
             .catch(this.handleError);
     };
     OrderService.prototype.getVendorOrders = function (vendorId, menuType) {
-        return this._http.get(this._orderServiceUrl)
+        var httpParams = new http_1.HttpParams().set("vendorId", vendorId)
+            .set("menuType", menuType.toString());
+        return this._http.get(this._orderServiceUrl + "VendorOredrs", { params: httpParams })
             .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
@@ -43,7 +45,7 @@ var OrderService = (function () {
         var httpParams = new http_1.HttpParams().set("vendorId", vendorId)
             .set("menuType", menuType.toString())
             .set("tp", "true");
-        return this._http.get(this._orderServiceUrl, { params: httpParams })
+        return this._http.get(this._orderServiceUrl + "MenuWiseOredrs", { params: httpParams })
             .map(function (response) { return response; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);

@@ -18,6 +18,7 @@ using eCanteen.BussinessLogic;
 
 namespace eCanteen.Controllers
 {
+    [RoutePrefix("Orders")]
     public class OrderController : ApiController
     {
         private IOrderProvider OrderProvider
@@ -37,11 +38,13 @@ namespace eCanteen.Controllers
             return OrderProvider.GetConfirmedOrderDetail(orderId);
         }
 
+        [Route("VendorOredrs")]
         public List<OrderStatusDTO> Get(Guid vendorId, int menuType)
         {
             return OrderProvider.GetVendorOrderStatus(vendorId, menuType);
         }
 
+        [Route("MenuWiseOredrs")]
         public string Get(Guid vendorId, int menuType, bool tp)
         {
             return OrderProvider.GetMenuWiseStatusCount(vendorId, menuType);

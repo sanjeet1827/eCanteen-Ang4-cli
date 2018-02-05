@@ -46,7 +46,7 @@ export class SignupSinginComponent implements OnInit {
                         //$rootScope.vendorName = authenticatedVendor.name;
                         //$document[0].body.className = '';
 
-                        this._httpHelper.redirectTo("/orderStatus", { vendorId: authenticatedVendor.id });
+                        this._httpHelper.redirectTo("/orderStatus", { vendorId: authenticatedVendor.Id });
                     }
                     else {
                         this.vLoginModel.authenticated = false;

@@ -14,7 +14,7 @@ export class SignUp {
 
 /* Defines the Vendor entity */
 export class Vendor {
-    id: string;
+    Id: string;
     name: string;
     email: string;
     contact: string;

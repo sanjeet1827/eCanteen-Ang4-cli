@@ -11,16 +11,16 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#home" data-toggle="tab" (click)="loadOrders(vendorId,1)" aria-expanded="false">Breakfast {{vModel.breakfastOrderCount}}</a>
+                                <a data-toggle="tab" (click)="loadOrders(vendorId,1)" aria-expanded="false">Breakfast {{vModel.breakfastOrderCount}}</a>
                             </li>
                             <li class="">
-                                <a href="#profile" data-toggle="tab" (click)="loadOrders(vendorId,2)" aria-expanded="false">Lunch {{vModel.lunchOrderCount}}</a>
+                                <a  data-toggle="tab" (click)="loadOrders(vendorId,2)" aria-expanded="false">Lunch {{vModel.lunchOrderCount}}</a>
                             </li>
                             <li class="">
-                                <a href="#messages" data-toggle="tab" (click)="loadOrders(vendorId,3)" aria-expanded="false">Snacks {{vModel.snacksOrderCount}}</a>
+                                <a  data-toggle="tab" (click)="loadOrders(vendorId,3)" aria-expanded="false">Snacks {{vModel.snacksOrderCount}}</a>
                             </li>
                             <li class="">
-                                <a href="#settings" data-toggle="tab" (click)="loadOrders(vendorId,4)" aria-expanded="true">Dinner {{vModel.dinnerOrderCount}}</a>
+                                <a data-toggle="tab" (click)="loadOrders(vendorId,4)" aria-expanded="true">Dinner {{vModel.dinnerOrderCount}}</a>
                             </li>
                         </ul>
 
@@ -29,18 +29,18 @@
                             <div class="tab-pane fade active in" id="home">
                                 <div class="row" *ngIf="vModel.orderStatus!==undefined && vModel.orderStatus!==null && vModel.orderStatus.length>0">
                                     <div class="col-lg-3">
-                                        <div class="order-status-row" *ngFor="#item of vModel.orderStatus">
+                                        <div class="order-status-row" *ngFor="let item of vModel.orderStatus">
                                             <div style="cursor:pointer" (click)="vModel.loadOrderDetail(item.order.id)">
                                                 <div class="row order-status-row-first">
                                                     <div class="col-md-8">
                                                         <span> Order Token - {{item.order.tokenNo}} ({{item.order.orderAmount}} Rs.) </span>
                                                     </div>
                                                     <div class="col-md-4" style="text-align:end">
-                                                        <a ng-if="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
+                                                        <a *ngIf="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
 
-                                                        <a ng-if="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,1)">Ready</a>
+                                                        <a *ngIf="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,1)">Ready</a>
 
-                                                        <a ng-if="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,1)">Confirmation Sent</a>
+                                                        <a *ngIf="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,1)">Confirmation Sent</a>
                                                     </div>
                                                 </div>
                                                 <div class="row row order-status-row-second">
@@ -50,9 +50,9 @@
                                                 </div>
                                                 <div class="row row order-status-row-third">
                                                     <div class="col-md-12">
-                                                        <span *ngFor="oi in vModel.orderStatus[$index].orderedItems">
+                                                        <span *ngFor="let oi of vModel.orderStatus[$index].orderedItems">
                                                             {{oi.name}} ({{oi.quantity}})
-                                                            <!--<span ng-if="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
+                                                            <!--<span *ngIf="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
                                                         </span>
                                                     </div>
                                                 </div>
@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 order-status-row-detail-s">
-                                                <div class="row" *ngFor="#value of vModel.orderDetail.orderedItems">
+                                                <div class="row" *ngFor="let value of vModel.orderDetail.orderedItems">
                                                     <div class="col-md-12">
                                                         {{value.name}} ({{value.quantity}})
                                                     </div>
@@ -98,18 +98,18 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="profile">
-                                <div class="row" ng-show="vModel.orderStatus!==undefined && vModel.orderStatus!==null && vModel.orderStatus.length>0">
+                                <div class="row" *ngIf="vModel.orderStatus!==undefined && vModel.orderStatus!==null && vModel.orderStatus.length>0">
                                     <div class="col-lg-3">
-                                        <div class="order-status-row" *ngFor="#item of vModel.orderStatus">
+                                        <div class="order-status-row" *ngFor="let item of vModel.orderStatus">
                                             <div class="row order-status-row-first">
                                                 <div class="col-md-8">
                                                     <span> Order Token - {{item.order.tokenNo}} ({{item.order.orderAmount}} Rs.) </span>
                                                 </div>
                                                 <div class="col-md-4" style="text-align:end">
-                                                    <a ng-if="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
-                                                    <a ng-if="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,2)">Ready</a>
+                                                    <a *ngIf="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
+                                                    <a *ngIf="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,2)">Ready</a>
 
-                                                    <a ng-if="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,2)">Confirmation Sent</a>
+                                                    <a *ngIf="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,2)">Confirmation Sent</a>
                                                 </div>
                                             </div>
                                             <div class="row row order-status-row-second">
@@ -119,9 +119,9 @@
                                             </div>
                                             <div class="row row order-status-row-third">
                                                 <div class="col-md-12">
-                                                    <span *ngFor="#oi of vModel.orderStatus[$index].orderedItems">
+                                                    <span *ngFor="let oi of vModel.orderStatus[$index].orderedItems">
                                                         {{oi.name}} ({{oi.quantity}})
-                                                        <!--<span ng-if="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
+                                                        <!--<span *ngIf="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
                                                     </span>
                                                 </div>
                                             </div>
@@ -147,7 +147,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 order-status-row-detail-s">
-                                                <div class="row" *ngFor="#value of vModel.orderDetail.orderedItems">
+                                                <div class="row" *ngFor="let value of vModel.orderDetail.orderedItems">
                                                     <div class="col-md-12">
                                                         {{value.name}} ({{value.quantity}})
                                                     </div>
@@ -166,16 +166,16 @@
                             <div class="tab-pane fade" id="messages">
                                 <div class="row" *ngIf="vModel.orderStatus!==undefined && vModel.orderStatus!==null && vModel.orderStatus.length>0">
                                     <div class="col-lg-3">
-                                        <div class="order-status-row" *ngFor="#item of vModel.orderStatus">
+                                        <div class="order-status-row" *ngFor="let item of vModel.orderStatus">
                                             <div class="row order-status-row-first">
                                                 <div class="col-md-8">
                                                     <span> Order Token - {{item.order.tokenNo}} ({{item.order.orderAmount}} Rs.) </span>
                                                 </div>
                                                 <div class="col-md-4" style="text-align:end">
-                                                    <a ng-if="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
-                                                    <a ng-if="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,3)">Ready</a>
+                                                    <a *ngIf="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
+                                                    <a *ngIf="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,3)">Ready</a>
 
-                                                    <a ng-if="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,3)">Confirmation Sent</a>
+                                                    <a *ngIf="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,3)">Confirmation Sent</a>
                                                 </div>
                                             </div>
                                             <div class="row row order-status-row-second">
@@ -185,9 +185,9 @@
                                             </div>
                                             <div class="row row order-status-row-third">
                                                 <div class="col-md-12">
-                                                    <span *ngFor="#oi of vModel.orderStatus[$index].orderedItems">
+                                                    <span *ngFor="let oi of vModel.orderStatus[$index].orderedItems">
                                                         {{oi.name}} ({{oi.quantity}})
-                                                        <!--<span ng-if="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
+                                                        <!--<span *ngIf="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
                                                     </span>
                                                 </div>
                                             </div>
@@ -213,7 +213,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 order-status-row-detail-s">
-                                                <div class="row" *ngFor="#value of vModel.orderDetail.orderedItems">
+                                                <div class="row" *ngFor="let value of vModel.orderDetail.orderedItems">
                                                     <div class="col-md-12">
                                                         {{value.name}} ({{value.quantity}})
                                                     </div>
@@ -230,18 +230,18 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="settings">
-                                <div class="row" ng-show="vModel.orderStatus!==undefined && vModel.orderStatus!==null && vModel.orderStatus.length>0">
+                                <div class="row" *ngIf="vModel.orderStatus!==undefined && vModel.orderStatus!==null && vModel.orderStatus.length>0">
                                     <div class="col-lg-3">
-                                        <div class="order-status-row" *ngFor="#item of vModel.orderStatus">
+                                        <div class="order-status-row" *ngFor="let item of vModel.orderStatus">
                                             <div class="row order-status-row-first">
                                                 <div class="col-md-8">
                                                     <span> Order Token - {{item.order.tokenNo}} ({{item.order.orderAmount}} Rs.) </span>
                                                 </div>
                                                 <div class="col-md-4" style="text-align:end">
-                                                    <a ng-if="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
-                                                    <a ng-if="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,4)">Ready</a>
+                                                    <a *ngIf="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
+                                                    <a *ngIf="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,4)">Ready</a>
 
-                                                    <a ng-if="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,4)">Confirmation Sent</a>
+                                                    <a *ngIf="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,4)">Confirmation Sent</a>
                                                 </div>
                                             </div>
                                             <div class="row row order-status-row-second">
@@ -251,9 +251,9 @@
                                             </div>
                                             <div class="row row order-status-row-third">
                                                 <div class="col-md-12">
-                                                    <span *ngFor="oi in vModel.orderStatus[$index].OrderedItems">
+                                                    <span *ngFor="let oi of vModel.orderStatus[$index].orderedItems">
                                                         {{oi.name}} ({{oi.quantity}})
-                                                        <!--<span ng-if="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
+                                                        <!--<span *ngIf="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
                                                     </span>
                                                 </div>
                                             </div>
@@ -279,7 +279,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 order-status-row-detail-s">
-                                                <div class="row" *ngFor="#value of vModel.orderDetail.orderedItems">
+                                                <div class="row" *ngFor="let value of vModel.orderDetail.orderedItems">
                                                     <div class="col-md-12">
                                                         {{value.name}} ({{value.quantity}})
                                                     </div>
@@ -339,7 +339,7 @@
             <td></td>
         </tr>
 
-        <tr class="item" *ngFor="value in vModel.acceptedOrder.OrderedItems">
+        <tr class="item" *ngFor="let value of vModel.acceptedOrder.OrderedItems">
             <td>
                 {{value.name}} ({{value.quantity}})
             </td>

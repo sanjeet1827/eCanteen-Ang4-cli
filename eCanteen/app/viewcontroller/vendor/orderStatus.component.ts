@@ -8,9 +8,9 @@ import { OrderStatus, OrderStatusData } from '../../Models/AppModels';
 import { IOrderStatus } from '../../Types/IOrderStatus';
 
 @Component({
-    templateUrl: 'SignupSinginComponent.html'
+    templateUrl: 'orderStatus.component.html'
 })
-export class SignupSinginComponent implements OnInit {
+export class OrderStatusComponent implements OnInit {
 
     public vendorId: string;
     public vModel: OrderStatusData;
@@ -113,13 +113,18 @@ export class SignupSinginComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        
+        this.route.params.subscribe(params => {
 
-        this.vendorId = this.route.snapshot.queryParams["vendorId"];
-        this.getBreakfastOrderCount(this.vendorId, 1);
-        this.getLunchOrderCount(this.vendorId, 2);
-        this.getSnacksOrderCount(this.vendorId, 3);
-        this.getDinnerOrderCount(this.vendorId, 4);
+            this.vendorId = params["vendorId"];
+            this.getBreakfastOrderCount(this.vendorId, 1);
+            this.getLunchOrderCount(this.vendorId, 2);
+            this.getSnacksOrderCount(this.vendorId, 3);
+            this.getDinnerOrderCount(this.vendorId, 4);
 
-        this.loadOrders(this.vendorId, 1);
+            //this.loadOrders(this.vendorId, 1);
+        });
+
+        
     }
 }

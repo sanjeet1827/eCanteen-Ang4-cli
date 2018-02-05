@@ -158,7 +158,7 @@
     <Content Include="app\viewcontroller\orderShortDetail.html" />
     <Content Include="app\viewcontroller\vendor\allOrderStatus.html" />
     <Content Include="app\viewcontroller\vendor\currentMenu.html" />
-    <Content Include="app\viewcontroller\vendor\orderStatus.html" />
+    <Content Include="app\viewcontroller\vendor\orderStatus.component.html" />
     <Content Include="app\viewcontroller\vendor\currentOrders.html" />
     <Content Include="app\viewcontroller\vendor\menu.html" />
     <Content Include="app\viewcontroller\vendor\orderStatusCtrl.js" />
