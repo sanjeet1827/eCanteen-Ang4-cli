@@ -19,7 +19,6 @@ var SignupSinginComponent = (function () {
         this._orderService = _orderService;
         this._httpHelper = _httpHelper;
         this.route = route;
-        this.menuFor = 1;
         this.vModel = new AppModels_1.OrderStatusData();
         this.vModel.orderStatus = new Array();
         this.vModel.displayVendorSlider = false;
@@ -102,12 +101,12 @@ var SignupSinginComponent = (function () {
         });
     };
     SignupSinginComponent.prototype.ngOnInit = function () {
-        var vendorUId = this.route.snapshot.queryParams["vendorId"];
-        this.getBreakfastOrderCount(vendorUId, 1);
-        this.getLunchOrderCount(vendorUId, 2);
-        this.getSnacksOrderCount(vendorUId, 3);
-        this.getDinnerOrderCount(vendorUId, 4);
-        this.loadOrders(vendorUId, 1);
+        this.vendorId = this.route.snapshot.queryParams["vendorId"];
+        this.getBreakfastOrderCount(this.vendorId, 1);
+        this.getLunchOrderCount(this.vendorId, 2);
+        this.getSnacksOrderCount(this.vendorId, 3);
+        this.getDinnerOrderCount(this.vendorId, 4);
+        this.loadOrders(this.vendorId, 1);
     };
     return SignupSinginComponent;
 }());

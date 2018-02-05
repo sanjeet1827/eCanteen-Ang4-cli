@@ -12,8 +12,8 @@ import { IOrderStatus } from '../../Types/IOrderStatus';
 })
 export class SignupSinginComponent implements OnInit {
 
-    menuFor = 1;
-    vModel: OrderStatusData;
+    public vendorId: string;
+    public vModel: OrderStatusData;
 
     constructor(private _orderService: OrderService, private _httpHelper: httpHelper,
         private route: ActivatedRoute) {
@@ -114,13 +114,12 @@ export class SignupSinginComponent implements OnInit {
 
     ngOnInit(): void {
 
-        let vendorUId = this.route.snapshot.queryParams["vendorId"];
-        this.getBreakfastOrderCount(vendorUId, 1);
-        this.getLunchOrderCount(vendorUId, 2);
-        this.getSnacksOrderCount(vendorUId, 3);
-        this.getDinnerOrderCount(vendorUId, 4);
+        this.vendorId = this.route.snapshot.queryParams["vendorId"];
+        this.getBreakfastOrderCount(this.vendorId, 1);
+        this.getLunchOrderCount(this.vendorId, 2);
+        this.getSnacksOrderCount(this.vendorId, 3);
+        this.getDinnerOrderCount(this.vendorId, 4);
 
-        this.loadOrders(vendorUId, 1);
+        this.loadOrders(this.vendorId, 1);
     }
-
 }
