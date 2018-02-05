@@ -9,17 +9,16 @@
 
 namespace eCanteen.DataAccess
 {
-    using eCanteen.ModelEntities;
+    using ModelEntities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class eCanteenEntities : DbContext
     {
         public eCanteenEntities()
             : base("name=eCanteenEntities")
         {
-            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

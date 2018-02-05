@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\Internal Projects\ecanteen\eCanteenDataAccess\eCanteen.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Internal Projects\GitHub\eCanteen-Ang4\eCanteenDataAccess\eCanteen.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

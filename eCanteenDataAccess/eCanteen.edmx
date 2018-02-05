@@ -343,7 +343,7 @@
           <NavigationProperty Name="OrderItem" Relationship="eCanteenModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
           <NavigationProperty Name="Payment" Relationship="eCanteenModel.FK_Payment_Order" FromRole="Order" ToRole="Payment" />
           <Property Name="OrderDateTime" Type="DateTime" Precision="7" />
-          <Property Name="TokenNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TokenNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Accepted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderItem">

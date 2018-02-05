@@ -122,7 +122,7 @@ export class OrderStatusComponent implements OnInit {
             this.getSnacksOrderCount(this.vendorId, 3);
             this.getDinnerOrderCount(this.vendorId, 4);
 
-            //this.loadOrders(this.vendorId, 1);
+            this.loadOrders(this.vendorId, 1);
         });
 
         

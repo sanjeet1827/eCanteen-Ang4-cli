@@ -108,7 +108,7 @@ var OrderStatusComponent = (function () {
             _this.getLunchOrderCount(_this.vendorId, 2);
             _this.getSnacksOrderCount(_this.vendorId, 3);
             _this.getDinnerOrderCount(_this.vendorId, 4);
-            //this.loadOrders(this.vendorId, 1);
+            _this.loadOrders(_this.vendorId, 1);
         });
     };
     return OrderStatusComponent;

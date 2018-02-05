@@ -32,7 +32,7 @@ namespace eCanteen.ModelEntities
         public int Status { get; set; }
         public int PaymentStatus { get; set; }
         public Nullable<System.DateTime> OrderDateTime { get; set; }
-        public long TokenNo { get; set; }
+        public int TokenNo { get; set; }
         public bool Accepted { get; set; }
     
         public virtual Customer Customer { get; set; }
