@@ -30,12 +30,12 @@ var OrderStatusComponent = (function () {
         var _this = this;
         this._orderService.getVendorOrders(vendorId, menuType).subscribe(function (ordersStatus) {
             _this.vModel.orderStatus = ordersStatus;
-            _this.loadOrderDetail(_this.vModel.orderStatus[0].order.id);
+            _this.loadOrderDetail(ordersStatus[0].Order.Id);
         });
     };
     OrderStatusComponent.prototype.loadOrderDetail = function (orderId) {
         var orderDetail = this.vModel.orderStatus.filter(function (data) {
-            return data.order.id === orderId;
+            return data.Order.Id === orderId;
         });
         this.vModel.orderDetail = orderDetail[0];
     };
@@ -76,7 +76,7 @@ var OrderStatusComponent = (function () {
                 _this.vModel.dinnerOrderCount = data;
             var itemIndex = -1;
             _this.vModel.orderStatus.some(function (data, i) {
-                return data.order.id === orderId ? (itemIndex = i, true) : false;
+                return data.Order.Id === orderId ? (itemIndex = i, true) : false;
             });
             _this.vModel.orderStatus[itemIndex].ConfirmedReady = true;
         });
@@ -85,16 +85,16 @@ var OrderStatusComponent = (function () {
         var _this = this;
         this._orderService.acceptOrder(orderId, vendorId).subscribe(function (data) {
             var acceptedOrder = _this.vModel.orderStatus.filter(function (data) {
-                return data.order.id === orderId;
+                return data.Order.Id === orderId;
             });
             var itemIndex = -1;
             _this.vModel.orderStatus.some(function (data, i) {
-                return data.order.id === orderId ? (itemIndex = i, true) : false;
+                return data.Order.Id === orderId ? (itemIndex = i, true) : false;
             });
             _this.vModel.acceptedOrder = acceptedOrder[0];
             if (data) {
                 //setTimeout(function () {
-                _this.vModel.orderStatus[itemIndex].order.accepted = true;
+                _this.vModel.orderStatus[itemIndex].Order.Accepted = true;
                 window.print();
                 //}, 1000);
             }
@@ -105,9 +105,9 @@ var OrderStatusComponent = (function () {
         this.route.params.subscribe(function (params) {
             _this.vendorId = params["vendorId"];
             _this.getBreakfastOrderCount(_this.vendorId, 1);
-            _this.getLunchOrderCount(_this.vendorId, 2);
-            _this.getSnacksOrderCount(_this.vendorId, 3);
-            _this.getDinnerOrderCount(_this.vendorId, 4);
+            //this.getLunchOrderCount(this.vendorId, 2);
+            //this.getSnacksOrderCount(this.vendorId, 3);
+            //this.getDinnerOrderCount(this.vendorId, 4);
             _this.loadOrders(_this.vendorId, 1);
         });
     };

@@ -52,9 +52,9 @@ exports.OrderDetail = OrderDetail;
 /* Defines the OrderStatus entity */
 var OrderStatus = (function () {
     function OrderStatus() {
-        this.order = new Order();
-        this.customer = new Customer();
-        this.orderedItems = new Array();
+        this.Order = new Order();
+        this.Customer = new Customer();
+        this.OrderedItems = new Array();
     }
     return OrderStatus;
 }());

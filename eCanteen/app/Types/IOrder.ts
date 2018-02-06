@@ -1,16 +1,16 @@
 ﻿export interface IOrder
 {
-    id: string;
-    customerId: string;
-    vendorId: string;
-    subTotal: number;
-    vat: number;
-    discount: number;
-    total: number;
-    timeSlot: number;
-    status: number;
-    paymentStatus: number;
-    orderDateTime: Date;
-    tokenNo: number;
-    accepted: boolean;
+    Id: string;
+    CustomerId: string;
+    VendorId: string;
+    SubTotal: number;
+    Vat: number;
+    Discount: number;
+    Total: number;
+    TimeSlot: number;
+    Status: number;
+    PaymentStatus: number;
+    OrderDateTime: Date;
+    TokenNo: number;
+    Accepted: boolean;
 }

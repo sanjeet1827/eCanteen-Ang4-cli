@@ -29,14 +29,15 @@ export class OrderStatusComponent implements OnInit {
         this._orderService.getVendorOrders(vendorId, menuType).subscribe(
             (ordersStatus: Array<IOrderStatus>) => {
                 this.vModel.orderStatus = ordersStatus;
-                this.loadOrderDetail(this.vModel.orderStatus[0].order.id);
+                this.loadOrderDetail(ordersStatus[0].Order.Id);
             }
         );
+       
     }
 
     loadOrderDetail(orderId): void {
         var orderDetail = this.vModel.orderStatus.filter(function (data) {
-            return data.order.id === orderId;
+            return data.Order.Id === orderId;
         })
 
         this.vModel.orderDetail = orderDetail[0];
@@ -80,7 +81,7 @@ export class OrderStatusComponent implements OnInit {
             let itemIndex = -1;
 
             this.vModel.orderStatus.some(function (data, i) {
-                return data.order.id === orderId ? (itemIndex = i, true) : false;
+                return data.Order.Id === orderId ? (itemIndex = i, true) : false;
             });
 
             this.vModel.orderStatus[itemIndex].ConfirmedReady = true;
@@ -91,20 +92,20 @@ export class OrderStatusComponent implements OnInit {
         this._orderService.acceptOrder(orderId, vendorId).subscribe((data: boolean) => {
 
             let acceptedOrder = this.vModel.orderStatus.filter(function (data) {
-                return data.order.id === orderId;
+                return data.Order.Id === orderId;
             });
 
             let itemIndex = -1;
 
             this.vModel.orderStatus.some(function (data, i) {
-                return data.order.id === orderId ? (itemIndex = i, true) : false;
+                return data.Order.Id === orderId ? (itemIndex = i, true) : false;
             });
 
             this.vModel.acceptedOrder = acceptedOrder[0];
 
             if (data) {
                 //setTimeout(function () {
-                this.vModel.orderStatus[itemIndex].order.accepted = true;
+                this.vModel.orderStatus[itemIndex].Order.Accepted = true;
                 window.print();
                 //}, 1000);
             }
@@ -124,7 +125,5 @@ export class OrderStatusComponent implements OnInit {
 
             this.loadOrders(this.vendorId, 1);
         });
-
-        
     }
 }

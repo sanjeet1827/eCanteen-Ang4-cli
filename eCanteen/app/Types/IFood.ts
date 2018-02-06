@@ -1,9 +1,9 @@
 ﻿export interface IFood {
-    id: string;
-    name: string;
-    price: number;
-    description: string;
-    type: number;
-    lastUpdate: Date;
-    quantity: number;
+    Id: string;
+    Name: string;
+    Price: number;
+    Description: string;
+    Type: number;
+    LastUpdate: Date;
+    Quantity: number;
 }

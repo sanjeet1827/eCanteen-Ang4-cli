@@ -34,41 +34,41 @@ export class SignIn {
 
 /* Defines the Customer entity */
 export class Customer {
-    id: string;
-    name: string;
-    email: string;
-    contact: string;
-    employer: string;
-    password: string;
-    active: boolean;
+    Id: string;
+    Name: string;
+    Email: string;
+    Contact: string;
+    Employer: string;
+    Password: string;
+    Active: boolean;
 }
 
 /* Defines the Food entity */
 export class Food {
-    id: string;
-    name: string;
-    price: number;
-    description: string;
-    type: number;
-    lastUpdate: Date;
-    quantity: number;
+    Id: string;
+    Name: string;
+    Price: number;
+    Description: string;
+    Type: number;
+    LastUpdate: Date;
+    Quantity: number;
 }
 
 /* Defines the Order entity */
 export class Order {
-    id: string;
-    customerId: string;
-    vendorId: string;
-    subTotal: number;
-    vat: number;
-    discount: number;
-    total: number;
-    timeSlot: number;
-    status: number;
-    paymentStatus: number;
-    orderDateTime: Date;
-    tokenNo: number;
-    accepted: boolean;
+    Id: string;
+    CustomerId: string;
+    VendorId: string;
+    SubTotal: number;
+    Vat: number;
+    Discount: number;
+    Total: number;
+    TimeSlot: number;
+    Status: number;
+    PaymentStatus: number;
+    OrderDateTime: Date;
+    TokenNo: number;
+    Accepted: boolean;
 }
 
 /* Defines the OrderDetail entity */
@@ -82,16 +82,16 @@ export class OrderDetail {
 
 /* Defines the OrderStatus entity */
 export class OrderStatus {
-    order: Order;
-    customer: Customer;
-    orderedItems: Array<Food>;
-    orderedItemStatusCount: string;
+    Order: Order;
+    Customer: Customer;
+    OrderedItems: Array<Food>;
+    OrderedItemStatusCount: string;
     ConfirmedReady: boolean;
 
     constructor() {
-        this.order = new Order();
-        this.customer = new Customer();
-        this.orderedItems = new Array<Food>();
+        this.Order = new Order();
+        this.Customer = new Customer();
+        this.OrderedItems = new Array<Food>();
     }
 }
 

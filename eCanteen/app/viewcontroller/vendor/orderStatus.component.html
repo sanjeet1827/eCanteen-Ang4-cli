@@ -14,10 +14,10 @@
                                 <a data-toggle="tab" (click)="loadOrders(vendorId,1)" aria-expanded="false">Breakfast {{vModel.breakfastOrderCount}}</a>
                             </li>
                             <li class="">
-                                <a  data-toggle="tab" (click)="loadOrders(vendorId,2)" aria-expanded="false">Lunch {{vModel.lunchOrderCount}}</a>
+                                <a data-toggle="tab" (click)="loadOrders(vendorId,2)" aria-expanded="false">Lunch {{vModel.lunchOrderCount}}</a>
                             </li>
                             <li class="">
-                                <a  data-toggle="tab" (click)="loadOrders(vendorId,3)" aria-expanded="false">Snacks {{vModel.snacksOrderCount}}</a>
+                                <a data-toggle="tab" (click)="loadOrders(vendorId,3)" aria-expanded="false">Snacks {{vModel.snacksOrderCount}}</a>
                             </li>
                             <li class="">
                                 <a data-toggle="tab" (click)="loadOrders(vendorId,4)" aria-expanded="true">Dinner {{vModel.dinnerOrderCount}}</a>
@@ -33,25 +33,25 @@
                                             <div style="cursor:pointer" (click)="vModel.loadOrderDetail(item.order.id)">
                                                 <div class="row order-status-row-first">
                                                     <div class="col-md-8">
-                                                        <span> Order Token - {{item.order.tokenNo}} ({{item.order.orderAmount}} Rs.) </span>
+                                                        <span> Order Token - {{item.Order.TokenNo}} ({{item.Order.OrderAmount}} Rs.) </span>
                                                     </div>
                                                     <div class="col-md-4" style="text-align:end">
-                                                        <a *ngIf="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
+                                                        <a *ngIf="!item.Order.Accepted && item.order.Status===0" (click)="printOrder(item.Order.Id,item.Order.VenderId)">Accept</a>
 
-                                                        <a *ngIf="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,1)">Ready</a>
+                                                        <a *ngIf="item.Order.Accepted && !item.ConfirmedReady && item.Order.Status===0" (click)="vModel.updateOrderStatus(item.Order.Id,item.Order.VenderId,1)">Ready</a>
 
-                                                        <a *ngIf="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,1)">Confirmation Sent</a>
+                                                        <a *ngIf="item.Order.Status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.Order.Id,item.Order.VenderId,1)">Confirmation Sent</a>
                                                     </div>
                                                 </div>
                                                 <div class="row row order-status-row-second">
                                                     <div class="col-md-12">
-                                                        <span> {{item.customer.name}} - {{item.customer.contact}} </span>
+                                                        <span> {{item.Customer.Name}} - {{item.Customer.Contact}} </span>
                                                     </div>
                                                 </div>
                                                 <div class="row row order-status-row-third">
                                                     <div class="col-md-12">
-                                                        <span *ngFor="let oi of vModel.orderStatus[$index].orderedItems">
-                                                            {{oi.name}} ({{oi.quantity}})
+                                                        <span *ngFor="let oi of item.OrderedItems">
+                                                            {{oi.Name}} ({{oi.Quantity}})
                                                             <!--<span *ngIf="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
                                                         </span>
                                                     </div>
@@ -66,12 +66,12 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <span>
-                                                    Order Token - {{vModel.orderDetail.order.tokenNo}} of Amount {{vModel.orderDetail.order.total}} Rs.
+                                                    Order Token - {{vModel.orderDetail.Order.TokenNo}} of Amount {{vModel.orderDetail.Order.Total}} Rs.
                                                 </span>
                                             </div>
                                             <div class="col-md-6">
                                                 <span class="order-status-row-detail-f">
-                                                    {{vModel.orderDetail.customer.name}} - {{vModel.orderDetail.customer.contact}}, {{vModel.orderDetail.customer.email}}
+                                                    {{vModel.orderDetail.Customer.Name}} - {{vModel.OrderDetail.Customer.Contact}}, {{vModel.OrderDetail.Customer.Email}}
                                                 </span>
                                             </div>
                                             <div class="col-md-2">
@@ -80,9 +80,9 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 order-status-row-detail-s">
-                                                <div class="row" *ngFor="let value of vModel.orderDetail.orderedItems">
+                                                <div class="row" *ngFor="let value of vModel.orderDetail.OrderedItems">
                                                     <div class="col-md-12">
-                                                        {{value.name}} ({{value.quantity}})
+                                                        {{value.Name}} ({{value.Quantity}})
                                                     </div>
                                                 </div>
                                             </div>
@@ -103,24 +103,24 @@
                                         <div class="order-status-row" *ngFor="let item of vModel.orderStatus">
                                             <div class="row order-status-row-first">
                                                 <div class="col-md-8">
-                                                    <span> Order Token - {{item.order.tokenNo}} ({{item.order.orderAmount}} Rs.) </span>
+                                                    <span> Order Token - {{item.Order.TokenNo}} ({{item.Order.OrderAmount}} Rs.) </span>
                                                 </div>
                                                 <div class="col-md-4" style="text-align:end">
-                                                    <a *ngIf="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
-                                                    <a *ngIf="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,2)">Ready</a>
+                                                    <a *ngIf="!item.Order.Accepted && item.Order.Status===0" (click)="printOrder(item.Order.Id,item.Order.VenderId)">Accept</a>
+                                                    <a *ngIf="item.Order.Accepted && !item.ConfirmedReady && item.Order.Status===0" (click)="vModel.updateOrderStatus(item.Order.Id,item.Order.VenderId,2)">Ready</a>
 
-                                                    <a *ngIf="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,2)">Confirmation Sent</a>
+                                                    <a *ngIf="item.Order.Status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.Order.Id,item.Order.VenderId,2)">Confirmation Sent</a>
                                                 </div>
                                             </div>
                                             <div class="row row order-status-row-second">
                                                 <div class="col-md-12">
-                                                    <span> {{item.customer.name}} - {{item.customer.contact}} </span>
+                                                    <span> {{item.Customer.Name}} - {{item.Customer.Contact}} </span>
                                                 </div>
                                             </div>
                                             <div class="row row order-status-row-third">
                                                 <div class="col-md-12">
-                                                    <span *ngFor="let oi of vModel.orderStatus[$index].orderedItems">
-                                                        {{oi.name}} ({{oi.quantity}})
+                                                    <span *ngFor="let oi of vModel.orderStatus[$index].OrderedItems">
+                                                        {{oi.Name}} ({{oi.Quantity}})
                                                         <!--<span *ngIf="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
                                                     </span>
                                                 </div>
@@ -133,12 +133,12 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <span>
-                                                    Order Token - {{vModel.orderDetail.order.tokenNo}} of Amount {{vModel.orderDetail.order.total}} Rs.
+                                                    Order Token - {{vModel.orderDetail.Order.TokenNo}} of Amount {{vModel.orderDetail.Order.Total}} Rs.
                                                 </span>
                                             </div>
                                             <div class="col-md-6">
                                                 <span class="order-status-row-detail-f">
-                                                    {{vModel.orderDetail.customer.name}} - {{vModel.orderDetail.customer.contact}}, {{vModel.orderDetail.customer.email}}
+                                                    {{vModel.orderDetail.Customer.Name}} - {{vModel.orderDetail.Customer.Contact}}, {{vModel.orderDetail.Customer.Email}}
                                                 </span>
                                             </div>
                                             <div class="col-md-2">
@@ -147,9 +147,9 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 order-status-row-detail-s">
-                                                <div class="row" *ngFor="let value of vModel.orderDetail.orderedItems">
+                                                <div class="row" *ngFor="let value of vModel.orderDetail.OrderedItems">
                                                     <div class="col-md-12">
-                                                        {{value.name}} ({{value.quantity}})
+                                                        {{value.Name}} ({{value.Quantity}})
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,24 +169,24 @@
                                         <div class="order-status-row" *ngFor="let item of vModel.orderStatus">
                                             <div class="row order-status-row-first">
                                                 <div class="col-md-8">
-                                                    <span> Order Token - {{item.order.tokenNo}} ({{item.order.orderAmount}} Rs.) </span>
+                                                    <span> Order Token - {{item.Order.TokenNo}} ({{item.Order.OrderAmount}} Rs.) </span>
                                                 </div>
                                                 <div class="col-md-4" style="text-align:end">
-                                                    <a *ngIf="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
-                                                    <a *ngIf="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,3)">Ready</a>
+                                                    <a *ngIf="!item.Order.Accepted && item.Order.Status===0" (click)="printOrder(item.Order.Id,item.Order.VenderId)">Accept</a>
+                                                    <a *ngIf="item.Order.Accepted && !item.ConfirmedReady && item.Order.Status===0" (click)="vModel.updateOrderStatus(item.Order.Id,item.Order.VenderId,3)">Ready</a>
 
-                                                    <a *ngIf="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,3)">Confirmation Sent</a>
+                                                    <a *ngIf="item.Order.Status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.Order.Id,item.Order.VenderId,3)">Confirmation Sent</a>
                                                 </div>
                                             </div>
                                             <div class="row row order-status-row-second">
                                                 <div class="col-md-12">
-                                                    <span> {{item.customer.name}} - {{item.customer.contact}} </span>
+                                                    <span> {{item.Customer.Name}} - {{item.Customer.Contact}} </span>
                                                 </div>
                                             </div>
                                             <div class="row row order-status-row-third">
                                                 <div class="col-md-12">
-                                                    <span *ngFor="let oi of vModel.orderStatus[$index].orderedItems">
-                                                        {{oi.name}} ({{oi.quantity}})
+                                                    <span *ngFor="let oi of vModel.orderStatus[$index].OrderedItems">
+                                                        {{oi.Name}} ({{oi.Quantity}})
                                                         <!--<span *ngIf="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
                                                     </span>
                                                 </div>
@@ -199,12 +199,12 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <span>
-                                                    Order Token - {{vModel.orderDetail.order.tokenNo}} of Amount {{vModel.orderDetail.order.total}} Rs.
+                                                    Order Token - {{vModel.orderDetail.Order.TokenNo}} of Amount {{vModel.orderDetail.Order.Total}} Rs.
                                                 </span>
                                             </div>
                                             <div class="col-md-6">
                                                 <span class="order-status-row-detail-f">
-                                                    {{vModel.orderDetail.customer.name}} - {{vModel.orderDetail.customer.contact}}, {{vModel.orderDetail.customer.email}}
+                                                    {{vModel.orderDetail.Customer.Name}} - {{vModel.orderDetail.Customer.Contact}}, {{vModel.orderDetail.Customer.Email}}
                                                 </span>
                                             </div>
                                             <div class="col-md-2">
@@ -213,9 +213,9 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 order-status-row-detail-s">
-                                                <div class="row" *ngFor="let value of vModel.orderDetail.orderedItems">
+                                                <div class="row" *ngFor="let value of vModel.orderDetail.OrderedItems">
                                                     <div class="col-md-12">
-                                                        {{value.name}} ({{value.quantity}})
+                                                        {{value.Name}} ({{value.Quantity}})
                                                     </div>
                                                 </div>
                                             </div>
@@ -235,24 +235,24 @@
                                         <div class="order-status-row" *ngFor="let item of vModel.orderStatus">
                                             <div class="row order-status-row-first">
                                                 <div class="col-md-8">
-                                                    <span> Order Token - {{item.order.tokenNo}} ({{item.order.orderAmount}} Rs.) </span>
+                                                    <span> Order Token - {{item.Order.TokenNo}} ({{item.Order.OrderAmount}} Rs.) </span>
                                                 </div>
                                                 <div class="col-md-4" style="text-align:end">
-                                                    <a *ngIf="!item.order.accepted && item.order.status===0" (click)="printOrder(item.order.id,item.order.venderId)">Accept</a>
-                                                    <a *ngIf="item.order.accepted && !item.ConfirmedReady && item.order.status===0" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,4)">Ready</a>
+                                                    <a *ngIf="!item.Order.Accepted && item.Order.Status===0" (click)="printOrder(item.Order.Id,item.Order.VenderId)">Accept</a>
+                                                    <a *ngIf="item.Order.Accepted && !item.ConfirmedReady && item.Order.Status===0" (click)="vModel.updateOrderStatus(item.Order.Id,item.Order.VenderId,4)">Ready</a>
 
-                                                    <a *ngIf="item.order.status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.order.id,item.order.venderId,4)">Confirmation Sent</a>
+                                                    <a *ngIf="item.Order.Status===1 || item.ConfirmedReady" (click)="vModel.updateOrderStatus(item.Order.Id,item.Order.VenderId,4)">Confirmation Sent</a>
                                                 </div>
                                             </div>
                                             <div class="row row order-status-row-second">
                                                 <div class="col-md-12">
-                                                    <span> {{item.customer.name}} - {{item.customer.contact}} </span>
+                                                    <span> {{item.Customer.Name}} - {{item.Customer.Contact}} </span>
                                                 </div>
                                             </div>
                                             <div class="row row order-status-row-third">
                                                 <div class="col-md-12">
-                                                    <span *ngFor="let oi of vModel.orderStatus[$index].orderedItems">
-                                                        {{oi.name}} ({{oi.quantity}})
+                                                    <span *ngFor="let oi of vModel.orderStatus[$index].OrderedItems">
+                                                        {{oi.Name}} ({{oi.Quantity}})
                                                         <!--<span *ngIf="($index+1)!==(vModel.orderStatus[$index].OrderedItems.length)">,</span>-->
                                                     </span>
                                                 </div>
@@ -265,12 +265,12 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <span>
-                                                    Order Token - {{vModel.orderDetail.order.tokenNo}} of Amount {{vModel.orderDetail.order.total}} Rs.
+                                                    Order Token - {{vModel.orderDetail.Order.TokenNo}} of Amount {{vModel.orderDetail.Order.Total}} Rs.
                                                 </span>
                                             </div>
                                             <div class="col-md-6">
                                                 <span class="order-status-row-detail-f">
-                                                    {{vModel.orderDetail.customer.name}} - {{vModel.orderDetail.customer.contact}}, {{vModel.orderDetail.customer.email}}
+                                                    {{vModel.orderDetail.Customer.Name}} - {{vModel.orderDetail.Customer.Contact}}, {{vModel.orderDetail.Customer.Email}}
                                                 </span>
                                             </div>
                                             <div class="col-md-2">
@@ -279,9 +279,9 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-12 order-status-row-detail-s">
-                                                <div class="row" *ngFor="let value of vModel.orderDetail.orderedItems">
+                                                <div class="row" *ngFor="let value of vModel.orderDetail.OrderedItems">
                                                     <div class="col-md-12">
-                                                        {{value.name}} ({{value.quantity}})
+                                                        {{value.Name}} ({{value.Quantity}})
                                                     </div>
                                                 </div>
                                             </div>
@@ -295,6 +295,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <!-- .panel-body -->
@@ -315,8 +316,8 @@
                             OrderId:
                         </td>
                         <td>
-                            {{vModel.acceptedOrder.order.tokenNo}}
-                            
+                            {{vModel.acceptedOrder.Order.TokenNo}}
+
                         </td>
                     </tr>
                     <tr>
@@ -324,7 +325,7 @@
                             Customer:
                         </td>
                         <td>
-                            {{vModel.acceptedOrder.customer.name}}
+                            {{vModel.acceptedOrder.Customer.Name}}
                         </td>
                     </tr>
                 </table>
@@ -341,12 +342,12 @@
 
         <tr class="item" *ngFor="let value of vModel.acceptedOrder.OrderedItems">
             <td>
-                {{value.name}} ({{value.quantity}})
+                {{value.Name}} ({{value.Quantity}})
             </td>
 
             <td></td>
         </tr>
     </table>
-    
+
 </div>
 

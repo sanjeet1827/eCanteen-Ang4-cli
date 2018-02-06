@@ -1,9 +1,9 @@
 ﻿export interface ICustomer {
-    id: string;
-    name: string;
-    email: string;
-    contact: string;
-    employer: string;
-    password: string;
-    active: boolean;
+    Id: string;
+    Name: string;
+    Email: string;
+    Contact: string;
+    Employer: string;
+    Password: string;
+    Active: boolean;
 }
