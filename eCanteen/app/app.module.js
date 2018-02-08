@@ -18,6 +18,7 @@ var app_component_1 = require("./app.component");
 var header_component_1 = require("./common/header.component");
 var footer_component_1 = require("./common/footer.component");
 var signupSignin_component_1 = require("./viewcontroller/vendor/signupSignin.component");
+var ReactiveSignupSignin_component_1 = require("./viewcontroller/vendor/ReactiveSignupSignin.component");
 var orderStatus_component_1 = require("./viewcontroller/vendor/orderStatus.component");
 // directives
 var button_component_1 = require("./directives/button.component");
@@ -48,9 +49,11 @@ AppModule = __decorate([
             http_1.HttpClientModule,
             animations_1.BrowserAnimationsModule,
             forms_1.FormsModule,
+            forms_1.ReactiveFormsModule,
             router_1.RouterModule.forRoot([
                 //{ path: 'home', /*component: HomeComponent*/ },
                 { path: '', component: signupSignin_component_1.SignupSinginComponent, pathMatch: 'full' },
+                { path: 'register', component: ReactiveSignupSignin_component_1.ReactiveSignupSigninComponent, pathMatch: 'full' },
                 { path: 'orderStatus', component: orderStatus_component_1.OrderStatusComponent },
             ])
         ],
@@ -63,6 +66,7 @@ AppModule = __decorate([
             textboxgeneral_component_1.TextboxGeneralComponent,
             decimal_input_directive_1.DecimalInputDirective,
             signupSignin_component_1.SignupSinginComponent,
+            ReactiveSignupSignin_component_1.ReactiveSignupSigninComponent,
             orderStatus_component_1.OrderStatusComponent
         ],
         exports: [

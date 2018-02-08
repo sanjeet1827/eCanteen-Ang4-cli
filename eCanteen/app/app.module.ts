@@ -4,7 +4,7 @@ import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
@@ -12,6 +12,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header.component';
 import { FooterComponent } from './common/footer.component';
 import { SignupSinginComponent } from './viewcontroller/vendor/signupSignin.component';
+
+import { ReactiveSignupSigninComponent } from './viewcontroller/vendor/ReactiveSignupSignin.component';
+
 import { OrderStatusComponent } from './viewcontroller/vendor/orderStatus.component';
 
 // directives
@@ -40,10 +43,12 @@ import { AddHttpHeaderInterceptor } from './common/services/HttpInterceptor';
         HttpClientModule,
         BrowserAnimationsModule,
         FormsModule,
-        
+        ReactiveFormsModule,
+
         RouterModule.forRoot([
             //{ path: 'home', /*component: HomeComponent*/ },
             { path: '', component: SignupSinginComponent, pathMatch: 'full' },
+            { path: 'register', component: ReactiveSignupSigninComponent, pathMatch: 'full' },
             { path: 'orderStatus', component: OrderStatusComponent },
             //{ path: '**', redirectTo: 'welcome', pathMatch: 'full' }
         ])
@@ -57,6 +62,7 @@ import { AddHttpHeaderInterceptor } from './common/services/HttpInterceptor';
         TextboxGeneralComponent,
         DecimalInputDirective,
         SignupSinginComponent,
+        ReactiveSignupSigninComponent,
         OrderStatusComponent
     ],
     exports: [

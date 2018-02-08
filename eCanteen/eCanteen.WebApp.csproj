@@ -162,6 +162,7 @@
     <Content Include="app\viewcontroller\vendor\currentOrders.html" />
     <Content Include="app\viewcontroller\vendor\menu.html" />
     <Content Include="app\viewcontroller\vendor\orderStatusCtrl.js" />
+    <Content Include="app\viewcontroller\vendor\ReactiveSignupSignin.component.html" />
     <Content Include="app\viewcontroller\vendor\SignupSinginComponent.html" />
     <Content Include="app\viewcontroller\vendor\vendorMain.html" />
     <Content Include="config\helpers.js" />
@@ -297,6 +298,7 @@
     <TypeScriptCompile Include="app\datacontext\pay.service.ts" />
     <TypeScriptCompile Include="app\viewcontroller\main.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\orderStatus.component.ts" />
+    <TypeScriptCompile Include="app\viewcontroller\vendor\ReactiveSignupSignin.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.ts" />
     <TypeScriptCompile Include="polyfills.ts" />
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />

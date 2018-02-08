@@ -1,0 +1,128 @@
+﻿
+<div class="animate-if vendor-gate">
+    <form novalidate [formGroup]="signUpForm"  class="form-horizontal" (ngSubmit)="signUp(signUpForm.valid)" #formDir="ngForm">
+      
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="dv-label-gate">
+                    <label>Site</label>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="dv-input-gate">
+                    <select class="form-control" formControlName="selectedSite">
+                        <option *ngFor="let item of sites" [value]="item.Id">{{item.Name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="dv-label-gate">
+                    <label>Name</label>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="dv-input-gate">
+                    <input  class="form-control textbox-general" formControlName="name" required />
+                    <span style="float:right;color:red" *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.required">*</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="dv-label-gate">
+                    <label>Contact No</label>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="dv-input-gate">
+                    <input class="form-control textbox-general" formControlName="contactNo" required />
+                    <span style="float:right;color:red" *ngIf="contactNo.invalid && (contactNo.dirty || contactNo.touched) && contactNo.errors.required">*</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="dv-label-gate">
+                    <label>Email</label>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="dv-input-gate">
+                    <input class="form-control textbox-general" formControlName="email" required />
+                    <span style="float:right;color:red" *ngIf="email.invalid && (email.dirty || email.touched) && email.errors.required">*</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="dv-label-gate">
+                    <label>Shop No</label>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="dv-input-gate">
+                    <input class="form-control textbox-general" formControlName="shopNo" required />
+                    <span style="float:right;color:red" *ngIf="shopNo.invalid && (shopNo.dirty || shopNo.touched) && shopNo.errors.required">*</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="dv-label-gate">
+                    <label>Password</label>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="dv-input-gate">
+                    <input class="form-control textbox-general" formControlName="password" required />
+                    <span style="float:right;color:red" *ngIf="password.invalid && (password.dirty || password.touched) && password.errors.required">*</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="dv-label-gate">
+                    <label>Logo</label>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div>
+                    <input fileupload-general="vModel.logo" type="file" style="margin-top:15px" /><span style="font-size:smaller">Only png logo allowed</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-8">
+                <div class="vendor-gate-button">
+                    <button-general buttonType="submit" value="Sign Up"></button-general>
+                    <!--<a (click)="activeLoginView(true)">Already registered </a>-->
+                </div>
+
+            </div>
+        </div>
+        <!--<div class="row" *ngIf="vModel.alreadyRegistered">
+            <div class="col-sm-12">
+                <p>
+                    Vendor already registered with provided email id.
+                </p>
+            </div>
+
+        </div>-->
+    </form>
+</div>
+<!--<div *ngIf="vModel.registerationPosted" class="animate-if vendor-gate">
+    <div class="row">
+        <div class="col-sm-12">
+            <p>
+                Thank you for registraion.
+            </p>
+        </div>
+
+    </div>
+
+</div>-->

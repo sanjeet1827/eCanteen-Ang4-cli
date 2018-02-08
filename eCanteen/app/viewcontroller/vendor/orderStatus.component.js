@@ -105,9 +105,9 @@ var OrderStatusComponent = (function () {
         this.route.params.subscribe(function (params) {
             _this.vendorId = params["vendorId"];
             _this.getBreakfastOrderCount(_this.vendorId, 1);
-            //this.getLunchOrderCount(this.vendorId, 2);
-            //this.getSnacksOrderCount(this.vendorId, 3);
-            //this.getDinnerOrderCount(this.vendorId, 4);
+            _this.getLunchOrderCount(_this.vendorId, 2);
+            _this.getSnacksOrderCount(_this.vendorId, 3);
+            _this.getDinnerOrderCount(_this.vendorId, 4);
             _this.loadOrders(_this.vendorId, 1);
         });
     };
