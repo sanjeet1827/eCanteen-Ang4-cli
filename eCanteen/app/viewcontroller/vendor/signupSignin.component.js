@@ -24,7 +24,7 @@ var SignupSinginComponent = (function () {
         this.vLoginModel = new AppModels_1.SignIn();
         this.vLoginModel.authenticated = true;
     }
-    SignupSinginComponent.prototype.activeLoginView = function (active) {
+    SignupSinginComponent.prototype.onActivatingLoginView = function (active) {
         return this.vModel.showLoginView = active;
     };
     SignupSinginComponent.prototype.signIn = function (isVendorLoginFormValid) {

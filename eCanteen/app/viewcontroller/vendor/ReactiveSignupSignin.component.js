@@ -21,7 +21,7 @@ var ReactiveSignupSigninComponent = (function () {
         this._vendorService = _vendorService;
         this._httpHelper = _httpHelper;
         this.fb = fb;
-        this.createForm();
+        //this.createForm();
     }
     ReactiveSignupSigninComponent.prototype.createForm = function () {
         //this.signUpForm = this.fb.group({
@@ -34,7 +34,7 @@ var ReactiveSignupSigninComponent = (function () {
         //    password: '',
         //});
         this.signUpForm = new forms_1.FormGroup({
-            selectedSite: new forms_1.FormControl("", [forms_1.Validators.required]),
+            selectedSite: new forms_1.FormControl(),
             name: new forms_1.FormControl("", [forms_1.Validators.required]),
             contactNo: new forms_1.FormControl("", [forms_1.Validators.required]),
             email: new forms_1.FormControl("", [forms_1.Validators.required]),
@@ -46,25 +46,28 @@ var ReactiveSignupSigninComponent = (function () {
         //return this.vModel.showLoginView = active;
         return false;
     };
-    ReactiveSignupSigninComponent.prototype.signUp = function () {
-        var formModel = this.signUpForm.value;
-        var vModel = new AppModels_1.Vendor();
-        vModel.name = formModel.name;
-        vModel.active = true;
-        vModel.email = formModel.email;
-        //vModel.logo = this.vModel.logo;
-        vModel.password = formModel.password;
-        vModel.shopNo = formModel.shopNo;
-        vModel.siteId = formModel.selectedSite;
-        vModel.contact = formModel.contactNo;
-        this._vendorService.registerVendor(vModel).subscribe(function (registeredVendor) {
-            if (registeredVendor !== undefined && registeredVendor) {
-                console.log("registration successful");
-            }
-        });
+    ReactiveSignupSigninComponent.prototype.signUp = function (isValid) {
+        if (isValid) {
+            var formModel = this.signUpForm.value;
+            var vModel = new AppModels_1.Vendor();
+            vModel.name = formModel.name;
+            vModel.active = true;
+            vModel.email = formModel.email;
+            //vModel.logo = this.vModel.logo;
+            vModel.password = formModel.password;
+            vModel.shopNo = formModel.shopNo;
+            vModel.siteId = formModel.selectedSite;
+            vModel.contact = formModel.contactNo;
+            this._vendorService.registerVendor(vModel).subscribe(function (registeredVendor) {
+                if (registeredVendor !== undefined && registeredVendor) {
+                    console.log("registration successful");
+                }
+            });
+        }
     };
     ReactiveSignupSigninComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.createForm();
         this._siteService.getSites()
             .subscribe(function (sites) {
             _this.sites = sites;
@@ -74,6 +77,31 @@ var ReactiveSignupSigninComponent = (function () {
             _this.signUpForm.setValue({ selectedSite: selectedSite, name: "", contactNo: "", email: "", shopNo: "", password: "" });
         }, function (error) { return _this.errorMessage = error; });
     };
+    Object.defineProperty(ReactiveSignupSigninComponent.prototype, "name", {
+        get: function () { return this.signUpForm.get('name'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ReactiveSignupSigninComponent.prototype, "contactNo", {
+        get: function () { return this.signUpForm.get('contactNo'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ReactiveSignupSigninComponent.prototype, "email", {
+        get: function () { return this.signUpForm.get('email'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ReactiveSignupSigninComponent.prototype, "shopNo", {
+        get: function () { return this.signUpForm.get('shopNo'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ReactiveSignupSigninComponent.prototype, "password", {
+        get: function () { return this.signUpForm.get('password'); },
+        enumerable: true,
+        configurable: true
+    });
     return ReactiveSignupSigninComponent;
 }());
 ReactiveSignupSigninComponent = __decorate([

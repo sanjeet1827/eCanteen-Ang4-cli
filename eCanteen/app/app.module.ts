@@ -14,6 +14,7 @@ import { FooterComponent } from './common/footer.component';
 import { SignupSinginComponent } from './viewcontroller/vendor/signupSignin.component';
 
 import { ReactiveSignupSigninComponent } from './viewcontroller/vendor/ReactiveSignupSignin.component';
+import { SinginComponent } from './viewcontroller/vendor/Signin.component';
 
 import { OrderStatusComponent } from './viewcontroller/vendor/orderStatus.component';
 
@@ -63,6 +64,7 @@ import { AddHttpHeaderInterceptor } from './common/services/HttpInterceptor';
         DecimalInputDirective,
         SignupSinginComponent,
         ReactiveSignupSigninComponent,
+        SinginComponent,
         OrderStatusComponent
     ],
     exports: [

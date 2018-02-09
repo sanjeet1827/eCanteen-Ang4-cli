@@ -1,0 +1,50 @@
+﻿<div>
+    <form class="form-horizontal" id="form-vendor-login" name="vendorLoginForm" #vendorLoginFormForm="ngForm">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="dv-label-gate">
+                    <label>Email</label>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="dv-input-gate">
+                    <textbox-general ngType="email" ngId="email" ngName="email" maximumLenght="250"
+                                     [(ngModel)]="vLoginModel.email" name="email" fieldRequired="true"></textbox-general>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="dv-label-gate">
+                    <label>Password</label>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="dv-input-gate">
+                    <textbox-general ngType="password" ngId="password" ngName="password" minimum-lenght="4" maximumLenght="5"
+                                     [(ngModel)]="vLoginModel.password" name="password" fieldRequired="true"></textbox-general>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-8">
+                <div class="vendor-gate-button">
+                    <button-general buttonType="submit" value="Sign In" (Submit)="signIn(vendorLoginFormForm.valid)"></button-general>
+                    <a style="cursor:pointer" (click)="activeLoginView(false)">Sign Up </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="row" *ngIf="vLoginModel.authenticated!==undefined && !vLoginModel.authenticated">
+            <div class="col-sm-12">
+                <p>
+                    Login failed! Please check if you already confirmed your email after restistration or enter valid email/password
+                </p>
+            </div>
+
+        </div>
+    </form>
+</div>

@@ -19,6 +19,7 @@ var header_component_1 = require("./common/header.component");
 var footer_component_1 = require("./common/footer.component");
 var signupSignin_component_1 = require("./viewcontroller/vendor/signupSignin.component");
 var ReactiveSignupSignin_component_1 = require("./viewcontroller/vendor/ReactiveSignupSignin.component");
+var Signin_component_1 = require("./viewcontroller/vendor/Signin.component");
 var orderStatus_component_1 = require("./viewcontroller/vendor/orderStatus.component");
 // directives
 var button_component_1 = require("./directives/button.component");
@@ -67,6 +68,7 @@ AppModule = __decorate([
             decimal_input_directive_1.DecimalInputDirective,
             signupSignin_component_1.SignupSinginComponent,
             ReactiveSignupSignin_component_1.ReactiveSignupSigninComponent,
+            Signin_component_1.SinginComponent,
             orderStatus_component_1.OrderStatusComponent
         ],
         exports: [

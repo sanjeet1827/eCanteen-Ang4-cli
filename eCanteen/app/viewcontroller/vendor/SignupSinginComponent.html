@@ -115,7 +115,7 @@
     </form>
 </div>
 <div *ngIf="vModel.showLoginView" class="animate-if vendor-gate">
-    <form class="form-horizontal" id="form-vendor-login" name="vendorLoginForm" #vendorLoginFormForm="ngForm">
+    <!--<form class="form-horizontal" id="form-vendor-login" name="vendorLoginForm" #vendorLoginFormForm="ngForm">
         <div class="row">
             <div class="col-sm-4">
                 <div class="dv-label-gate">
@@ -162,7 +162,8 @@
             </div>
 
         </div>
-    </form>
+    </form>-->
+    <signIn (onActivatingLoginView)="onActivatingLoginView($event)"></signIn>
 </div>
 <div *ngIf="vModel.registerationPosted" class="animate-if vendor-gate">
     <div class="row">

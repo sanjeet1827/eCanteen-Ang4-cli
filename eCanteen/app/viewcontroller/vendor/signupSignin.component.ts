@@ -29,6 +29,10 @@ export class SignupSinginComponent implements OnInit {
         this.vLoginModel.authenticated = true;
     }
 
+    onActivatingLoginView(active: boolean): boolean {
+        return this.vModel.showLoginView = active;
+    }
+
     activeLoginView(active: boolean): boolean {
         return this.vModel.showLoginView = active;
     }
