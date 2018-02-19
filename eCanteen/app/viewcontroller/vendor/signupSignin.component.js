@@ -27,6 +27,9 @@ var SignupSinginComponent = (function () {
     SignupSinginComponent.prototype.onActivatingLoginView = function (active) {
         return this.vModel.showLoginView = active;
     };
+    SignupSinginComponent.prototype.activeLoginView = function (active) {
+        return this.vModel.showLoginView = active;
+    };
     SignupSinginComponent.prototype.signIn = function (isVendorLoginFormValid) {
         var _this = this;
         if (isVendorLoginFormValid) {

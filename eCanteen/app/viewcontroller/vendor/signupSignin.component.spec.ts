@@ -1,8 +1,14 @@
 ﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 
+import { TextboxGeneralComponent } from '../../directives/textboxgeneral.component';
+import { ButtonComponent } from '../../directives/button.component';
 import { SignupSinginComponent } from './signupSignin.component';
+import { SinginComponent } from './Signin.component';
 
 describe('SignupSinginComponent (template)', () => {
 
@@ -13,7 +19,8 @@ describe('SignupSinginComponent (template)', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [SignupSinginComponent], // declare the test component
+            imports: [FormsModule, BrowserModule],
+            declarations: [SignupSinginComponent, SinginComponent, TextboxGeneralComponent, ButtonComponent], // declare the test component
         })
 
         fixture = TestBed.createComponent(SignupSinginComponent);
