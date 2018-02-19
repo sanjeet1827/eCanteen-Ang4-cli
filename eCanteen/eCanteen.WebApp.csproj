@@ -208,7 +208,6 @@
     <Content Include="helpers.js" />
     <Content Include="index - Copy.html" />
     <Content Include="index.html" />
-    <Content Include="karma.conf.js" />
     <Content Include="main2.js" />
     <Content Include="PaymentResponse.aspx" />
     <Content Include="protractor.conf.js" />
@@ -224,6 +223,7 @@
     <Content Include="webpack.common.js" />
     <Content Include="webpack.config.js" />
     <Content Include="webpack.dev.js" />
+    <Content Include="webpack.test.js" />
     <None Include="Properties\PublishProfiles\eCanteen_Publish.pubxml" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
@@ -302,6 +302,7 @@
     <TypeScriptCompile Include="app\viewcontroller\vendor\ReactiveSignupSignin.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signin.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.ts" />
+    <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.componentSpec.ts" />
     <TypeScriptCompile Include="polyfills.ts" />
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
