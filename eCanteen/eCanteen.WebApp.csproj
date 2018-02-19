@@ -208,6 +208,8 @@
     <Content Include="helpers.js" />
     <Content Include="index - Copy.html" />
     <Content Include="index.html" />
+    <Content Include="karma-test-shim.js" />
+    <Content Include="karma.conf.js" />
     <Content Include="main2.js" />
     <Content Include="PaymentResponse.aspx" />
     <Content Include="protractor.conf.js" />
@@ -302,9 +304,10 @@
     <TypeScriptCompile Include="app\viewcontroller\vendor\ReactiveSignupSignin.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signin.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.ts" />
-    <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.componentSpec.ts" />
+    <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.spec.ts" />
+    <TypeScriptCompile Include="main.spec.ts" />
+    <TypeScriptCompile Include="main.test.ts" />
     <TypeScriptCompile Include="polyfills.ts" />
-    <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
