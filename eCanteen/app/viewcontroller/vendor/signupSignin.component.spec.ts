@@ -3,6 +3,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 
 import { TextboxGeneralComponent } from '../../directives/textboxgeneral.component';
@@ -23,38 +25,35 @@ describe('SignupSinginComponent (template)', () => {
     let spy: any;
     let testSites: any;
     let testLoginVendor: any;
+    let fakeHttpHelper: any = {}
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule, BrowserModule],
+            imports: [FormsModule, BrowserModule, HttpClientModule, RouterModule],
             declarations: [SignupSinginComponent, SinginComponent, TextboxGeneralComponent, ButtonComponent], // declare the test component
             providers: [
-                SiteService,
-                VendorService,
-                httpHelper
+                { provide: SiteService, use: SiteService },
+                { provide: VendorService, use: VendorService },
+                { provide: VendorService, use: VendorService },
+                { provide: httpHelper, use: fakeHttpHelper }
             ]
         })
 
         fixture = TestBed.createComponent(SignupSinginComponent);
 
-        comp = fixture.componentInstance; // BannerComponent test instance
-
-        //spy = spyOn(SiteService, 'getSites')
-        //    .and.returnValue(Promise.resolve(testSites));
-
-        //spy = spyOn(VendorService, 'loginVendor')
-        //    .and.returnValue(Promise.resolve(testLoginVendor));
-
-        // query for the title <h1> by CSS element selector
-        de = fixture.debugElement.query(By.css('animate-if vendor-gate'));
-        el = de.nativeElement;
-
+        comp = fixture.componentInstance; 
+        
     });
 
 
     it('head element should be defined', () => {
+        comp.activeLoginView(false);
         fixture.detectChanges();
-        expect(el).toBeDefined(true);
+        de = fixture.debugElement.nativeElement;
+        //de = fixture.debugElement.query(By.css('animate-if vendor-gate'));
+        //el = de.nativeElement;
+        
+        expect(de).toBeDefined(true);
     });
 
 });
