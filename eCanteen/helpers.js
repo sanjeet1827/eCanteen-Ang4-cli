@@ -16,7 +16,6 @@ function root(args) {
 }
 
 
-
 exports.hasProcessFlag = hasProcessFlag;
 exports.isWebpackDevServer = isWebpackDevServer;
 exports.root = root;
