@@ -283,6 +283,7 @@
     <TypeScriptCompile Include="app\directives\textboxdecimal.component.ts" />
     <TypeScriptCompile Include="app\directives\textboxgeneral.component.ts" />
     <TypeScriptCompile Include="app\Helpers\httpHelper.ts" />
+    <TypeScriptCompile Include="app\Testing\FakeSiteService.ts" />
     <TypeScriptCompile Include="app\Types\IOrderStatus.ts" />
     <TypeScriptCompile Include="app\vendor.ts" />
     <TypeScriptCompile Include="app\main.ts" />
