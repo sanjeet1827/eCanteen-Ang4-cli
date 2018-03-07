@@ -21,7 +21,7 @@ let comp: SignupSinginComponent;
 let fixture: ComponentFixture<SignupSinginComponent>;
 let de: DebugElement;
 
-describe('SignupSinginComponent (template)', () => {
+describe('SignupSinginComponent tests', () => {
 
 
     let el: HTMLElement;
@@ -57,6 +57,40 @@ describe('SignupSinginComponent (template)', () => {
         //el = de.nativeElement;
         
         expect(de).toBeDefined(true);
+    });
+
+    it('vModel should be defined', () => {
+
+        expect(comp.vModel).toBeDefined(true);
+    });
+    it('vLoginModel should be defined', () => {
+
+        expect(comp.vLoginModel).toBeDefined(true);
+    });
+    it('vLoginModel.authenticated should be defined and true', () => {
+
+        expect(comp.vLoginModel.authenticated).toBeDefined(true);
+        expect(comp.vLoginModel.authenticated).toBe(true);
+    });
+    it('showLoginView property should be false when passed false in method onActivatingLoginView', () => {
+
+        comp.onActivatingLoginView(false);
+        expect(comp.vModel.showLoginView).toBe(false);
+    });
+    it('showLoginView property should be true when passed true in method onActivatingLoginView', () => {
+
+        comp.onActivatingLoginView(true);
+        expect(comp.vModel.showLoginView).toBe(true);
+    });
+    it('showLoginView property should be false when passed false in method activeLoginView', () => {
+
+        comp.activeLoginView(false);
+        expect(comp.vModel.showLoginView).toBe(false);
+    });
+    it('showLoginView property should be true when passed true in method activeLoginView', () => {
+
+        comp.activeLoginView(true);
+        expect(comp.vModel.showLoginView).toBe(true);
     });
 
 });
