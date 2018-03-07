@@ -21,7 +21,6 @@ export class SignupSinginComponent implements OnInit {
     showLoginView: boolean = true;
     sites: ISite[];
     errorMessage: any;
-    testMessage: string;
 
     constructor(private _siteService: SiteService,
         private _vendorService: VendorService, private _httpHelper: httpHelper) {
@@ -54,7 +53,6 @@ export class SignupSinginComponent implements OnInit {
                         this._httpHelper.redirectTo("/orderStatus", { vendorId: authenticatedVendor.Id });
                     }
                     else {
-                        this.testMessage = "login failed!";
                         this.vLoginModel.authenticated = false;
                     }
                 }

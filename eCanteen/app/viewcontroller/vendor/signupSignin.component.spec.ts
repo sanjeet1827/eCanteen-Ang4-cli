@@ -17,7 +17,7 @@ import { VendorService } from '../../datacontext/vendor.service';
 import { httpHelper } from '../../Helpers/httpHelper';
 
 import { IVendor } from '../../Types/IVendor';
-import { Vendor, SignIn } from '../../Models/AppModels'
+import { Vendor, SignIn, SignUp } from '../../Models/AppModels'
 
 import { FakeSiteService } from '../../Testing/FakeSiteService';
 
@@ -43,12 +43,13 @@ describe('SignupSinginComponent tests', () => {
     testVendor.siteId = "";
     let loginVendorSpy: jasmine.Spy;
     let redirectToSpy: jasmine.Spy;
+    let registerVendorSpy: jasmine.Spy;
     let vendorService: any ;
 
 
     beforeEach(() => {
 
-        vendorService = jasmine.createSpyObj('VendorService', ['loginVendor']);
+        vendorService = jasmine.createSpyObj('VendorService', ['loginVendor','registerVendor']);
 
         const HttpHelper = jasmine.createSpyObj('httpHelper', ['redirectTo']);
 
@@ -113,8 +114,48 @@ describe('SignupSinginComponent tests', () => {
         done();
 
         expect(loginVendorSpy.calls.any()).toBe(true, 'loginVendor called');
-        expect(comp.testMessage).toBe('login failed!');
+        expect(comp.vLoginModel.authenticated).toBe(false);
 
+    });
+
+    it('test signUp function with spy for registerVendor', (done: DoneFn) => {
+        registerVendorSpy = vendorService.registerVendor.and.returnValue(of(true));
+        comp.vModel = new SignUp();
+        comp.vModel.name = "Sanjeet";
+        comp.vModel.email = "kavsan1827@gmail.com";
+        comp.vModel.password = "1234";
+        comp.vModel.logo = "";
+        comp.vModel.shopNo = "123";
+        comp.vModel.selectedSite = "";
+        comp.vModel.contactNo = "9899138026";
+
+        comp.signUp(true);
+        done();
+
+        expect(registerVendorSpy.calls.any()).toBe(true, 'registerVendor called');
+
+        expect(comp.vModel.alreadyRegistered).toBe(false);
+        expect(comp.vModel.registerationPosted).toBe(true);
+
+    });
+
+    it('test signUp function with spy for registerVendor and already registered', (done: DoneFn) => {
+        registerVendorSpy = vendorService.registerVendor.and.returnValue(of(false));
+        comp.vModel = new SignUp();
+        comp.vModel.name = "Sanjeet";
+        comp.vModel.email = "kavsan1827@gmail.com";
+        comp.vModel.password = "1234";
+        comp.vModel.logo = "";
+        comp.vModel.shopNo = "123";
+        comp.vModel.selectedSite = "";
+        comp.vModel.contactNo = "9899138026";
+
+        comp.signUp(true);
+        done();
+
+        expect(registerVendorSpy.calls.any()).toBe(true, 'registerVendor called');
+
+        expect(comp.vModel.alreadyRegistered).toBe(true);
     });
 
     it('vModel should be defined', () => {
