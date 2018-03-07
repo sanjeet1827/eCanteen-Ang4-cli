@@ -50,8 +50,6 @@ describe('SignupSinginComponent tests', () => {
 
         vendorService = jasmine.createSpyObj('VendorService', ['loginVendor']);
 
-        //loginVendorSpy = vendorService.loginVendor.and.returnValue(of(testVendor));
-
         const HttpHelper = jasmine.createSpyObj('httpHelper', ['redirectTo']);
 
         redirectToSpy = HttpHelper.redirectTo.and.returnValue(of(true));
@@ -91,8 +89,6 @@ describe('SignupSinginComponent tests', () => {
         comp.vLoginModel.email = "kavsan1827@gmail.com";
         comp.vLoginModel.password = "1234";
         comp.signIn(true);
-
-        //fixture.detectChanges();
         done();
 
         expect(loginVendorSpy.calls.any()).toBe(true, 'loginVendor called');

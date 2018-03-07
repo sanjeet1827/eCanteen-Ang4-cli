@@ -11,7 +11,7 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      'main.test.js': ['webpack', 'sourcemap']
+        'main.test.js': ['webpack', 'sourcemap', 'coverage'],
     },
 
     webpack: webpackConfig,
@@ -24,7 +24,13 @@ module.exports = function (config) {
       noInfo: true
     },
 
-    reporters: ['progress', 'html'],
+    reporters: ['progress', 'html', 'coverage'],
+    
+    coverageReporter : {
+        type : 'html',
+        dir : 'coverage/'
+    },
+
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
