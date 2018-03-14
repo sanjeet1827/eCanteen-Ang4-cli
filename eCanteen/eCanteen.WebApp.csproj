@@ -166,12 +166,9 @@
     <Content Include="app\viewcontroller\vendor\SinginComponent.html" />
     <Content Include="app\viewcontroller\vendor\SignupSinginComponent.html" />
     <Content Include="app\viewcontroller\vendor\vendorMain.html" />
-    <Content Include="config\helpers.js" />
-    <Content Include="config\karma-test-shim.js" />
-    <Content Include="config\karma.conf.js" />
+    <Content Include="config\main.test.js" />
     <Content Include="config\webpack.common.js" />
     <Content Include="config\webpack.dev.js" />
-    <Content Include="config\webpack.test.js" />
     <Content Include="Content\bootstrap-client.css" />
     <Content Include="Content\bootstrap-theme-client.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -205,10 +202,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ui-grid.svg" />
     <Content Include="Global.asax" />
-    <Content Include="helpers.js" />
+    <Content Include="config\helpers.js" />
     <Content Include="index - Copy.html" />
     <Content Include="index.html" />
-    <Content Include="karma-test-shim.js" />
     <Content Include="karma.conf.js" />
     <Content Include="main2.js" />
     <Content Include="PaymentResponse.aspx" />
@@ -222,10 +218,8 @@
     <Content Include="fonts\ui-grid.eot" />
     <Content Include="package.json" />
     <Content Include="app\app.component.html" />
-    <Content Include="webpack.common.js" />
     <Content Include="webpack.config.js" />
-    <Content Include="webpack.dev.js" />
-    <Content Include="webpack.test.js" />
+    <Content Include="config\webpack.test.js" />
     <None Include="Properties\PublishProfiles\eCanteen_Publish.pubxml" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
@@ -306,8 +300,6 @@
     <TypeScriptCompile Include="app\viewcontroller\vendor\signin.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.spec.ts" />
-    <TypeScriptCompile Include="main.spec.ts" />
-    <TypeScriptCompile Include="main.test.ts" />
     <TypeScriptCompile Include="polyfills.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
