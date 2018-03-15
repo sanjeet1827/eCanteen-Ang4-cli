@@ -177,6 +177,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datetimepicker.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\bg.jpg" />
     <Content Include="Content\Images\canteen.jpg" />
     <Content Include="Content\Images\canteen2.jpg" />
@@ -198,6 +199,7 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Content\ui-grid.css" />
     <Content Include="Content\ui-grid.min.css" />
+    <Content Include="Content\ui-grid.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ui-grid.svg" />
@@ -220,6 +222,13 @@
     <Content Include="app\app.component.html" />
     <Content Include="webpack.config.js" />
     <Content Include="config\webpack.test.js" />
+    <Content Include="Content\ui-grid.eot" />
+    <Content Include="Content\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\ui-grid.ttf" />
+    <Content Include="Content\ui-grid.woff" />
     <None Include="Properties\PublishProfiles\eCanteen_Publish.pubxml" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />

@@ -1937,7 +1937,7 @@ input[type=search] {
     .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
         position: absolute;
         margin-left: -20px;
-        margin-top: 4px;\9
+        margin-top: 4px;
     }
 
     .checkbox + .checkbox, .radio + .radio {
@@ -5156,7 +5156,7 @@ body {
 
 @media screen and (min-width:992px) {
     html.desktop, html.desktop .page-wrapper, html.desktop body {
-        height: 100%;\9
+        height: 100%;
     }
 
         html.desktop .page-wrapper {
@@ -17151,7 +17151,7 @@ html.no-js .order-steps-container .order-steps {
     height: 25px;
     font-size: 0;
     color: #fff;
-    background: transparent url(../img/loading.gif) top left no-repeat;
+    /*background: transparent url(../img/loading.gif) top left no-repeat;*/
     border: none;
 }
 
@@ -17871,15 +17871,15 @@ body.whitelabel .flash-messages {
     }
 
 .payTM-confirm {
-    background-image: url('../../Content/Images/PayTM-Logo.jpg');
+    /*background-image: url('../../Content/Images/PayTM-Logo.jpg');*/
 }
 
 .mobikwik-confirm {
-    background-image: url('../../Content/Images/mobikwik-logo.jpg');
+    /*background-image: url('../../Content/Images/mobikwik-logo.jpg');*/
 }
 
 .payUmoney-confirm {
-    background-image: url('../../Content/Images/payu_logo.png');
+    /*background-image: url('../../Content/Images/payu_logo.png');*/
 }
 
 .textbox-general {
@@ -18123,7 +18123,7 @@ input::-webkit-inner-spin-button {
 
 .main-page-menu-arrow-td {
     width: 10%;
-    background-image: url(../../Content/Images/th.jpg);
+    /*background-image: url(../../Content/Images/th.jpg);*/
     background-repeat: no-repeat;
 }
 

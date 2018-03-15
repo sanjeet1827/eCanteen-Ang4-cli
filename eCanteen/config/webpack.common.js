@@ -1,17 +1,23 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var helpers = require('./helpers');
 
 module.exports = {
     entry: {
         'polyfills': './polyfills.ts',
         'vendor': helpers.root('app/vendor.ts'),
-        'app': helpers.root('app/main.ts')
+        'app': helpers.root('app/main.ts'),
+        'bootstrap': './content/bootstrap.css',
+        'bootstrap-theme': './content/bootstrap-theme.css',
+        'font-awesome': './content/font-awesome.min.css',
+        'Site': './content/Site.css',
+        'ui-grid': './content/ui-grid.css'
     },
 
     resolve: {
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js', '.jpeg', '.jpg', '.png', '.gif', '.css']
     },
 
     module: {
@@ -35,18 +41,24 @@ module.exports = {
           },
           {
               test: /\.css$/,
-              exclude: helpers.root('.', 'app'),
-              loader: ExtractTextPlugin.extract({
+              use: ExtractTextPlugin.extract({
                   fallback: 'style-loader',
-                  use: ['css-loader']
-
+                  loader: [{
+                      loader: 'css-loader',
+                      options: {sourceMap:true,importLoaders:1}
+                  },
+                  {
+                      loader: 'postcss-loader',
+                      options: {
+                          plugins: (loader) =>[
+                            require('autoprefixer'),
+                          ]
+                      }
+                  }
+                  ]
               })
           },
-          {
-              test: /\.css$/,
-              include: helpers.root('.', 'app'),
-              loader: 'raw-loader!style-loader!css-loader'
-          }
+          
         ]
     },
 
@@ -68,6 +80,14 @@ module.exports = {
       new HtmlWebpackPlugin({
           template: 'index.html',
           chunksSortMode: 'dependency'
+      }),
+
+      new ExtractTextPlugin('[name].bundle.[chunkhash].css'),
+      new OptimizeCssAssetsPlugin({
+          assetNameRegExp: /^.*.css$/g,
+          cssProcessor: require('cssnano'),
+          cssProcessorOptions: { discardComments: { removeAll: true } },
+          canPrint:true
       })
     ]
 };
