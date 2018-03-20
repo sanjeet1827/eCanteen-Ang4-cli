@@ -205,6 +205,7 @@
     <Content Include="fonts\ui-grid.svg" />
     <Content Include="Global.asax" />
     <Content Include="config\helpers.js" />
+    <None Include="index.ejs" />
     <Content Include="index - Copy.html" />
     <Content Include="index.html" />
     <Content Include="karma.conf.js" />
