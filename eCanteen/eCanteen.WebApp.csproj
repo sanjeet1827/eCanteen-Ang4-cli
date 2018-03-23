@@ -222,6 +222,7 @@
     <Content Include="fonts\ui-grid.eot" />
     <Content Include="package.json" />
     <Content Include="app\app.component.html" />
+    <Content Include="styles.css" />
     <Content Include="webpack.config.js" />
     <Content Include="config\webpack.test.js" />
     <Content Include="Content\ui-grid.eot" />
