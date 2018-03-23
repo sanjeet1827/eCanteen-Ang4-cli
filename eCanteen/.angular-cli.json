@@ -5,22 +5,19 @@
   },
   "apps": [
     {
-      "root": "src",
+      "root": ".",
       "outDir": "dist",
       "assets": [
         "assets",
         "favicon.ico"
       ],
       "index": "index.html",
-      "main": "main.ts",
+      "main": "app/main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
-      "styles": [
-        "styles.css"
-      ],
+      "tsconfig": "tsconfig.json",
+      
+      
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {

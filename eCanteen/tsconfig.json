@@ -1,14 +1,25 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es2015", "dom"],
-    "noImplicitAny": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "typeRoots": ["./node_modules/@types","./node_modules/@angular"]
-  }
+    "target": "es5",
+    "typeRoots": [ "./node_modules/@types", "./node_modules/@angular" ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "baseUrl": "./",
+    "module": "es2015",
+    "types": [ "node"]
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts",
+    "node_modules"
+  ]
 }

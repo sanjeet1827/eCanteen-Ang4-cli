@@ -66,8 +66,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
@@ -205,6 +205,7 @@
     <Content Include="fonts\ui-grid.svg" />
     <Content Include="Global.asax" />
     <Content Include="config\helpers.js" />
+    <Content Include=".angular-cli.json" />
     <None Include="index.ejs" />
     <Content Include="index - Copy.html" />
     <Content Include="index.html" />
@@ -231,11 +232,6 @@
     <Content Include="Content\ui-grid.ttf" />
     <Content Include="Content\ui-grid.woff" />
     <None Include="Properties\PublishProfiles\eCanteen_Publish.pubxml" />
-    <Content Include="src\app\app.component.css" />
-    <Content Include="src\app\app.component.html" />
-    <Content Include="src\favicon.ico" />
-    <Content Include="src\index.html" />
-    <Content Include="src\styles.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -247,9 +243,6 @@
     </Content>
     <Content Include="tsconfig.json" />
     <Content Include="tslint.json" />
-    <Content Include="src\assets\.gitkeep" />
-    <Content Include="src\tsconfig.app.json" />
-    <Content Include="src\tsconfig.spec.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\services\" />
@@ -311,14 +304,6 @@
     <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.ts" />
     <TypeScriptCompile Include="app\viewcontroller\vendor\signupSignin.component.spec.ts" />
     <TypeScriptCompile Include="polyfills.ts" />
-    <TypeScriptCompile Include="src\app\app.component.ts" />
-    <TypeScriptCompile Include="src\app\app.module.ts" />
-    <TypeScriptCompile Include="src\environments\environment.prod.ts" />
-    <TypeScriptCompile Include="src\environments\environment.ts" />
-    <TypeScriptCompile Include="src\main.ts" />
-    <TypeScriptCompile Include="src\polyfills.ts" />
-    <TypeScriptCompile Include="src\test.ts" />
-    <TypeScriptCompile Include="src\typings.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
